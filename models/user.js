@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const { v1: uuidv1 } = require('uuid');
+const crypto = require('crypto') // password-hashing nodejs 
+const { v1: uuidv1 } = require('uuid')
 
 const { Schema } = mongoose
 
@@ -19,7 +19,7 @@ const userSchema = new Schema({
   },
   hashed_password: {
     type: String,
-   // required: true
+    required: true
   },
   about: {
     type: String,
@@ -35,6 +35,28 @@ const userSchema = new Schema({
     default: []
   }
 }, { timestamps: true })
+
+userSchema
+  .virtual('password')
+  .set(function (password) {
+    this._password = password
+    this.salt = uuidv1()
+    this.hashed_password = this.encryptPassword(password)
+  })
+
+userSchema.methods = {
+  encryptPassword: function (password) {
+    if (!password) return ''
+    try {
+      return crypto
+        .createHash('sha1', this.salt)
+        .update(password)
+        .digest("hex");
+    } catch (error) {
+      return '';
+    }
+  }
+}
 
 const User = mongoose.model('User', userSchema)
 module.exports = { User }
