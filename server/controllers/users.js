@@ -1,12 +1,12 @@
-const jwt = require("jsonwebtoken");
-const expressJwt = require('express-jwt');
-const { errorHandler } = require("../helpers/dbErrorHandler");
-const { User } = require("../models/user");
+const jwt = require("jsonwebtoken")
+const expressJwt = require('express-jwt')
+const { errorHandler } = require("../helpers/dbErrorHandler")
+const { User } = require("../models/user")
 
 exports.signup = async (req, res) => {
   try {
-    const user = new User(req.body);
-    await user.save();
+    const user = new User(req.body)
+    await user.save()
 
     user.hashed_password = undefined
     user.salt = undefined
@@ -18,22 +18,22 @@ exports.signup = async (req, res) => {
   }
 }
 
-exports.signin = async (req, res) => {
+exports.signin = (req, res) => {
   try {
     const { email, password } = req.body
     const user = User.findOne({ email }, (err, user) => {
-      // check email
+      /*- check email */ 
       if (err || !user) {
         return res.status(400).json({
           error: 'User with such e-mail does not exist.'
         })
       }
-      // check passwords
+      /*- check passwords */ 
       if (!user.authentication(password)) {
         return res.status(401).json({ error: "Email and password are wrong " })
       }
-
-      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+      /*- create token and send to cookies*/ 
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
       res.cookie('x-access-token', token, { expire: 999999 + Date.now() })
 
       const { _id, email, name, role } = user
@@ -42,4 +42,9 @@ exports.signin = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: errorHandler(error) })
   }
+}
+
+exports.signout = (req, res) => {
+  res.clearCookie("x-access-token")
+  res.json({ message: 'Sign out was successful.' })
 }
