@@ -6,7 +6,8 @@ const expressValidator = require('express-validator');
 require('dotenv').config()
 
 // routes
-const userRoutes = require('./routes/user')
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 const app = express()
 
@@ -16,10 +17,12 @@ mongoose.connection.on('error', (err) => {
   console.log(`mongoose connection error: ${err.message}`)
 })
 
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(expressValidator())
 
+app.use('/api', authRoutes)
 app.use('/api', userRoutes)
 
 const port = process.env.PORT || 5000
