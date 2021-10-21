@@ -60,7 +60,7 @@ exports.requireSignin = expressJwt({
 })
 
 // check if you are the current logged in user
-// in short, are you the same user in compare to your access token
+// in short, are you the same user based on your access token
 exports.isAuth = (req, res, next) => {
   let user = req.profile && req.auth && req.profile._id == req.auth._id
   if (!user) {
@@ -74,7 +74,7 @@ exports.isAdmin = (req, res, next) => {
   if (req.profile.role === 0) {
     return res.status(403).json({
       error: 'Admin resource! Access denied'
-    }) 
+    })
   }
   next()
 }

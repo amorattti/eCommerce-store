@@ -38,6 +38,6 @@ const productSchema = new Schema({
   }
 }, { timestamps: true })
 
-const Category = mongoose.model("Product", productSchema)
+const Product = mongoose.model("Product", productSchema)
 
-module.exports = { Category }
+module.exports = { Product }
