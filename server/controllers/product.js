@@ -6,6 +6,23 @@ const { errorHandler } = require("../helpers/dbErrorHandler")
 
 const fs = require('fs')
 
+exports.productById = async (req, res, next, id) => {
+  try {
+    const product = await Product.findById(id).populate('category').exec();
+    req.product = product
+    next()
+  } catch (error) {
+    return res.status(400).json({
+      error: "Product does not exist"
+    })
+  }
+}
+
+exports.read = (req, res) => {
+  req.product.photo = undefined
+  return res.json(req.product)
+}
+
 exports.create = (req, res) => {
   let form = new formidable.IncomingForm()
   form.keepExtensions = true
@@ -47,3 +64,4 @@ exports.create = (req, res) => {
 
   })
 }
+
