@@ -65,3 +65,15 @@ exports.create = (req, res) => {
   })
 }
 
+exports.remove = async (req, res) => {
+  try {
+    const product = req.product
+    await product.remove()
+    res.json({ message: 'Product has been deleted successfully' }) 
+
+  } catch (error) {
+    return res.status(400).json({
+      error: errorHandler(error)
+    })
+  }
+}
