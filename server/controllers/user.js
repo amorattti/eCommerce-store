@@ -1,5 +1,6 @@
 const { User } = require("../models/user")
 
+/**** param ****/
 exports.userById = (req, res, next, id) => {
   User.findById(id).exec((err, user) => {
     if(err || !user) {
