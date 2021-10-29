@@ -28,6 +28,10 @@ const productSchema = new Schema({
   quantity: {
     type: Number,
   },
+  sold: {
+    type: Number,
+    default: 0
+  },
   photo: {
     data: Buffer,
     contentType: String,

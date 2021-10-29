@@ -124,3 +124,32 @@ exports.update = (req, res) => {
 
   })
 }
+
+/** :::
+ * sell / arrival
+ * by sell =/products?soryBy=sold&order=desc&limit=4
+ * by arrival =/products?soryBy=createdAt&order=desc&limit=4
+ * if no params are sent, then all product are returned
+ */
+
+exports.list = async (req, res) => {
+  try {
+    let order = req.query.order ? req.query.order : 'asc'
+    let soryBy = req.query.soryBy ? req.query.soryBy : '_id'
+    let limit = req.query.limit ? req.query.limit : 6
+
+    let products = await Product.find()
+      .select('-photo')
+      .populate('category')
+      .sort([[soryBy, order]])
+      .limit(limit)
+      .exec()
+
+    res.json(products)
+
+  } catch (error) {
+    return res.status(400).json({
+      error: `Product not found`
+    })
+  }
+}
