@@ -17,3 +17,8 @@ router.patch('/category/:categoryId/:userId', requireSignin, isAuth, isAdmin, up
 
 
 module.exports = router
+
+/** middlewares ---
+ *  requireSignin return The decoded JWT payload with user = req.auth *
+ *  then isAuth check id if are the same and on the end isAdmin check did role is admin
+ */

@@ -136,10 +136,10 @@ exports.list = async (req, res) => {
   try {
     let order = req.query.order ? req.query.order : 'asc'
     let soryBy = req.query.soryBy ? req.query.soryBy : '_id'
-    let limit = req.query.limit ? req.query.limit : 6
+    let limit = req.query.limit ? parseInt(req.query.limit) : 2
 
     let products = await Product.find()
-      .select('-photo')
+      .select('-photo') // return without photo
       .populate('category')
       .sort([[soryBy, order]])
       .limit(limit)
