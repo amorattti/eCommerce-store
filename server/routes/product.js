@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { create, productById, read, remove, update, list } = require('../controllers/product')
+const { create, productById, read, remove, update, list, relatedList } = require('../controllers/product')
 const { requireSignin, isAdmin, isAuth } = require("../controllers/auth")
 const { userById } = require('../controllers/user')
 
@@ -14,5 +14,6 @@ router.delete('/product/:productId/:userId', requireSignin, isAuth, isAdmin, rem
 router.patch('/product/:productId/:userId', requireSignin, isAuth, isAdmin, update)
 /**--products--*/
 router.get('/products', list)
+router.get('/products/related/:productId', relatedList)
 
 module.exports = router

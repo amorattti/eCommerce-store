@@ -125,18 +125,13 @@ exports.update = (req, res) => {
   })
 }
 
-/** :::
- * sell / arrival
- * by sell =/products?soryBy=sold&order=desc&limit=4
- * by arrival =/products?soryBy=createdAt&order=desc&limit=4
- * if no params are sent, then all product are returned
- */
-
 exports.list = async (req, res) => {
+  // by sell = /products?soryBy=sold&order=desc&limit=4
+  // by arrival = /products?soryBy=createdAt&order=desc&limit=4
   try {
     let order = req.query.order ? req.query.order : 'asc'
     let soryBy = req.query.soryBy ? req.query.soryBy : '_id'
-    let limit = req.query.limit ? parseInt(req.query.limit) : 2
+    let limit = req.query.limit ? parseInt(req.query.limit) : 4
 
     let products = await Product.find()
       .select('-photo') // return without photo
@@ -150,6 +145,27 @@ exports.list = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: `Product not found`
+    })
+  }
+}
+
+exports.relatedList = async (req, res) => {
+  try {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 4
+
+    const relatedListOfProducts = await Product.find({
+      _id: { $ne: req.product },
+      category: req.product.category
+    })
+      .populate('category', '_id name')
+      .limit(limit)
+      .exec()
+
+    res.json(relatedListOfProducts)
+
+  } catch (error) {
+    return res.status(400).json({
+      error: "Products not found"
     })
   }
 }
