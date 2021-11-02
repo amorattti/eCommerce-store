@@ -191,7 +191,7 @@ exports.listBySearch = async (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 100
     let skip = parseInt(req.body.skip)
     let findArgs = {}
-    
+
     console.log(findArgs)
 
     for (let key in req.body.filters) {
@@ -227,4 +227,12 @@ exports.listBySearch = async (req, res) => {
       error: 'Products not found'
     });
   }
+}
+
+exports.photo = (req, res, next) => {
+  if (req.product.photo.data) {
+    res.set('Content-Type', req.product.photo.contentType)
+    return res.send(req.product.photo.data)
+  }
+  next()
 }
