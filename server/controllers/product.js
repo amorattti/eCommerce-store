@@ -4,7 +4,7 @@ const _ = require("lodash")
 const { Product } = require("../models/product")
 const { errorHandler } = require("../helpers/dbErrorHandler")
 
-const fs = require('fs')
+const fs = require('fs');
 
 /**** param ****/
 exports.productById = async (req, res, next, id) => {
@@ -166,6 +166,19 @@ exports.relatedList = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: "Products not found"
+    })
+  }
+}
+// list all categories in Product collection
+exports.listCategories = async (req, res) => {
+  try {
+    const categories = await Product.distinct('category', {})
+    // ["617ee00728533daa63292924","617ee00e28533daa63292927"]
+    res.json(categories)
+
+  } catch (error) {
+    return res.status(400).json({
+      error: "List of Categories not found"
     })
   }
 }
