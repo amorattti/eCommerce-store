@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from 'react'
 
 const Layout = ({
@@ -17,6 +18,13 @@ const Layout = ({
       </div>
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.any,
+  description: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default Layout

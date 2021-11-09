@@ -4,7 +4,6 @@ import { normalize } from 'styled-normalize';
 const GlobalStyles = createGlobalStyle`
   ${normalize}  
   
-
   body {
     font-family: 'Quicksand', sans-serif
   }
