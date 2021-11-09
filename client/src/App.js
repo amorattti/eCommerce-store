@@ -8,9 +8,9 @@ import Menu from './core/Menu'
 import { ThemeProvider } from 'styled-components';
 import theme from './utils/theme';
 import GlobalStyles from './index.css.js';
+import LoadingIndicator from './components/LoadingIndicator'
 
-
-const RoutesApp = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
@@ -24,4 +24,16 @@ const RoutesApp = () => {
   )
 }
 
-export default RoutesApp
+
+const RootApp = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <React.Suspense fallback={<LoadingIndicator />}>
+        <App />
+      </React.Suspense>
+    </ThemeProvider>
+  )
+}
+
+export default RootApp
+
