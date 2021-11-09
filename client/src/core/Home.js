@@ -1,10 +1,12 @@
 import React from 'react'
+import Layout from '../hoc/Layout'
+
 
 const Home = () => {
   return (
-    <div>
-      Home
-    </div>
+    <Layout title="Home Page" description="Node React E-commerce App ">
+  
+    </Layout>
   )
 }
 
