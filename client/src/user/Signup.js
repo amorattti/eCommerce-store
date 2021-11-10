@@ -1,10 +1,11 @@
 import React from 'react'
+import Layout from '../hoc/Layout'
 
 const Signup = () => {
   return (
-    <div>
-      Sign up
-    </div>
+    <Layout title="Sign up" >
+    ...
+  </Layout>
   )
 }
 

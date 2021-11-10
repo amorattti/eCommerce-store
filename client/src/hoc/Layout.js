@@ -1,22 +1,33 @@
 import PropTypes from "prop-types"
 import React from 'react'
+import styled from "styled-components"
+
+const Jumbotron = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 3em 0;
+
+  h2 {
+   font-size: 2.5em;
+  }
+`
 
 const Layout = ({
-  title = 'Title',
-  description = 'description',
+  title = '',
+  description = '',
   className,
   children
 }) => {
   return (
-    <div>
-      <div className="jumbotron">
+    <>
+      <Jumbotron position>
         <h2>{title}</h2>
         <p className="lead">{description}</p>
-      </div>
+      </Jumbotron>
       <div className={className}>
         {children}
       </div>
-    </div>
+    </>
   )
 }
 

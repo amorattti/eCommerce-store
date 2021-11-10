@@ -4,10 +4,16 @@ import { normalize } from 'styled-normalize';
 const GlobalStyles = createGlobalStyle`
   ${normalize}  
   
-  body {
-    font-family: 'Quicksand', sans-serif
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
 
+  body, html, #root {
+    height: 100%;
+    font-family: 'Quicksand', sans-serif
+  }
 `;
 
 export default GlobalStyles;

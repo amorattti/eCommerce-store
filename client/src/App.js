@@ -11,16 +11,20 @@ import Signin from './user/Signin'
 import Signup from './user/Signup'
 import Menu from './core/Menu'
 
+import { Wrapper } from './components';
+
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Menu />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="signin" element={<Signin />} />
-        <Route path="signup" element={<Signup />} />
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="signin" element={<Signin />} />
+          <Route path="signup" element={<Signup />} />
+        </Routes>
+      </Wrapper>
     </BrowserRouter>
   )
 }
