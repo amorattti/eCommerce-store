@@ -3,11 +3,10 @@ import Layout from '../hoc/Layout'
 
 const Signin = () => {
   return (
-    <Layout title="Sign in">
-      ...
-    </Layout>
+    <Layout title="Sign in" >
+    ...
+  </Layout>
   )
 }
 
 export default Signin
-
