@@ -12,11 +12,13 @@ import Signup from './user/Signup'
 import Menu from './core/Menu'
 
 import { Wrapper } from './components';
+import Navbar from './components/Navbar';
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
+      <Navbar />
       <Menu />
       <Wrapper>
         <Routes>

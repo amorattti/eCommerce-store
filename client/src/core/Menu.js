@@ -21,7 +21,7 @@ const Menu = (props) => {
             to={`/`}
           >Home</Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link
             style={isActive(props.location, '/signin')}
             className="nav-link"
@@ -34,7 +34,7 @@ const Menu = (props) => {
             className="nav-link"
             to={`/signup`}
           >Sign up</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   )
