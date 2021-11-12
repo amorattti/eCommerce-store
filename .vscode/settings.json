@@ -2,5 +2,6 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "editor.fontSize": 14.5
+  "editor.fontSize": 14.5,
+  "emmet.triggerExpansionOnTab": true
 }
