@@ -5,10 +5,10 @@ import styled from "styled-components"
 const Jumbotron = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 3em 0;
+  padding: 40px 0;
 
   h2 {
-   font-size: 2.5em;
+   font-size: 1.5em;
   }
 `
 

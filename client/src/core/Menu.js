@@ -4,16 +4,17 @@ import { withRouter } from '../hoc/withRouter'
 
 const isActive = (location, path) => {
   if (location.pathname === path) {
-    return { color: '#fc7c41' }
+    // return { color: '#fc7c41', fontSize: '1.5em' }
+    return { color: '#2f8bfd', fontSize: '1.5em', fontWeight: '500' }
   } else {
-    return { color: '#ffffff' }
+    return { color: 'black', fontSize: '1.5em', fontWeight: '500'  }
   }
 }
 
 const Menu = (props) => {
   return (
     <div>
-      <ul className="nav tab-pane bg-dark p-2">
+      <ul className="nav tab-pane p-2">
         <li className="nav-item">
           <Link
             style={isActive(props.location, '/')}
