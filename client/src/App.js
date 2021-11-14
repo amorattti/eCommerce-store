@@ -19,9 +19,9 @@ const App = () => {
     <BrowserRouter>
       <GlobalStyles />
       <Navbar />
-
-      <Wrapper>
       <Menu />
+      <Wrapper>
+  
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="signin" element={<Signin />} />

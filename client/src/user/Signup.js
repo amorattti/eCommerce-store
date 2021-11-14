@@ -77,7 +77,6 @@ const Signup = () => {
     // </form>
 
     <EntryPage>
-      <PageHeader to="/">LOGO </PageHeader>
       <EntryCard>
         <form>
           <InputGroup>
