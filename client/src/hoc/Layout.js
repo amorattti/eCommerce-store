@@ -5,6 +5,7 @@ import styled from "styled-components"
 const Jumbotron = styled.div`
   display: flex;
   flex-direction: column;
+
   padding: 40px 0;
 
   h2 {

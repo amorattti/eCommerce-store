@@ -9,19 +9,19 @@ import { LoadingIndicator } from './components'
 import Home from './core/Home'
 import Signin from './user/Signin'
 import Signup from './user/Signup'
-import Menu from './core/Menu'
+// import Menu from './core/Menu'
 
 import { Wrapper } from './components';
 import Navbar from './components/Navbar';
+import Menu from './components/Menu';
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Navbar />
-      <Menu />
+      <Menu/>
       <Wrapper>
-  
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="signin" element={<Signin />} />
