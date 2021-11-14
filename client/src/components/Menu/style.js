@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.nav`
     background-color: #055160;
 `
 export const MenuBar = styled.div`
@@ -16,7 +16,7 @@ export const MenuItem = styled.li`
 export const LinkMenu = styled(Link)`
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   transition: box-shadow .2s;
 
   &:hover {

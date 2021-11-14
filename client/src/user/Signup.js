@@ -78,6 +78,9 @@ const Signup = () => {
 
     <EntryPage>
       <EntryCard>
+        <h2>
+          Sign up
+        </h2>
         <form>
           <InputGroup>
             <label htmlFor="signup-name">Full Name</label>
@@ -114,7 +117,7 @@ const Signup = () => {
   )
 
   return (
-    <Layout title="Sign up" >
+    <Layout>
       {showSuccess()}
       {showError()}
       {signUpForm()}

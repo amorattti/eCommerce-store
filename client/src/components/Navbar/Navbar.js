@@ -1,12 +1,12 @@
 import React from 'react'
-import { NavItemLink, StyledNavbar } from './style'
+import { NavItemLink, StyledNavbarExtend } from './style'
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
   return (
-    <StyledNavbar>
+    <StyledNavbarExtend>
       <NavItemLink to="/signin">Sign in</NavItemLink>
       <NavItemLink to="/signup" fill>Sign up</NavItemLink>
-    </StyledNavbar>
+    </StyledNavbarExtend>
   )
 }
 

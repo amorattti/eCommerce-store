@@ -103,7 +103,7 @@ const Signin = () => {
   )
 
   return (
-    <Layout title="Sign in" >
+    <Layout>
       {showSuccess()}
       {showError()}
       {signUpForm()}
