@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Layout from '../hoc/Layout'
 import { Link } from 'react-router-dom'
 import { signup } from '../auth'
-import { EntryPage, PageHeader } from './style'
+import { EntryPage } from './style'
 import EntryCard from '../components/EntryCard'
 import InputGroup from '../components/InputGroup'
 import Input from '../components/Input'
@@ -43,56 +43,35 @@ const Signup = () => {
   }
 
   const signUpForm = () => (
-    // <form>
-    //   <div className="form-group">
-    //     <label className="text-muted">Name</label>
-    //     <input
-    //       onChange={handleChange('name')}
-    //       type="text"
-    //       className="form-control"
-    //       value={name}
-    //     />
-    //   </div>
-
-    //   <div className="form-group">
-    //     <label className="text-muted">Email</label>
-    //     <input
-    //       onChange={handleChange('email')}
-    //       type="email"
-    //       className="form-control"
-    //       value={email}
-    //     />
-    //   </div>
-
-    //   <div className="form-group">
-    //     <label className="text-muted">Password</label>
-    //     <input
-    //       onChange={handleChange('password')}
-    //       type="password"
-    //       className="form-control"
-    //       value={password}
-    //     />
-    //   </div>
-    //   <button onClick={clickSubmit} className="btn btn-primary">Submit</button>
-    // </form>
-
     <EntryPage>
       <EntryCard>
         <h2>
           Sign up
         </h2>
-        <form>
+        <form onSubmit={clickSubmit}>
           <InputGroup>
-            <label htmlFor="signup-name">Full Name</label>
-            <Input type="text" />
+            <label>Full Name</label>
+            <Input
+              onChange={handleChange('name')}
+              type="text"
+              value={name}
+            />
           </InputGroup>
           <InputGroup>
-            <label htmlFor="signup-email">Email Address</label>
-            <Input type="text" />
+            <label>Email Address</label>
+            <Input
+              onChange={handleChange('email')}
+              type="text"
+              value={email}
+            />
           </InputGroup>
           <InputGroup>
-            <label htmlFor="signup-password">Password</label>
-            <Input type="password" />
+            <label >Password</label>
+            <Input
+              onChange={handleChange('password')}
+              type="password"
+              value={password}
+            />
           </InputGroup>
           <Button type="submit">Sign up</Button>
         </form>

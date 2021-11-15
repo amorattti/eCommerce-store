@@ -18,7 +18,7 @@ export const LinkMenu = styled(Link)`
   text-decoration: none;
   font-size: 1.25rem;
   transition: box-shadow .2s;
-
+  font-weight: 500;
   &:hover {
     color: #ffffff;
     box-shadow: 0 1px 0 #ffffff;

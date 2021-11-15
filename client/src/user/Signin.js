@@ -73,7 +73,7 @@ const Signin = () => {
         </h2>
         <form>
           <InputGroup>
-            <label htmlFor="login-email" placeholder="email">Email Address</label>
+            <label>Email Address</label>
             <Input type="text" />
           </InputGroup>
           <InputGroup>
