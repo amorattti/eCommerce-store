@@ -7,6 +7,7 @@ import EntryCard from '../components/EntryCard'
 import InputGroup from '../components/InputGroup'
 import Input from '../components/Input'
 import Button from '../components/Button'
+import Alert from '../components/Alert'
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -84,15 +85,15 @@ const Signup = () => {
   )
 
   const showError = () => (
-    <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+    <Alert value={error} theme="error">
       {error}
-    </div>
+    </Alert>
   )
 
   const showSuccess = () => (
-    <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+    <Alert value={success} theme="success">
       new account is created. Please sign in <Link to="/signin">Signin</Link>
-    </div>
+    </Alert>
   )
 
   return (
