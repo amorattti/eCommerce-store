@@ -3,7 +3,7 @@ import Layout from '../hoc/Layout'
 import { Link } from 'react-router-dom'
 import { signin } from '../auth'
 
-import { EntryPage, PageHeader } from './style'
+import { EntryPage } from './style'
 import EntryCard from '../components/EntryCard'
 import InputGroup from '../components/InputGroup'
 import Input from '../components/Input'
@@ -18,7 +18,7 @@ const Signin = () => {
     redirectToReferrer: false
   })
 
-  const { name, email, password, error, success } = values
+  const { email, password, error, success } = values
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value })
@@ -33,7 +33,6 @@ const Signin = () => {
       } else {
         setValues({
           ...values,
-          name: '',
           email: '',
           password: '',
           error: '',
@@ -44,41 +43,26 @@ const Signin = () => {
   }
 
   const signUpForm = () => (
-    // <form>
-    //   <div className="form-group">
-    //     <label className="text-muted">Email</label>
-    //     <input
-    //       onChange={handleChange('email')}
-    //       type="email"
-    //       className="form-control"
-    //       value={email}
-    //     />
-    //   </div>
-
-    //   <div className="form-group">
-    //     <label className="text-muted">Password</label>
-    //     <input
-    //       onChange={handleChange('password')}
-    //       type="password"
-    //       className="form-control"
-    //       value={password}
-    //     />
-    //   </div>
-    //   <button onClick={clickSubmit} className="btn btn-primary">Submit</button>
-    // </form>
     <EntryPage>
       <EntryCard>
         <h2>
           Sign in
         </h2>
-        <form>
+        <form onSubmit={clickSubmit}>
           <InputGroup>
             <label>Email Address</label>
-            <Input type="text" />
+            <Input
+              onChange={handleChange('email')}
+              type="email"
+              value={email} />
           </InputGroup>
           <InputGroup>
             <label htmlFor="login-password" placeholder="password">Password</label>
-            <Input type="text" />
+            <Input
+              onChange={handleChange('password')}
+              type="password"
+              value={password}
+            />
           </InputGroup>
           <Button type="submit" full>Sign in</Button>
           <span>
@@ -91,15 +75,15 @@ const Signin = () => {
   )
 
   const showError = () => (
-    <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+    <Alert value={error} theme="error">
       {error}
-    </div>
+    </Alert>
   )
 
   const showSuccess = () => (
-    <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-      new account is created. Please sign in <Link to="/signin">Signin</Link>
-    </div>
+    <Alert value={success} theme="success">
+     Welcome! 
+    </Alert>
   )
 
   return (

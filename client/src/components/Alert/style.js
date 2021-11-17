@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 
-
 const themes = {
   error: css`
     background-color: #fff3f3;
