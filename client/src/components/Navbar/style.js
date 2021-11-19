@@ -24,6 +24,7 @@ export const StyledNavbarExtend = styled(Wrapper)`
   padding: 0 30px;
   color: #000000;
   background-color: #ffffff;
+  cursor: pointer;
   font-weight: 500;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0, 0.06);
 `
@@ -35,7 +36,6 @@ export const NavItemLink = styled(Link)`
   ${props => props.fill && css`
     padding: 8px 16px;
     border-radius: 4px;
-    /* background-color: #055160; */
     border:${({ theme }) => `2px solid ${theme.colors.yellow.light}`} ;
     transition: background-color 0.2s, color 0.2s;
     &:hover {
@@ -52,3 +52,4 @@ export const NavItemLink = styled(Link)`
     `
   }}
 `
+
