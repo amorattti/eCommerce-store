@@ -4,8 +4,8 @@ import { signout } from '../../auth'
 import { useLocation, useNavigate } from "react-router-dom"
 
 const Navbar = () => {
-  const location = useLocation()
-  const navigate = useNavigate();
+  // const location = useLocation()
+  // const navigate = useNavigate();
 
   return (
     <StyledNavbarExtend>
@@ -13,9 +13,7 @@ const Navbar = () => {
       <NavItemLink to="/signup" fill>Sign up</NavItemLink>
       <NavItemLink
         to={'/'}
-        onClick={() => signout(() => {
-          
-        })}
+        onClick={() => signout()}
       >Sign out</NavItemLink>
     </StyledNavbarExtend>
   )
