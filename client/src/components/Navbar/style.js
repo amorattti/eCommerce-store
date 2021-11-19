@@ -36,10 +36,10 @@ export const NavItemLink = styled(Link)`
     padding: 8px 16px;
     border-radius: 4px;
     /* background-color: #055160; */
-    border: 1px solid #055160;;
+    border:${({theme}) => `2px solid ${theme.colors.yellow.light}`} ;
     transition: background-color 0.2s, color 0.2s;
     &:hover {
-      background-color: #055160;
+      background-color: ${({theme}) => theme.colors.yellow.light} ;;
       color: #fff;
     }
   `}
@@ -48,6 +48,7 @@ export const NavItemLink = styled(Link)`
       text-decoration: none;
     `  : css`
       text-decoration: underline;
+      color: #000000;
     `
   }
   }

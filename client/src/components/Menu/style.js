@@ -2,7 +2,8 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export const MenuContainer = styled.nav`
-    background-color: #055160;
+${props => console.log(props)}
+  background-color: ${(props) => props.theme.colors.black.normal};
 `
 export const MenuBar = styled.div`
   display:flex;

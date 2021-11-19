@@ -7,7 +7,7 @@ export const StyledButton = styled.button`
   border-radius: 4px;
   padding: 8px 16px;
   outline: none;
-  background-color: #055160;
+  background-color: ${props => props.theme.colors.yellow.light};
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -16,6 +16,6 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    background-color: #077187
+    background-color: ${props => props.theme.colors.yellow.dark};
   }
 `

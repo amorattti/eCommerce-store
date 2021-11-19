@@ -5,19 +5,16 @@ export default {
     xl: 20
   },
   colors: {
-    gray: {
-      light: 'rgb(238, 238, 238)',
-      normal: 'rgb(222, 220, 220)',
-      dark: 'rgb(212, 212, 212)'
+    black: {
+      normal: 'rgb(35, 47, 62, 1)'
     },
-    green: {
-      normal: 'rgb(85, 150, 0)'
+    yellow: {
+      dark: 'rgb(231 193 0)',
+      light: 'rgb(255 216 20)'
     },
-    red: {
-      normal: 'rgb(165, 61, 54)'
-    },
-    pink: {
-      normal: 'rgb(219, 112, 147)'
+    orange: {
+      normal: 'rgb(254 189 105)',
+      dark: 'rgb(249 148 18)'
     }
   }
 };
