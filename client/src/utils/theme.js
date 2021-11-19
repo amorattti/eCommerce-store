@@ -5,12 +5,12 @@ export default {
     xl: 20
   },
   colors: {
-    black: {
-      normal: 'rgb(35, 47, 62, 1)'
+    black: { /*--Menu--*/ 
+      normal: 'rgb(35, 47, 62, 1)' 
     },
-    yellow: {
-      dark: 'rgb(231 193 0)',
-      light: 'rgb(255 216 20)'
+    yellow: { /*--Buttons--*/ 
+      dark: 'rgb(231 193 0)', 
+      light: 'rgb(255 216 20)' 
     },
     orange: {
       normal: 'rgb(254 189 105)',

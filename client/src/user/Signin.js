@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '../hoc/Layout'
 import { Link, Navigate } from 'react-router-dom'
-import { signin } from '../auth'
+import { signin, authenticate } from '../auth'
 
 import { EntryPage } from './style'
 import EntryCard from '../components/EntryCard'
@@ -32,13 +32,11 @@ const Signin = () => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false })
       } else {
-        setValues({
-          ...values,
-          // email: '',
-          // password: '',
-          // error: '',
-          // loading: false
-          redirectToReferrer: true
+        authenticate(data, () => {
+          setValues({
+            ...values,
+            redirectToReferrer: true
+          })
         })
       }
     })
