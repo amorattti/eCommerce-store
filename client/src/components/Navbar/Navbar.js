@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <StyledNavbarExtend>
       <NavItemLink to="/signin">Sign in</NavItemLink>
-      <NavItemLink to="/signup" fill>Sign up</NavItemLink>
+      <NavItemLink to="/signup" $fill>Sign up</NavItemLink>
       <NavItemLink
         as="span"
         onClick={() => signout(() => {

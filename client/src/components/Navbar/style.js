@@ -33,7 +33,7 @@ export const NavItemLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   margin-left: 16px;
-  ${props => props.fill && css`
+  ${props => props.$fill && css`
     padding: 8px 16px;
     border-radius: 4px;
     border:${({ theme }) => `2px solid ${theme.colors.yellow.light}`} ;
@@ -44,7 +44,7 @@ export const NavItemLink = styled(Link)`
     }
   `}
   &:hover {
-    ${props => props.fill ? css`
+    ${props => props.$fill ? css`
       text-decoration: none;
     `  : css`
       text-decoration: underline;
