@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export const MenuContainer = styled.nav`
-${props => console.log(props)}
   background-color: ${(props) => props.theme.colors.black.normal};
 `
 export const MenuBar = styled.div`
