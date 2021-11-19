@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../hoc/Layout'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { signin } from '../auth'
 
 import { EntryPage } from './style'
@@ -8,6 +8,7 @@ import EntryCard from '../components/EntryCard'
 import InputGroup from '../components/InputGroup'
 import Input from '../components/Input'
 import Button from '../components/Button'
+import Alert from '../components/Alert'
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -18,7 +19,7 @@ const Signin = () => {
     redirectToReferrer: false
   })
 
-  const { email, password, error, success } = values
+  const { email, password, error, loading, redirectToReferrer } = values
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value })
@@ -26,17 +27,18 @@ const Signin = () => {
 
   const clickSubmit = (event) => {
     event.preventDefault()
-    setValues({ ...values, error: false })
+    setValues({ ...values, error: false, loading: true })
     signin({ email, password }).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false })
+        setValues({ ...values, error: data.error, loading: false })
       } else {
         setValues({
           ...values,
-          email: '',
-          password: '',
-          error: '',
-          success: true
+          // email: '',
+          // password: '',
+          // error: '',
+          // loading: false
+          redirectToReferrer: true
         })
       }
     })
@@ -80,17 +82,22 @@ const Signin = () => {
     </Alert>
   )
 
-  const showSuccess = () => (
-    <Alert value={success} theme="success">
-     Welcome! 
-    </Alert>
+  const showLoading = () => (
+   loading && (<div><h2>...loading</h2></div>)
   )
+  
+  const redirectUser = () => {
+    if(redirectToReferrer) {
+      return <Navigate to="/" />
+    }
+  }  
 
   return (
     <Layout>
-      {showSuccess()}
+      {showLoading()}
       {showError()}
       {signUpForm()}
+      {redirectUser()}
     </Layout>
   )
 }

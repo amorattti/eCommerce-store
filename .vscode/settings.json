@@ -3,5 +3,6 @@
     "javascript": "javascriptreact"
   },
   "editor.fontSize": 14.5,
-  "emmet.triggerExpansionOnTab": true
+  "emmet.triggerExpansionOnTab": true,
+  "editor.tabSize": 2
 }
