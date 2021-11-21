@@ -14,18 +14,31 @@ import Signup from './user/Signup'
 import { Wrapper } from './components';
 import Navbar from './components/Navbar';
 import Menu from './components/Menu';
+import UserDashboard from './user/UserDashboard';
+import RequireAuth from './auth/RequireAuth';
 
 const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Navbar />
-      <Menu/>
+      <Menu />
       <Wrapper>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
+          <Route element={<RequireAuth />}>
+            <Route path="dashboard" element={<UserDashboard />} />
+          </Route>  
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>There's nothing here!</p>
+              </main>
+            }
+          />
         </Routes>
       </Wrapper>
     </BrowserRouter>

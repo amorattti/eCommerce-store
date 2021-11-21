@@ -17,12 +17,17 @@ const Navbar = () => {
 
       )}
       {isAuthenticated() && (
-        <NavItemLink
-          as="span"
-          onClick={() => signout(() => {
-            navigate('./')
-          })}
-        >Sign out</NavItemLink>
+        <>
+          <NavItemLink to="/dashboard">Dashboard</NavItemLink>
+          <NavItemLink
+            as="span"
+            onClick={() => signout(() => {
+              navigate('./')
+            })}
+          > Sign out
+          </NavItemLink>
+        </>
+
       )}
 
     </StyledNavbarExtend>
