@@ -8,7 +8,7 @@ import {
 
 const Dashboard = () => {
 
-  const {user: {_id, name, email, role}} = isAuthenticated()
+  const { user: { _id, name, email, role } } = isAuthenticated()
 
   return (
     <Layout title="Dashboard" description="User Dashboard">
@@ -17,10 +17,10 @@ const Dashboard = () => {
           User Information
         </CardHeader>
         <ListGroup>
-          <ListGroupItem>name: {name}</ListGroupItem>
-          <ListGroupItem>email: {email} </ListGroupItem>
-          <ListGroupItem>role: {
-            role === 0 ? "registered user":"admin"}
+          <ListGroupItem> {name}</ListGroupItem>
+          <ListGroupItem> {email} </ListGroupItem>
+          <ListGroupItem>
+            {role === 0 ? "registered user" : "admin"}
           </ListGroupItem>
         </ListGroup>
       </Card>

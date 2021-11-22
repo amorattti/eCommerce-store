@@ -16,8 +16,9 @@ export const ListGroup = styled.ul`
 `
 
 export const ListGroupItem = styled.li`
-  padding: 4px;
-  /* border-bottom: 1px solid #ede9e9; */
+  padding: 8px;
+  font-weight: 600;
+  border-bottom: 1px solid #f3f0f0; 
   &:last-child  {
     border-bottom: none;
   }

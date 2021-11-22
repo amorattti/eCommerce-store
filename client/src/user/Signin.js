@@ -20,6 +20,7 @@ const Signin = () => {
   })
 
   const { email, password, error, loading, redirectToReferrer } = values
+  const { user } = isAuthenticated()
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value })
@@ -86,7 +87,12 @@ const Signin = () => {
 
   const redirectUser = () => {
     if (redirectToReferrer) {
-      return <Navigate to="/" />
+      if(user && user.role === 1) {
+        return <Navigate to="/admin/dashboard" />
+      } else {
+        return <Navigate to="/user/dashboard" />
+      }
+   
     }
   }
 

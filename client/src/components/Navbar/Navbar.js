@@ -19,7 +19,7 @@ const Navbar = () => {
       )}
       {isAuthenticated() && (
         <>
-          <NavItemLink to="/dashboard">Dashboard</NavItemLink>
+          <NavItemLink to="/user/dashboard">Dashboard</NavItemLink>
           <NavItemLink
             as="span"
             onClick={() => signout(() => {
