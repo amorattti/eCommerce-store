@@ -14,7 +14,7 @@ import Signup from './user/Signup'
 import { Wrapper } from './components';
 import Navbar from './components/Navbar';
 import Menu from './components/Menu';
-import UserDashboard from './user/UserDashboard';
+import Dashboard from './user/Dashboard/UserDashboard';
 import RequireAuth from './auth/RequireAuth';
 
 const App = () => {
@@ -23,13 +23,12 @@ const App = () => {
       <GlobalStyles />
       <Navbar />
       <Menu />
-      <Wrapper>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
           <Route element={<RequireAuth />}>
-            <Route path="dashboard" element={<UserDashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
           </Route>  
           <Route
             path="*"
@@ -40,7 +39,6 @@ const App = () => {
             }
           />
         </Routes>
-      </Wrapper>
     </BrowserRouter>
   )
 }

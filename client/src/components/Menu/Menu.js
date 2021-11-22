@@ -28,7 +28,7 @@ const Menu = () => {
               <LinkMenu
                 to={`/`}
               >
-                All Products
+                Shop
               </LinkMenu>
             </MenuItem>
           </MenuNav>

@@ -9,6 +9,7 @@ const Navbar = () => {
 
   return (
     <StyledNavbarExtend>
+      <NavItemLink to="/cart">Cart</NavItemLink>
       {!isAuthenticated() && (
         <>
           <NavItemLink to="/signin">Sign in</NavItemLink>

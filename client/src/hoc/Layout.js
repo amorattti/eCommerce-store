@@ -1,13 +1,14 @@
 import PropTypes from "prop-types"
 import React from 'react'
 import styled from "styled-components"
+import { Wrapper } from "../components"
 
-const Jumbotron = styled.div`
+const Jumbotron = styled.article`
   display: flex;
   flex-direction: column;
-
-  padding: 40px 0;
-
+  padding: 40px 20px;
+  box-shadow: -2px 4px 9px 0px #efeeee;
+  margin-bottom: 40px;
   h2 {
    font-size: 1.5em;
   }
@@ -22,12 +23,16 @@ const Layout = ({
   return (
     <>
       <Jumbotron position>
-        <h2>{title}</h2>
-        <p className="lead">{description}</p>
+        <Wrapper>
+          <h2>{title}</h2>
+          <p className="lead">{description}</p>
+        </Wrapper>
       </Jumbotron>
-      <div className={className}>
-        {children}
-      </div>
+      <section className={className}>
+        <Wrapper>
+          {children}
+        </Wrapper>
+      </section>
     </>
   )
 }

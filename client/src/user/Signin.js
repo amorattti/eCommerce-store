@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '../hoc/Layout'
 import { Link, Navigate } from 'react-router-dom'
-import { signin, authenticate } from '../auth'
+import { signin, authenticate, isAuthenticated } from '../auth'
 
 import { EntryPage } from './style'
 import EntryCard from '../components/EntryCard'
@@ -81,22 +81,22 @@ const Signin = () => {
   )
 
   const showLoading = () => (
-   loading && (<div><h2>...loading</h2></div>)
+    loading && (<div><h2>...loading</h2></div>)
   )
-  
+
   const redirectUser = () => {
-    if(redirectToReferrer) {
+    if (redirectToReferrer) {
       return <Navigate to="/" />
     }
-  }  
+  }
 
   return (
-    <Layout>
+    <>
       {showLoading()}
       {showError()}
       {signUpForm()}
       {redirectUser()}
-    </Layout>
+    </>
   )
 }
 

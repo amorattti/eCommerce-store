@@ -97,11 +97,11 @@ const Signup = () => {
   )
 
   return (
-    <Layout>
+    <>
       {showSuccess()}
       {showError()}
       {signUpForm()}
-    </Layout>
+    </>
   )
 }
 
