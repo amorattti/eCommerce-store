@@ -17,10 +17,10 @@ const AdminDashboard = () => {
         </CardHeader>
         <ListGroup>
           <ListGroupItem>
-            <NavLink to="/cart">My Cart</NavLink>
+            <NavLink to="/create/category">Create Category</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/profile/update">Update Profile</NavLink>
+            <NavLink to="/profile/update">Create Product</NavLink>
           </ListGroupItem>
         </ListGroup>
       </Card>

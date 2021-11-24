@@ -18,6 +18,7 @@ import DashboardUser from './user/Dashboards/UserDashboard'
 import DashboardAdmin from './user/Dashboards/AdminDashboard'
 import PrivateUserRoute from './auth/PrivateUserRoute'
 import PrivateAdminRoute from './auth/PrivateAdminRoute'
+import NotFound404 from './components/NotFound404/NotFound404.js'
 
 const App = () => {
   return (
@@ -37,11 +38,7 @@ const App = () => {
           </Route>  
           <Route
             path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
+            element={<NotFound404 />}
           />
         </Routes>
     </BrowserRouter>
