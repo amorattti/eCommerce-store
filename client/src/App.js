@@ -9,16 +9,15 @@ import { LoadingIndicator } from './components'
 import Home from './core/Home'
 import Signin from './user/Signin'
 import Signup from './user/Signup'
-// import Menu from './core/Menu'
 
-import { Wrapper } from './components'
 import Navbar from './components/Navbar'
 import Menu from './components/Menu'
 import DashboardUser from './user/Dashboards/UserDashboard'
 import DashboardAdmin from './user/Dashboards/AdminDashboard'
 import PrivateUserRoute from './auth/PrivateUserRoute'
 import PrivateAdminRoute from './auth/PrivateAdminRoute'
-import NotFound404 from './components/NotFound404/NotFound404.js'
+import NotFound404 from './components/NotFound404'
+import AddCategory from './admin/AddCategory'
 
 const App = () => {
   return (
@@ -26,21 +25,19 @@ const App = () => {
       <GlobalStyles />
       <Navbar />
       <Menu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="signin" element={<Signin />} />
-          <Route path="signup" element={<Signup />} />
-          <Route element={<PrivateUserRoute />}>
-            <Route path="user/dashboard" element={<DashboardUser />} />
-          </Route>  
-          <Route element={<PrivateAdminRoute />}>
-            <Route path="admin/dashboard" element={<DashboardAdmin />} />
-          </Route>  
-          <Route
-            path="*"
-            element={<NotFound404 />}
-          />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="signin" element={<Signin />} />
+        <Route path="signup" element={<Signup />} />
+        <Route element={<PrivateUserRoute />}>
+          <Route path="user/dashboard" element={<DashboardUser />} />
+        </Route>
+        <Route element={<PrivateAdminRoute />}>
+          <Route path="admin/dashboard" element={<DashboardAdmin />} />
+          <Route path="create/category" element={<AddCategory />} />
+        </Route>
+        <Route path="*" element={<NotFound404 />} />
+      </Routes>
     </BrowserRouter>
   )
 }

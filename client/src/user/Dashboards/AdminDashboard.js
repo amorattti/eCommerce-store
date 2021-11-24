@@ -20,7 +20,7 @@ const AdminDashboard = () => {
             <NavLink to="/create/category">Create Category</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/profile/update">Create Product</NavLink>
+            <NavLink to="/create/product">Create Product</NavLink>
           </ListGroupItem>
         </ListGroup>
       </Card>
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <Layout title="Dashboard" description={`Welcome ${name}`}>
+    <Layout title="Dashboard" description={`👋 Welcome! ${name}`}>
       <BoxContainer>
         <BoxItem> 
           {adminLinks()}
