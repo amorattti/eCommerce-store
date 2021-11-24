@@ -19,16 +19,14 @@ const Menu = () => {
             <MenuItem>
               <LinkMenu
                 to={`/`}
-              >
-                Home
+              > Home
               </LinkMenu>
             </MenuItem>
 
             <MenuItem>
               <LinkMenu
                 to={`/`}
-              >
-                Shop
+              > Shop
               </LinkMenu>
             </MenuItem>
           </MenuNav>

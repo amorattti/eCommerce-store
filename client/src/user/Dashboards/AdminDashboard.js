@@ -4,18 +4,16 @@ import { isAuthenticated } from '../../auth'
 import {
   Card, CardHeader, ListGroup, ListGroupItem, BoxContainer, BoxItem,NavLink
 } from './styles'
-import { Link } from 'react-router-dom'
 
-
-const Dashboard = () => {
+const AdminDashboard = () => {
 
   const { user: { _id, name, email, role } } = isAuthenticated()
 
-  const userLinks = () => {
+  const adminLinks = () => {
     return (
       <Card width="300px">
         <CardHeader as="h4">
-          User Links
+          Admin Links
         </CardHeader>
         <ListGroup>
           <ListGroupItem>
@@ -29,11 +27,11 @@ const Dashboard = () => {
     )
   }
 
-  const userInfo = () => {
+  const adminInfo = () => {
     return (
       <Card width="600px">
         <CardHeader>
-          User Information
+          Admin Information
         </CardHeader>
         <ListGroup>
           <ListGroupItem>{name}</ListGroupItem>
@@ -46,31 +44,17 @@ const Dashboard = () => {
     )
   }
 
-  const purchaseHistory = () => {
-    return (
-      <Card>
-        <CardHeader>
-          Purchase history
-        </CardHeader>
-        <ListGroup>
-          <ListGroupItem>history</ListGroupItem>
-        </ListGroup>
-      </Card>
-
-    )
-  }
   return (
     <Layout title="Dashboard" description={`Welcome ${name}`}>
       <BoxContainer>
         <BoxItem> 
-          {userLinks()}
-          {userInfo()}
+          {adminLinks()}
+          {adminInfo()}
         </BoxItem>
-        {purchaseHistory()}
       </BoxContainer>
 
     </Layout >
   )
 }
 
-export default Dashboard
+export default AdminDashboard

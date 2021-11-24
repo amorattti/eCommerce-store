@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Layout from '../hoc/Layout'
 import { Link, Navigate } from 'react-router-dom'
 import { signin, authenticate, isAuthenticated } from '../auth'
 
@@ -92,7 +91,9 @@ const Signin = () => {
       } else {
         return <Navigate to="/user/dashboard" />
       }
-   
+    }
+    if(isAuthenticated()) {
+      return <Navigate to="/" />
     }
   }
 

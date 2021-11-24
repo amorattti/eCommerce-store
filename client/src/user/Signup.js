@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Layout from '../hoc/Layout'
 import { Link } from 'react-router-dom'
 import { signup } from '../auth'
 import { EntryPage } from './style'

@@ -6,7 +6,7 @@ import { isAuthenticated } from '../../auth'
 
 const Navbar = () => {
   const navigate = useNavigate();
-
+  console.log(isAuthenticated())
   return (
     <StyledNavbarExtend>
       <NavItemLink to="/cart">Cart</NavItemLink>
@@ -19,7 +19,10 @@ const Navbar = () => {
       )}
       {isAuthenticated() && (
         <>
-          <NavItemLink to="/user/dashboard">Dashboard</NavItemLink>
+        {isAuthenticated().user.role === 0 ? (
+          <NavItemLink to="/user/dashboard">Dashboard</NavItemLink>) : 
+          (<NavItemLink to="/admin/dashboard">Dashboard</NavItemLink>)}
+        
           <NavItemLink
             as="span"
             onClick={() => signout(() => {
