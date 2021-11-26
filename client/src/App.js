@@ -18,6 +18,7 @@ import PrivateUserRoute from './auth/PrivateUserRoute'
 import PrivateAdminRoute from './auth/PrivateAdminRoute'
 import NotFound404 from './components/NotFound404'
 import AddCategory from './admin/AddCategory'
+import AddProduct from './admin/AddProduct'
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route element={<PrivateAdminRoute />}>
           <Route path="admin/dashboard" element={<DashboardAdmin />} />
           <Route path="create/category" element={<AddCategory />} />
+          <Route path="create/product" element={<AddProduct />} />
         </Route>
         <Route path="*" element={<NotFound404 />} />
       </Routes>
