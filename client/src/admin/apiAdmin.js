@@ -17,14 +17,11 @@ export const createCategory = async (userId, token, category) => {
   }
 }
 
-
 export const createProduct = async (userId, token, product) => {
   try {
     const response = await fetch(`${API}/product/create/${userId}`, {
       method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`
       },
       body: product

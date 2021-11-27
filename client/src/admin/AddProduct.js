@@ -39,14 +39,12 @@ const AddProduct = () => {
     formData
   } = values
 
-
   useEffect(() => {
     setValues({ ...values, formData: new FormData() })
   }, [])
 
   const handleChange = (name) => (event) => {
     const value = name === 'photo' ? event.target.files[0] : event.target.value
-    console.log(value)
     formData.set(name, value)
     setValues({ ...values, [name]: value })
   }
@@ -77,17 +75,12 @@ const AddProduct = () => {
       })
   }
 
-
   const newPostForm = () => (
     <form onSubmit={clickSubmit}>
       <h4>Post Photo</h4>
       <div> {/* formg-roup */}
         <label></label>
-        <input
-          onChange={handleChange('photo')}
-          type="file"
-          name="photo"
-        />
+        <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
       </div>
 
       <div> {/* formg-roup */}
