@@ -9,6 +9,7 @@ export const StyledEntryCard = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
   text-align: center;
+  margin: auto;
   h2 {
     font-weight: 500;
     margin-bottom: 50px;

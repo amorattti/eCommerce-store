@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../auth'
 import Layout from '../hoc/Layout'
 import { createProduct } from './apiAdmin'
 
-const AddProduct = () => {
+import EntryCard from '../components/EntryCard'
+import InputGroup from '../components/InputGroup'
+import Input from '../components/Input'
+import Button from '../components/Button'
+import Alert from '../components/Alert'
 
+const AddProduct = () => {
   const { user, token } = isAuthenticated()
   const [values, setValues] = useState({
     name: '',
@@ -51,8 +55,6 @@ const AddProduct = () => {
 
   const clickSubmit = (e) => {
     e.preventDefault()
-    console.log(values)
-    console.log(formData)
     setValues({ ...values, error: '', loading: true })
 
     createProduct(user._id, token, formData)
@@ -77,73 +79,75 @@ const AddProduct = () => {
 
   const newPostForm = () => (
     <form onSubmit={clickSubmit}>
-      <h4>Post Photo</h4>
-      <div> {/* formg-roup */}
-        <label></label>
-        <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
-      </div>
+      <InputGroup>
+        <label>Post Photo</label>
+        <Input
+          onChange={handleChange('photo')}
+          type="file"
+          name="photo"
+          accept="image/*" />
+      </InputGroup>
 
-      <div> {/* formg-roup */}
+      <InputGroup>
         <label>Name</label>
-        <input
+        <Input
           onChange={handleChange('name')}
           type="text"
           value={name} />
-      </div>
+      </InputGroup>
 
-      <div> {/* formg-roup */}
+      <InputGroup>
         <label>Description</label>
-        <textarea
+        <Input
+          as="textarea"
           onChange={handleChange('description')}
           type="text"
           value={description} />
-      </div>
+      </InputGroup>
 
-      <div> {/* formg-roup */}
+      <InputGroup>
         <label>Price</label>
-        <input
+        <Input
           onChange={handleChange('price')}
           type="number"
           value={price} />
-      </div>
+      </InputGroup>
 
-      <div> {/* formg-roup */}
+      <InputGroup>
         <label>Category</label>
-        <select onChange={handleChange('category')}>
+        <Input as="select" onChange={handleChange('category')}>
           <option value="617ee00728533daa63292924">React</option>
           <option value="617ee00e28533daa63292927">Node</option>
           <option value="617ee03728533daa6329292d">Angular</option>
           <option value="619eb745c3513af924555ebf">Phyton</option>
           <option value="617ee02928533daa6329292a">Vue</option>
-        </select>
-      </div>
+        </Input>
+      </InputGroup>
 
-      <div> {/* formg-roup */}
+      <InputGroup>
         <label>Shipping</label>
-        <select onChange={handleChange('shipping')}>
+        <Input as="select" onChange={handleChange('shipping')}>
           <option value="0">no</option>
           <option value="1">yes</option>
-        </select>
+        </Input>
+      </InputGroup>
 
-      </div>
-
-      <div> {/* formg-roup */}
+      <InputGroup>
         <label>Quantity</label>
-        <input
+        <Input
           onChange={handleChange('quantity')}
           type="number"
           value={quantity} />
-      </div>
-      <button>Create Product</button>
+      </InputGroup>
+      <Button>Create Product</Button>
     </form>
   )
 
   return (
     <Layout title="Add Product">
-      Product
-      <div>
+      <EntryCard>
         {newPostForm()}
-      </div>
+      </EntryCard>
     </Layout >
   )
 }
