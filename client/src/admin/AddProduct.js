@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { isAuthenticated } from '../auth'
 import Layout from '../hoc/Layout'
-import { createProduct } from './apiAdmin'
+import { createProduct, getCategories } from './apiAdmin'
 
 import EntryCard from '../components/EntryCard'
 import InputGroup from '../components/InputGroup'
@@ -43,8 +43,15 @@ const AddProduct = () => {
     formData
   } = values
 
-  useEffect(() => {
-    setValues({ ...values, formData: new FormData() })
+
+  const init = async () => {
+    const response = await getCategories()
+      .catch((e) => setValues({ ...values, error: e }))
+    setValues({ ...values, categories: response, formData: new FormData() })
+  }
+
+  useEffect(async () => {
+    init()
   }, [])
 
   const handleChange = (name) => (event) => {
@@ -70,7 +77,8 @@ const AddProduct = () => {
             quantity: '',
             photo: '',
             shipping: '',
-            loading: true,
+            loading: false,
+            error: false,
             createdProduct: data.name
           })
         }
@@ -116,17 +124,19 @@ const AddProduct = () => {
       <InputGroup>
         <label>Category</label>
         <Input as="select" onChange={handleChange('category')}>
-          <option value="617ee00728533daa63292924">React</option>
-          <option value="617ee00e28533daa63292927">Node</option>
-          <option value="617ee03728533daa6329292d">Angular</option>
-          <option value="619eb745c3513af924555ebf">Phyton</option>
-          <option value="617ee02928533daa6329292a">Vue</option>
+          <option>Please select</option>
+          {categories && categories.map((category, index) => (
+            <option value={category._id} key={index}>
+              {category.name}
+            </option>
+          ))}
         </Input>
       </InputGroup>
 
       <InputGroup>
         <label>Shipping</label>
         <Input as="select" onChange={handleChange('shipping')}>
+          <option>Please select</option>
           <option value="0">no</option>
           <option value="1">yes</option>
         </Input>
@@ -143,9 +153,29 @@ const AddProduct = () => {
     </form>
   )
 
+  const showError = () => (
+    <Alert value={error} theme="error">
+      {error}
+    </Alert>
+  )
+
+  const showSuccess = () => (
+    <Alert value={createdProduct} theme="success">
+     <h5 style={{margin: 0}}>{createdProduct} is created!</h5> 
+    </Alert>
+  )
+  const showLoading = () => (
+    <Alert value={loading} theme="success">
+      ...loading
+    </Alert>
+  )
+
   return (
     <Layout title="Add Product">
       <EntryCard>
+        {showError()}
+        {showLoading()}
+        {showSuccess()}
         {newPostForm()}
       </EntryCard>
     </Layout >

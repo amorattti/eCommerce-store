@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <Layout title="Dashboard" description={`👋 Welcome! ${name}`}>
+    <Layout title="Dashboard" description={`Welcome ${name}`}>
       <BoxContainer>
         <BoxItem> 
           {adminLinks()}

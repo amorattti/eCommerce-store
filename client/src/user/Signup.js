@@ -14,7 +14,7 @@ const Signup = () => {
     email: '',
     password: '',
     error: '',
-    success: false
+    success: false 
   })
 
   const { name, email, password, error, success } = values
