@@ -95,7 +95,6 @@ const AddProduct = () => {
           name="photo"
           accept="image/*" />
       </InputGroup>
-
       <InputGroup>
         <label>Name</label>
         <Input
@@ -103,7 +102,6 @@ const AddProduct = () => {
           type="text"
           value={name} />
       </InputGroup>
-
       <InputGroup>
         <label>Description</label>
         <Input
@@ -112,7 +110,6 @@ const AddProduct = () => {
           type="text"
           value={description} />
       </InputGroup>
-
       <InputGroup>
         <label>Price</label>
         <Input
@@ -120,7 +117,6 @@ const AddProduct = () => {
           type="number"
           value={price} />
       </InputGroup>
-
       <InputGroup>
         <label>Category</label>
         <Input as="select" onChange={handleChange('category')}>
@@ -132,7 +128,6 @@ const AddProduct = () => {
           ))}
         </Input>
       </InputGroup>
-
       <InputGroup>
         <label>Shipping</label>
         <Input as="select" onChange={handleChange('shipping')}>
@@ -141,7 +136,6 @@ const AddProduct = () => {
           <option value="1">yes</option>
         </Input>
       </InputGroup>
-
       <InputGroup>
         <label>Quantity</label>
         <Input
