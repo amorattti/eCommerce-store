@@ -13,12 +13,12 @@ router.get('/product/read/:productId', read)
 router.post('/product/create/:userId', requireSignin, isAuth, isAdmin, create)
 router.delete('/product/:productId/:userId', requireSignin, isAuth, isAdmin, remove)
 router.patch('/product/:productId/:userId', requireSignin, isAuth, isAdmin, update)
+router.get('/product/photo/:productId', photo)
+
 /**--products--*/
 router.get('/products', list)
 router.get('/products/related/:productId', relatedList)
 router.get('/products/categories', listCategories)
-router.get('/products/photo/:productId', photo)
-
 router.post('/products/by/search', listBySearch)
 
 module.exports = router

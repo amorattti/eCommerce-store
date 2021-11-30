@@ -35,10 +35,8 @@ const Home = () => {
 
   return (
     <Layout title="Home page" description="Node React E-commerce App">
-   
-        <h2>Best Sellers</h2>
-        {productsBySell.map((product) => <Card product={product} />)}
-      
+      <h2>BestSellers products</h2>
+      {productsBySell.map((product) => <Card product={product} />)}
     </Layout>
   )
 }

@@ -1,19 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ShowImage from './ShowImage'
 
 const Card = ({ product }) => {
-  console.log(product)
   return (
     <div>
       <div className="card-">
-        <div className="cardH">{product.name}</div>
+        
         <div className="card-b">
-          <p>{product.description}</p>
+          <ShowImage url="product" item={product}/>
+      
           <p>{product.price}</p>
-          <Link to="/">
+          {/* <Link to="/">
             <button>View Product</button>
           </Link>
-          <button>Add to card</button>
+          <button>Add to card</button> */}
         </div>
       </div>
     </div>
