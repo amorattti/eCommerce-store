@@ -3,6 +3,13 @@ import styled from "styled-components"
 
 export const ProductCart = styled.div`
   text-align: center;
+  transition: all 0.4;
+  border: 1px solid #ffffff;
+
+  &:hover {
+    border: 1px solid #d5d5d5;
+    border-bottom: none;;
+  }
 `
 
 export const ProductImage = styled(Link)`
@@ -15,8 +22,8 @@ export const ProductImage = styled(Link)`
 export const ProductInfo = styled.div`
   height: 90px;
   display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-around;
   
  a {
   text-decoration: none;
@@ -39,6 +46,7 @@ export const ButtonCard = styled.button`
   border: 1px solid #000;
   color: #000;
   background: #fff;
+  font-weight: 600;
   transition: all 0.3s;
 
   &:hover {

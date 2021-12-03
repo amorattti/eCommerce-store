@@ -3,7 +3,9 @@ import styled from "styled-components"
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 20px
+;
   margin-bottom: 50px;
 
   @media (max-width: 768px) {
@@ -18,6 +20,5 @@ export const Grid = styled.div`
 
 export const Header = styled.h2` 
     font-family: 'Merriweather';
-    font-style: italic;
     margin-bottom: 32px;
 `
