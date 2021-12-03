@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../hoc/Layout'
-import { getsProducts } from './apiCore'
-import Card from './Card'
+import Layout from '../../../hoc/Layout'
+import { getsProducts } from './../../apiCore'
+import Card from './Card/Card.js'
+import { Grid, Header } from './style'
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])
@@ -35,8 +36,14 @@ const Home = () => {
 
   return (
     <Layout title="Home page" description="Node React E-commerce App">
-      <h2>BestSellers products</h2>
-      {productsBySell.map((product) => <Card product={product} />)}
+      <Header>Best sellerss</Header>
+      <Grid>
+        {productsBySell.map((product) => <Card product={product} />)}
+      </Grid>
+      <Header>News</Header>
+      <Grid style={{paddingBottom: '50px'}}>
+        {productsByArrival.map((product) => <Card product={product} />)}
+      </Grid>
     </Layout>
   )
 }

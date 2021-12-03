@@ -6,7 +6,7 @@ import theme from './utils/theme'
 import GlobalStyles from './index.css.js'
 import { LoadingIndicator } from './components'
 // routing components
-import Home from './core/Home'
+import Home from './core/pages/Home/Home.js'
 import Signin from './user/Signin'
 import Signup from './user/Signup'
 
@@ -19,6 +19,7 @@ import PrivateAdminRoute from './auth/PrivateAdminRoute'
 import NotFound404 from './components/NotFound404'
 import AddCategory from './admin/AddCategory'
 import AddProduct from './admin/AddProduct'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<NotFound404 />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

@@ -3,13 +3,15 @@ import { NavItemLink, StyledNavbarExtend } from './style'
 import { signout } from '../../auth'
 import { useNavigate } from "react-router-dom"
 import { isAuthenticated } from '../../auth'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   const navigate = useNavigate();
   console.log(isAuthenticated())
   return (
     <StyledNavbarExtend>
-      <NavItemLink to="/cart">Cart</NavItemLink>
+      <NavItemLink to="/cart"> <FontAwesomeIcon icon={faCartArrowDown} size="lg" /> Cart</NavItemLink>
       {!isAuthenticated() && (
         <>
           <NavItemLink to="/signin">Sign in</NavItemLink>
