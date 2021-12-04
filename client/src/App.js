@@ -20,6 +20,7 @@ import NotFound404 from './components/NotFound404'
 import AddCategory from './admin/AddCategory'
 import AddProduct from './admin/AddProduct'
 import Footer from './components/Footer/Footer'
+import Shop from './core/pages/Shop/Shop'
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="shop" element={<Shop />} />
         <Route element={<PrivateUserRoute />}>
           <Route path="user/dashboard" element={<DashboardUser />} />
         </Route>
