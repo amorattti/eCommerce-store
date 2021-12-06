@@ -9,3 +9,12 @@ export const getsProducts = async (sortBy) => {
     console.log(error)
   }
 }
+export const getCategories = async () => {
+  try {
+    const url = `${API}/categories`
+    const response = await fetch(url)
+    return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
