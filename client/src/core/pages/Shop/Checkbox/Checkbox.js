@@ -5,16 +5,15 @@ const Checkbox = ({ categories, handleFilters }) => {
 
   const handleToggle = (categoryId) => {
     const currentIndexCategory = checked.indexOf(categoryId) // -1
-    const newArrayOfCategories = [...checked]
-    
-    if(currentIndexCategory === -1) {
+    const newArrayOfCategories = [...checked] // filters
+
+    if (currentIndexCategory === -1) {
       newArrayOfCategories.push(categoryId)
     } else {
       newArrayOfCategories.splice(currentIndexCategory, 1)
     }
-
     setChecked(newArrayOfCategories)
-    handleFilters(newArrayOfCategories )
+    handleFilters(newArrayOfCategories)
   }
 
   return categories.map((category, i) => (

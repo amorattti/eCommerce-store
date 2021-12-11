@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../../../hoc/Layout'
-import { getCategories } from '../../apiCore'
+import { getCategories, getFilteredProducts } from '../../apiCore'
 import { Col, Row } from './style'
 import Checkbox from './Checkbox/Checkbox'
 import { prices } from './fixedPrices'
@@ -12,18 +12,32 @@ const Shop = () => {
   })
   const [categories, setCategories] = useState([])
   const [error, setError] = useState(false)
+  const [limit, setLimit] = useState(6)
+  const [skip, setSkip] = useState(0)
+  const [filteredResults, setFilteredResults] = useState(0)
 
   const init = async () => {
     const response = await getCategories()
     setCategories(response)
   }
 
+  const loadFilterResults = (newFilters) => {
+    getFilteredProducts(skip, limit, newFilters).then(data => {
+      if (data.error) {
+        setError(data.error)
+      } else {
+        console.log('datassss', data)
+        setFilteredResults(data)
+      }
+    })
+  }
+
   useEffect(() => {
     init()
+    loadFilterResults(myFilters.filters)
   }, [])
 
   const handleFilters = (filters, filterBy) => {
-    //  console.log(filters, '= filters', 'filtersby =', filterBy,)
     const newFilters = { ...myFilters }
     newFilters.filters[filterBy] = filters
 
@@ -31,6 +45,8 @@ const Shop = () => {
       let priceValues = handlePrice(filters)
       newFilters.filters[filterBy] = priceValues
     }
+    //  console.log(filters)
+    loadFilterResults(myFilters.filters)
     setMyFilters(newFilters)
   }
 
@@ -69,7 +85,7 @@ const Shop = () => {
           </ul>
         </Col>
         <Col size={8}>
-          {JSON.stringify(myFilters)}
+          {JSON.stringify(filteredResults)}
         </Col>
       </Row>
     </Layout>

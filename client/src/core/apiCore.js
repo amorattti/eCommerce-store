@@ -9,11 +9,36 @@ export const getsProducts = async (sortBy) => {
     console.log(error)
   }
 }
+
 export const getCategories = async () => {
   try {
     const url = `${API}/categories`
     const response = await fetch(url)
     return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getFilteredProducts = async (skip, limit, filters = {}) => {
+  try {
+    const data = {
+      limit,
+      skip,
+      filters
+    }
+
+    const response = await fetch(`${API}/products/by/search`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    })
+
+    return response.json()
+    
   } catch (error) {
     console.log(error)
   }
