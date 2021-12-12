@@ -192,8 +192,6 @@ exports.listBySearch = async (req, res) => {
     let skip = parseInt(req.body.skip)
     let findArgs = {}
 
-    console.log(findArgs)
-
     for (let key in req.body.filters) {
       if (req.body.filters[key].length > 0) {
         if (key === 'price') {
@@ -208,7 +206,7 @@ exports.listBySearch = async (req, res) => {
         }
       }
     }
-
+    console.log(findArgs)
     const data = await Product.find(findArgs)
       .select('-photo')
       .populate('category')

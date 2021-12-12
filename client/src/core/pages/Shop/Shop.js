@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../../../hoc/Layout'
 import { getCategories, getFilteredProducts } from '../../apiCore'
 import { Col, Row } from './style'
-import Checkbox from './Checkbox/Checkbox'
-import { prices } from './fixedPrices'
-import RadioBox from './RadioBox/RadioBox'
+import Checkbox from '../../../components/Checkbox'
+import RadioBox from '../../../components/RadioBox'
+import { prices } from '../../fixedPrices'
+import Card from '../../../components/Card/Card'
+import Grid from '../../../components/Grid'
 
 const Shop = () => {
   const [myFilters, setMyFilters] = useState({
@@ -26,8 +28,7 @@ const Shop = () => {
       if (data.error) {
         setError(data.error)
       } else {
-        console.log('datassss', data)
-        setFilteredResults(data)
+        setFilteredResults(data.data)
       }
     })
   }
@@ -61,7 +62,7 @@ const Shop = () => {
     }
     return array
   }
-
+  console.log(filteredResults)
   return (
     <Layout
       title="Shop page"
@@ -85,7 +86,9 @@ const Shop = () => {
           </ul>
         </Col>
         <Col size={8}>
-          {JSON.stringify(filteredResults)}
+          <Grid template="1fr 1fr 1fr " gap="40px 0%">
+            {filteredResults && filteredResults.map(product => <Card product={product} />)}
+          </Grid>
         </Col>
       </Row>
     </Layout>
