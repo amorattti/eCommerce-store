@@ -16,7 +16,7 @@ const Shop = () => {
   const [error, setError] = useState(false)
   const [limit, setLimit] = useState(6)
   const [skip, setSkip] = useState(0)
-  const [filteredResults, setFilteredResults] = useState(0)
+  const [filteredResults, setFilteredResults] = useState([])
 
   const init = async () => {
     const response = await getCategories()
@@ -86,7 +86,7 @@ const Shop = () => {
           </ul>
         </Col>
         <Col size={8}>
-          <Grid template="1fr 1fr 1fr " gap="40px 0%">
+          <Grid template="1fr 1fr 1fr" gap="40px 0%">
             {filteredResults && filteredResults.map(product => <Card product={product} />)}
           </Grid>
         </Col>

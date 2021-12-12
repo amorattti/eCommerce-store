@@ -1,5 +1,5 @@
 import React from 'react'
-import ShowImage from '../../core/ShowImage'
+import ShowImage from './ShowImage'
 import { ProductCart, ProductInfo, LinkProduct, ProductImage, ButtonCard } from './style'
 
 const Card = ({ product }) => {

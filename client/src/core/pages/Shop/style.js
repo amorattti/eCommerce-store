@@ -9,5 +9,14 @@ export const Row = styled.div`
 `
 
 export const Col = styled.div`
-  flex: ${(props) => props.size}
+  flex: ${(props) => props.size};
+
+  ul {
+    margin-bottom: 40px;
+
+    li > input {
+      margin: 4px;
+      cursor: pointer;
+    }
+  }
 `

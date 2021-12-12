@@ -7,8 +7,13 @@ export const ProductCart = styled.div`
   border: 1px solid #ffffff;
 
   &:hover {
-    border: 1px solid #d5d5d5;
-    border-bottom: none;;
+    box-shadow: 1px 1px 6px 5px #e9e9e9fa;
+    border-bottom: none;
+
+    button {
+      color: #fff;
+      background: #000;
+    }
   }
 `
 
@@ -50,7 +55,6 @@ export const ButtonCard = styled.button`
   transition: all 0.3s;
 
   &:hover {
-    color: #fff;
-    background: #000;
+    color: #8d8d8d!important;
   }
 `

@@ -7,12 +7,12 @@ export const StyledGrid = styled.div`
   padding-bottom: 20px;
   margin-bottom: 50px;
 
-@media(max - width: 768px) {
-  grid - template - columns: 30 % 30 % 30 % ;
-  gap: 20px 5 %;
+@media(max-width: 768px) {
+  grid-template-columns: 1fr 1fr;
+
 }
-@media(max - width: 425px) {
-  grid - template - columns: 35 % 35 %;
-  gap: 30px 25 %;
+@media(max-width: 540px) {
+  grid-template-columns: 1fr;
+  gap: 30px 25%;
 }
 `
