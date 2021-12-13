@@ -39,11 +39,11 @@ const Home = () => {
     <Layout title="Home page" description="Node React E-commerce App">
       <Header>Best sellerss</Header>
       <Grid>
-        {productsBySell.map((product) => <Card product={product} />)}
+        {productsBySell.map((product) => <Card key={product._id} product={product} />)}
       </Grid>
       <Header>News</Header>
       <Grid style={{ paddingBottom: '50px' }}>
-        {productsByArrival.map((product) => <Card product={product} />)}
+        {productsByArrival.map((product) => <Card key={product._id} product={product} />)}
       </Grid>
     </Layout>
   )

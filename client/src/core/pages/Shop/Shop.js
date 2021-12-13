@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../../../hoc/Layout'
 import { getCategories, getFilteredProducts } from '../../apiCore'
-import { Col, Row } from './style'
+import { prices } from '../../fixedPrices'
+
+import Layout from '../../../hoc/Layout'
+import { ButtonLoadMore, Col, Row } from './style'
 import Checkbox from '../../../components/Checkbox'
 import RadioBox from '../../../components/RadioBox'
-import { prices } from '../../fixedPrices'
 import Card from '../../../components/Card/Card'
 import Grid from '../../../components/Grid'
 
@@ -16,7 +17,9 @@ const Shop = () => {
   const [error, setError] = useState(false)
   const [limit, setLimit] = useState(6)
   const [skip, setSkip] = useState(0)
+  const [size, setSize] = useState(0)
   const [filteredResults, setFilteredResults] = useState([])
+  console.log("state: Shop page", { skip, size, limit, filteredResults })
 
   const init = async () => {
     const response = await getCategories()
@@ -24,11 +27,13 @@ const Shop = () => {
   }
 
   const loadFilterResults = (newFilters) => {
-    getFilteredProducts(skip, limit, newFilters).then(data => {
+    getFilteredProducts(0, limit, newFilters).then(data => {
       if (data.error) {
         setError(data.error)
       } else {
         setFilteredResults(data.data)
+        setSize(data.size)
+        setSkip(0)
       }
     })
   }
@@ -46,7 +51,7 @@ const Shop = () => {
       let priceValues = handlePrice(filters)
       newFilters.filters[filterBy] = priceValues
     }
-    //  console.log(filters)
+
     loadFilterResults(myFilters.filters)
     setMyFilters(newFilters)
   }
@@ -62,7 +67,21 @@ const Shop = () => {
     }
     return array
   }
-  console.log(filteredResults)
+
+  const laodMore = () => {
+    const setPage = skip + limit
+
+    getFilteredProducts(setPage, limit, myFilters.filters).then(data => {
+      if (data.error) {
+        setError(data.error)
+      } else {
+        setFilteredResults([...filteredResults, ...data.data])
+        setSize(data.size)
+        setSkip(setPage)
+      }
+    })
+  }
+
   return (
     <Layout
       title="Shop page"
@@ -87,11 +106,23 @@ const Shop = () => {
         </Col>
         <Col size={8}>
           <Grid template="1fr 1fr 1fr" gap="40px 0%">
-            {filteredResults && filteredResults.map(product => <Card product={product} />)}
+            {filteredResults.length !== 0 ? filteredResults.map(product => (
+              <Card key={product._id} product={product} />
+            )) : <div style={{ textAlign: 'left', width:'200%' }}>
+              <h5>No products found!</h5>
+              <p>Please change Your search criteria and try again.
+                If still not finding anything relevant,
+                please visit home page and try out some of our bestsellers!
+              </p>
+            </div>}
           </Grid>
+          {size > 0 && size >= limit && (
+            <ButtonLoadMore onClick={() => laodMore()}>Load more...</ButtonLoadMore>
+          )}
         </Col>
       </Row>
     </Layout>
   )
 }
+
 export default Shop

@@ -27,4 +27,4 @@ const Card = ({ product }) => {
   )
 }
 
-export default Card
+export default React.memo(Card)
