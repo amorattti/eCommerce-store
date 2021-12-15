@@ -4,6 +4,7 @@ import Layout from '../../../hoc/Layout'
 import { getsProducts } from './../../apiCore'
 import { Header } from './style'
 import Grid from '../../../components/Grid'
+import Search from '../../../components/Search/Search'
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])
@@ -37,6 +38,7 @@ const Home = () => {
 
   return (
     <Layout title="Home page" description="Node React E-commerce App">
+      <Search />
       <Header>Best sellerss</Header>
       <Grid>
         {productsBySell.map((product) => <Card key={product._id} product={product} />)}
