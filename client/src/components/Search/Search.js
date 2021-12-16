@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { getCategories } from '../../core/apiCore'
+import {
+  SearchContainer,
+  Select,
+  Input,
+  ButtonSearch
+} from './style'
 
 const Search = () => {
   const [data, setData] = useState({
@@ -34,35 +40,32 @@ const Search = () => {
 
   const searchForm = () => (
     <form onSubmit={searchSubmit}>
-      <div>
-        <span>
-        <div>
-          <select onChange={handleChange("category")}>
-            <option value="all">Pick category</option>
-            {categories.map((category, index) => (
-              <option value={category._id} key={index}>{category.name}</option>
-            ))}
-          </select>
-        </div>
-        <input
+      <span>
+        <Input
           type="search"
           onChange={handleChange}
           placeholder='Search by name'
         />
-        <div>
-          <button>Search</button>
-        </div>
-        </span>
-    
-      </div>
+      </span>
+      <span>
+        <Select onChange={handleChange("category")}>
+          <option value="all">All categories</option>
+          {categories.map((category, index) => (
+            <option value={category._id} key={index}>{category.name}</option>
+          ))}
+        </Select>
+      </span>
+      <span>
+        <ButtonSearch>Search</ButtonSearch>
+      </span>
     </form>
   )
 
   console.log("Search state", { data })
   return (
-    <div>
+    <SearchContainer>
       {searchForm()}
-    </div>
+    </SearchContainer>
   )
 }
 
