@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getCategories } from '../../core/apiCore'
+import { getCategories, list } from '../../core/apiCore'
 import {
   SearchContainer,
   Select,
@@ -30,12 +30,26 @@ const Search = () => {
     setData({ ...data, categories: categories })
   }
 
-  const handleChange = () => {
-
+  const searchData = () => {
+    if(search) {
+      list({search: search || undefined, category: category})
+      .then(resp => {
+        if(resp.error) {
+          console.log(resp.error)
+        } else {
+          setData({...data, results: resp, searched: true})
+        }
+      })
+    }
   }
 
-  const searchSubmit = () => {
+  const handleChange = (name) => (event) => {
+    setData({...data, [name]: event.target.value, searched: false})
+  }
 
+  const searchSubmit = (e) => {
+    e.preventDefault() 
+    searchData()
   }
 
   const searchForm = () => (
@@ -43,7 +57,7 @@ const Search = () => {
       <span>
         <Input
           type="search"
-          onChange={handleChange}
+          onChange={handleChange("search")}
           placeholder='Search by name'
         />
       </span>
