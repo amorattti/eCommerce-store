@@ -70,4 +70,8 @@ export const Row = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 80px;
+
+  h2 {
+    width: 100%;
+  }
 `

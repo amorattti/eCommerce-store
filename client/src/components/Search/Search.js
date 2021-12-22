@@ -78,14 +78,24 @@ const Search = () => {
     </form>
   )
 
+  const numberOfearchesTitle = (results) => {
+    if (results.length > 1) {
+      return `${results.length} products have found `
+    }
+    if (searched) {
+      return `Products not Found`
+    }
+  }
+
   const searchResults = (results = []) => {
     return (
       <Row >
-        {results.map(product => <Card key={product._id} product={product} />)}
+        <h2>{numberOfearchesTitle(results)}</h2>
+        {results.length > 0 && results.map(product => <Card key={product._id} product={product} />)}
       </Row>
     )
   }
-
+  console.log('state search', data)
   return (
     <SearchContainer>
       {searchForm()}
