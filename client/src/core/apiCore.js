@@ -49,8 +49,8 @@ export const list = async (params) => {
     console.log('params before ', params)
   try {
     const query = queryString.stringify(params)
-    console.log('params after ', query)
-    const url = `${API}/products?${query}`
+  
+    const url = `${API}/products/search${query}`
     const response = await fetch(url)
     return response.json()
   } catch (error) {
