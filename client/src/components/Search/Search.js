@@ -4,8 +4,11 @@ import {
   SearchContainer,
   Select,
   Input,
-  ButtonSearch
+  ButtonSearch,
+  Row
 } from './style'
+
+import Card from '../Card'
 
 const Search = () => {
   const [data, setData] = useState({
@@ -31,24 +34,24 @@ const Search = () => {
   }
 
   const searchData = () => {
-    if(search) {
-      list({search: search || undefined, category: category})
-      .then(resp => {
-        if(resp.error) {
-          console.log(resp.error)
-        } else {
-          setData({...data, results: resp, searched: true})
-        }
-      })
+    if (search) {
+      list({ search: search || undefined, category: category })
+        .then(resp => {
+          if (resp.error) {
+            console.log(resp.error)
+          } else {
+            setData({ ...data, results: resp, searched: true })
+          }
+        })
     }
   }
 
   const handleChange = (name) => (event) => {
-    setData({...data, [name]: event.target.value, searched: false})
+    setData({ ...data, [name]: event.target.value, searched: false })
   }
 
   const searchSubmit = (e) => {
-    e.preventDefault() 
+    e.preventDefault()
     searchData()
   }
 
@@ -75,10 +78,18 @@ const Search = () => {
     </form>
   )
 
-  console.log("Search state", { data })
+  const searchResults = (results = []) => {
+    return (
+      <Row >
+        {results.map(product => <Card key={product._id} product={product} />)}
+      </Row>
+    )
+  }
+
   return (
     <SearchContainer>
       {searchForm()}
+      {searchResults(results)}
     </SearchContainer>
   )
 }

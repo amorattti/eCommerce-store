@@ -60,3 +60,14 @@ export const ButtonSearch = styled.button`
   color: #fff;
   font-weight: 600;
 `
+
+
+
+
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 80px;
+`

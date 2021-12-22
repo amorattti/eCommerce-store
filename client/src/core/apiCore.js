@@ -50,7 +50,7 @@ export const list = async (params) => {
   try {
     const query = queryString.stringify(params)
   
-    const url = `${API}/products/search${query}`
+    const url = `${API}/products/search?${query}`
     const response = await fetch(url)
     return response.json()
   } catch (error) {
