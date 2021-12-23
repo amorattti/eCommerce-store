@@ -79,7 +79,7 @@ const Search = () => {
   )
 
   const numberOfearchesTitle = (results) => {
-    if (results.length > 1) {
+    if (searched && results.length > 0) {
       return `${results.length} products have found `
     }
     if (searched) {
@@ -91,10 +91,12 @@ const Search = () => {
     return (
       <Row >
         <h2>{numberOfearchesTitle(results)}</h2>
-        {results.length > 0 && results.map(product => <Card key={product._id} product={product} />)}
+        {results.length && searched > 0 && results.map(product => 
+          <Card key={product._id} product={product} />)}
       </Row>
     )
   }
+
   console.log('state search', data)
   return (
     <SearchContainer>

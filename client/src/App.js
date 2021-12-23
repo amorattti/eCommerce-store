@@ -21,6 +21,7 @@ import AddCategory from './admin/AddCategory'
 import AddProduct from './admin/AddProduct'
 import Footer from './components/Footer/Footer'
 import Shop from './core/pages/Shop/Shop'
+import Product from './core/pages/Product/Product'
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="create/category" element={<AddCategory />} />
           <Route path="create/product" element={<AddProduct />} />
         </Route>
+        <Route path="product/:productId"  element={<Product/>} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
       <Footer />
