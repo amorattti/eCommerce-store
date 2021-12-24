@@ -57,3 +57,13 @@ export const list = async (params) => {
     console.log(error)
   }
 }
+
+export const fetchProductById = async (_id) => {
+  try {
+    const url = `${API}/product/${_id}`
+    const response = await fetch(url)
+    return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}

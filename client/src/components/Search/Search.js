@@ -78,11 +78,11 @@ const Search = () => {
     </form>
   )
 
-  const numberOfearchesTitle = (results) => {
+  const searchMessage = (results) => {
     if (searched && results.length > 0) {
       return `${results.length} products have found `
     }
-    if (searched) {
+    if (searched && results.length < 1) {
       return `Products not Found`
     }
   }
@@ -90,8 +90,8 @@ const Search = () => {
   const searchResults = (results = []) => {
     return (
       <Row >
-        <h2>{numberOfearchesTitle(results)}</h2>
-        {results.length && searched > 0 && results.map(product => 
+        <h2>{searchMessage(results)}</h2>
+        {results.length > 0 && searched && results.map(product => 
           <Card key={product._id} product={product} />)}
       </Row>
     )

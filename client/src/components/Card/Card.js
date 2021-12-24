@@ -6,7 +6,7 @@ const Card = ({ product }) => {
   return (
     <>
       <ProductCart>
-        <ProductImage to="/ss">
+        <ProductImage to={`/product/${product._id}`}>
           <span>
             <ShowImage url="product" item={product} />
           </span>
