@@ -1,6 +1,9 @@
 import React from 'react'
-import ShowImage from './ShowImage'
-import { ProductCart, ProductInfo, LinkProduct, ProductImage, ButtonCard } from './style'
+import ShowImage from '../ShowImage'
+import {
+  ProductCart, ProductInfo, LinkProduct,
+  ProductImage, ButtonCard
+} from './style'
 
 const Card = ({ product }) => {
   return (

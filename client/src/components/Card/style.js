@@ -22,6 +22,11 @@ export const ProductImage = styled(Link)`
     display: inline-block;
     padding: 20px;
   }
+
+  span>img {
+    width: 100%;
+    height: 260px;
+  }
 `
 
 export const ProductInfo = styled.div`
