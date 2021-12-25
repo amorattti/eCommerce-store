@@ -67,3 +67,14 @@ export const fetchProductById = async (_id) => {
     console.log(error)
   }
 }
+
+
+export const fetchRelatedProducts = async (_id) => {
+  try {
+    const url = `${API}/products/related/${_id}`
+    const response = await fetch(url)
+    return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
