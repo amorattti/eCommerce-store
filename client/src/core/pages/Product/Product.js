@@ -7,6 +7,7 @@ import { Row, Col, ImageSection, ContentSection, Heading, H5 } from './style'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import Moment from 'react-moment';
+import { addItemToLocalStorage } from '../../cartHelper'
 
 const Product = () => {
   const [product, setProduct] = useState({})
@@ -17,6 +18,12 @@ const Product = () => {
   useEffect(() => {
     loadProduct()
   }, [productId])
+
+  const addItem = (product) => {
+    addItemToLocalStorage(product, () => {
+      console.log('click in Product')
+    })
+  }
 
   const loadProduct = async () => {
     try {
@@ -57,7 +64,7 @@ const Product = () => {
             <h5>
               {`${product.price}$`}
             </h5>
-            <Button>Add to card</Button>
+            <Button onClick={() => addItem(product)}>Add to card</Button>
             <div>
               Added on <Moment fromNow ago>{product.createdAt}</Moment>
             </div>
@@ -72,8 +79,8 @@ const Product = () => {
       <Row>
         {productRelated.length !== 0 && productRelated.map((product) => {
           return (
-            <Col>
-              <Card key={product._id} product={product} />
+            <Col key={product._id}>
+              <Card product={product} />
             </Col>
           )
         })}

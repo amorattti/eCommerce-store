@@ -4,8 +4,17 @@ import {
   ProductCart, ProductInfo, LinkProduct,
   ProductImage, ButtonCard
 } from './style'
+import { addItemToLocalStorage } from '../../core/cartHelper'
 
 const Card = ({ product }) => {
+
+  const addItem = () => {
+    console.log('clickc')
+    addItemToLocalStorage(product, () =>{
+      console.log('dodano')
+    })
+  }
+
   return (
     <>
       <ProductCart>
@@ -22,7 +31,7 @@ const Card = ({ product }) => {
             <p>{product.price}$</p>
           </span>
         </ProductInfo>
-        <ButtonCard>
+        <ButtonCard onClick={addItem}>
           Add to card
         </ButtonCard>
       </ProductCart>

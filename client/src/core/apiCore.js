@@ -68,7 +68,6 @@ export const fetchProductById = async (_id) => {
   }
 }
 
-
 export const fetchRelatedProducts = async (_id) => {
   try {
     const url = `${API}/products/related/${_id}`
