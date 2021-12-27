@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ShowImage from '../ShowImage'
 import {
   ProductCart, ProductInfo, LinkProduct,
   ProductImage, ButtonCard
 } from './style'
 import { addItemToLocalStorage } from '../../core/cartHelper'
+import { useNavigate } from "react-router-dom"
 
 const Card = ({ product }) => {
+  let navigate = useNavigate()
+  const [redirect, setRedirect] = useState(false)
 
-  const addItem = () => {
-    console.log('clickc')
-    addItemToLocalStorage(product, () =>{
-      console.log('dodano')
+  const addToCart = (product) => {
+    addItemToLocalStorage(product, () => {
+      setRedirect(true)
     })
+  }
+
+  const shouldRedirect = (redirect) => {
+    if (redirect) {
+      navigate(`/cart`)
+    }
   }
 
   return (
     <>
+      {shouldRedirect(redirect)}
       <ProductCart>
         <ProductImage to={`/product/${product._id}`}>
           <span>
@@ -31,7 +40,7 @@ const Card = ({ product }) => {
             <p>{product.price}$</p>
           </span>
         </ProductInfo>
-        <ButtonCard onClick={addItem}>
+        <ButtonCard onClick={() => addToCart(product)}>
           Add to card
         </ButtonCard>
       </ProductCart>

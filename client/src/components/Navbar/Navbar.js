@@ -5,13 +5,17 @@ import { useNavigate } from "react-router-dom"
 import { isAuthenticated } from '../../auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { itemTotal } from '../../core/cartHelper'
 
 const Navbar = () => {
   const navigate = useNavigate();
   console.log(isAuthenticated())
   return (
     <StyledNavbarExtend>
-      <NavItemLink to="/cart"> <FontAwesomeIcon icon={faCartArrowDown} size="lg" /> Cart</NavItemLink>
+      <NavItemLink to="/cart">
+        <FontAwesomeIcon icon={faCartArrowDown} size="lg" color='#ffc107' />
+        <span>{itemTotal()}</span> 
+      </NavItemLink>
       {!isAuthenticated() && (
         <>
           <NavItemLink to="/signin">Sign in</NavItemLink>
@@ -21,10 +25,10 @@ const Navbar = () => {
       )}
       {isAuthenticated() && (
         <>
-        {isAuthenticated().user.role === 0 ? (
-          <NavItemLink to="/user/dashboard">Dashboard</NavItemLink>) : 
-          (<NavItemLink to="/admin/dashboard">Dashboard</NavItemLink>)}
-        
+          {isAuthenticated().user.role === 0 ? (
+            <NavItemLink to="/user/dashboard">Dashboard</NavItemLink>) :
+            (<NavItemLink to="/admin/dashboard">Dashboard</NavItemLink>)}
+
           <NavItemLink
             as="span"
             onClick={() => signout(() => {

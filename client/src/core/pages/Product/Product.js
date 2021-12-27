@@ -8,21 +8,35 @@ import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import Moment from 'react-moment';
 import { addItemToLocalStorage } from '../../cartHelper'
+import { useNavigate } from "react-router-dom";
 
 const Product = () => {
   const [product, setProduct] = useState({})
   const [productRelated, setProductRelated] = useState([])
+  const [redirect, setRedirect] = useState(false)
   const [error, setError] = useState({})
   let { productId } = useParams()
+  let navigate = useNavigate()
 
   useEffect(() => {
     loadProduct()
+
+    return () => {
+      setProduct({})
+      setProductRelated([])
+    }
   }, [productId])
 
-  const addItem = (product) => {
+  const addToCart = (product) => {
     addItemToLocalStorage(product, () => {
-      console.log('click in Product')
+      setRedirect(true)
     })
+  }
+
+  const shouldRedirect = (redirect) => {
+    if(redirect) {
+      navigate(`/cart`)
+    }
   }
 
   const loadProduct = async () => {
@@ -37,15 +51,16 @@ const Product = () => {
   }
 
   const checkProductAvailability = ({ quantity }) => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       return <H5 color="#198754">Avaible</H5>
-    } else {
+    } else if(quantity < 1){
       return <H5 color="#ff0000">Inaccessible</H5>
     }
   }
 
   return (
     <Layout>
+      {shouldRedirect(redirect)}
       <Row>
         <Col size={3}>
           <ImageSection>
@@ -64,7 +79,7 @@ const Product = () => {
             <h5>
               {`${product.price}$`}
             </h5>
-            <Button onClick={() => addItem(product)}>Add to card</Button>
+            <Button onClick={() => addToCart(product)}>Add to card</Button>
             <div>
               Added on <Moment fromNow ago>{product.createdAt}</Moment>
             </div>

@@ -2,7 +2,7 @@ export const addItemToLocalStorage = (item, next) => {
   let cart = []
 
   if (typeof window !== 'undefined') {
-    if(localStorage.getItem('cart')) {
+    if (localStorage.getItem('cart')) {
       console.log('YES')
       cart = JSON.parse(localStorage.getItem("cart"))
     }
@@ -20,4 +20,20 @@ export const addItemToLocalStorage = (item, next) => {
     localStorage.setItem('cart', JSON.stringify(newSet)) // set as json
     next()
   }
+}
+
+export const itemTotal = () => {
+  if(typeof window !== 'undefined') {
+    if(localStorage.getItem('cart')){
+      return JSON.parse(localStorage.getItem('cart')).length
+    }
+  }
+  return 0
+}
+
+export const getCart = () => {
+  if(typeof window !== 'undefined') {
+    return JSON.parse(localStorage.getItem('cart'))
+  }
+  return []
 }

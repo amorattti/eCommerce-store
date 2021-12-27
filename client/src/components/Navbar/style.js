@@ -30,6 +30,7 @@ export const StyledNavbarExtend = styled(Wrapper)`
 `
 
 export const NavItemLink = styled(Link)`
+  position:relative;
   text-decoration: none;
   color: inherit;
   margin-left: 16px;
@@ -43,6 +44,18 @@ export const NavItemLink = styled(Link)`
       color: #fff;
     }
   `}
+
+    span {
+      border-radius: 50px;
+      position: absolute;
+      top: -12px;
+      right: -14px;
+      background: #ffc107;
+      padding: 1px 6px;
+      font-weight: 600;
+      font-size: 11px;
+    }
+
   &:hover {
     ${props => props.$fill ? css`
       text-decoration: none;

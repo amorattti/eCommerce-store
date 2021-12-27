@@ -22,6 +22,7 @@ import AddProduct from './admin/AddProduct'
 import Footer from './components/Footer/Footer'
 import Shop from './core/pages/Shop/Shop'
 import Product from './core/pages/Product/Product'
+import Cart from './core/pages/CartShopping/Cart'
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="create/product" element={<AddProduct />} />
         </Route>
         <Route path="product/:productId"  element={<Product/>} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
       <Footer />
