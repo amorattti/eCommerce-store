@@ -18,11 +18,11 @@ export const ImageSection = styled.div`
 `
 
 export const ContentSection = styled.div`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: baseline; 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline; 
 `
 
 export const Heading = styled.h2`

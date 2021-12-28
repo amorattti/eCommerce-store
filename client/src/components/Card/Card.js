@@ -28,9 +28,9 @@ const Card = ({ product }) => {
       {shouldRedirect(redirect)}
       <ProductCart>
         <ProductImage to={`/product/${product._id}`}>
-          <span>
+        
             <ShowImage url="product" item={product} />
-          </span>
+        
         </ProductImage>
         <ProductInfo>
           <LinkProduct to="/">
