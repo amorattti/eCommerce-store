@@ -12,9 +12,7 @@ export const Col = styled.div`
 export const ImageSection = styled.div`
   max-width: 275px;
 
-  img {
-    width: 100%;
-  }
+ 
 `
 
 export const ContentSection = styled.div`

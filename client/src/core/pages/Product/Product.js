@@ -64,7 +64,7 @@ const Product = () => {
       <Row>
         <Col size={3}>
           <ImageSection>
-            <ShowImage url="product" item={product} />
+            <ShowImage width='80%' url="product" item={product} />
           </ImageSection>
         </Col>
         <Col size={1}></Col>

@@ -6,6 +6,8 @@ import Card from '../../../components/Card'
 import { Row, Col, Table } from './style'
 import ShowImage from '../../../components/ShowImage'
 import * as S from './style'
+import plusIcon from '../../../img/plus.png'
+import minusIcon from '../../../img/minus.png'
 
 const Cart = () => {
   const [items, setItems] = useState([])
@@ -22,30 +24,36 @@ const Cart = () => {
   const showItems = items => {
     return (
       <S.ShoppingCart>
-        <S.TitleCart>Shopping Bag</S.TitleCart>
-        <S.ItemBody>
+        <S.TitleCart>Shopping Cart</S.TitleCart>
+        {items.map(product => (
+          <S.ItemBody>
+            <S.ButtonRemove></S.ButtonRemove>
 
-          <S.Image>
-            <img src="" alt="" />
-          </S.Image>
+            <S.Image>
+              <ShowImage height="100%" width='55px' url="product" item={product} />
+            </S.Image>
 
-          <S.Name>
-            <span>book</span>
-          </S.Name>
+            <S.Name>
+              <span>{product.name}</span>
+            </S.Name>
 
-          <S.Quantity>
-            <button>
-              <img src="" alt="s" /> +
-            </button>
-            <input type="text" name="name" value="1"></input>
-            <button>
-              <img src="" alt="" /> -
-            </button>
-          </S.Quantity>
+        
+              <S.Quantity>
+                <button>
+                  <img src={plusIcon} alt="" />
+                </button>
+                <input value="1"></input>
+                <button>
+                  <img src={minusIcon} alt="" />
+                </button>
+              </S.Quantity>
 
-          <S.TotalPrice>$549</S.TotalPrice>
+              <S.TotalPrice>$549</S.TotalPrice>
+        
 
-        </S.ItemBody>
+          </S.ItemBody>
+        ))}
+
       </S.ShoppingCart>
     )
   }
@@ -62,10 +70,15 @@ const Cart = () => {
         <Col size={8}>
           {items.length > 0 ? showItems(items) : noItemsMessage()}
         </Col>
-        <Col size={4} style={{ border: '1px solid gray' }}>
+        <Col size={4} style={{
+          // boxShadow: '1px 2px 3px 0px rgba(0,0,0,0.10)',
+          borderRadius: '6px',
+          padding: '20px 30px'
+
+        }}>
           <h2>Summary</h2>
           <hr />
-          <p>show checkout options/shipping address/total/update quantity</p>
+          {/* <p>show checkout options/shipping address/total/update quantity</p> */}
         </Col>
       </Row>
     </Layout>
