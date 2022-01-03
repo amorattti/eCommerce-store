@@ -4,9 +4,12 @@ import ShowImage from '../ShowImage'
 import plusIcon from '../../img/plus.png'
 import minusIcon from '../../img/minus.png'
 
-
-const ShoppingCart = ({ product, updateItem }) => {
+const ShoppingCart = ({ product, updateItem, removeItem }) => {
   const [count, setCount] = useState(parseInt(product.count))
+
+  useEffect(() => {
+    updateItem(product._id, count)
+  }, [count])
 
   const handleChangeInput = (e, productId) => {
     const inputValue = parseInt(e.target.value)
@@ -20,7 +23,8 @@ const ShoppingCart = ({ product, updateItem }) => {
   return (
     <>
       <S.ItemBody>
-        <S.ButtonRemove></S.ButtonRemove>
+        <S.ButtonRemove onClick={() => removeItem(product._id)}>
+        </S.ButtonRemove>
 
         <S.Image>
           <ShowImage height="100%" width='55px' url="product" item={product} />

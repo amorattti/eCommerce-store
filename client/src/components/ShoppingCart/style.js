@@ -19,14 +19,18 @@ export const ButtonRemove = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
+ 
+ 
   
   &::before,
   &::after {
     position: absolute;
     content: '';
     width: 100%;
-    height: 1.5px; /* cross thickness */
+    height: 1.2px; /* cross thickness */
     background-color: black;
+    transition: all 0.4;
   }
 
   &::before {
@@ -36,6 +40,11 @@ export const ButtonRemove = styled.div`
   &::after {
     transform: rotate(-45deg);
   }
+
+  &:hover:after, &:hover:before  {
+    background-color: #6c757d;
+  }
+
 `
 
 export const Image = styled.figure`

@@ -41,16 +41,29 @@ export const getCart = () => {
 export const updateItem = (productId, inputValue) => {
   let cart = []
   if (typeof window !== 'undefined') {
-    if(localStorage.getItem('cart')) {
+    if (localStorage.getItem('cart')) {
       cart = JSON.parse(localStorage.getItem('cart'))
     }
 
     cart.map((product, index) => {
-      if(product._id === productId) {
+      if (product._id === productId) {
         cart[index].count = inputValue
       }
     })
 
     localStorage.setItem('cart', JSON.stringify(cart))
+  }
+}
+
+export const removeItem = (productId) => {
+  let cart = []
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'))
+    }
+
+    const newCart = cart.filter(product => product._id !== productId)
+
+    localStorage.setItem('cart', JSON.stringify(newCart))
   }
 }

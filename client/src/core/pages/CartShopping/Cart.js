@@ -3,26 +3,36 @@ import { Link } from 'react-router-dom'
 import Layout from '../../../hoc/Layout'
 import { getCart } from '../../cartHelper'
 import { Row, Col } from './style'
-import { updateItem } from '../../cartHelper'
+import { updateItem, removeItem } from '../../cartHelper'
 import ShoppingCart from '../../../components/ShoppingCart'
 import * as S from './style'
 
 const Cart = () => {
   const [items, setItems] = useState([])
   // SetCountInput   is just basically to update component
- 
+
   useEffect(() => {
     if (getCart() !== null) {
       setItems(getCart())
     }
   }, [])
 
+  const removeProduct = (id) => {
+    removeItem(id)
+    setItems(getCart())
+  }
+
   const shoppingCart = (products) => (
     <>
       <S.ShoppingCart>
         <S.TitleCart>Shopping Cart</S.TitleCart>
         {products.map(product => (
-          <ShoppingCart product={product} updateItem={updateItem} />
+          <ShoppingCart
+            key={product._id}
+            product={product}
+            removeItem={removeProduct}
+            updateItem={updateItem}
+          />
         ))}
       </S.ShoppingCart>
     </>
