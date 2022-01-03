@@ -93,5 +93,6 @@ input {
 `
 export const TotalPrice = styled.div`
   font-weight: 500;
-
+  inline-size: 48px;
+  text-align: right;
 `

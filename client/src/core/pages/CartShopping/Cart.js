@@ -6,6 +6,7 @@ import { Row, Col } from './style'
 import { updateItem, removeItem } from '../../cartHelper'
 import ShoppingCart from '../../../components/ShoppingCart'
 import * as S from './style'
+import Checkout from '../../../components/Checkout'
 
 const Cart = () => {
   const [items, setItems] = useState([])
@@ -59,6 +60,8 @@ const Cart = () => {
           <h2>Summary</h2>
           <hr />
           {/* <p>show checkout options/shipping address/total/update quantity</p> */}
+          <Checkout products={items} />
+        
         </Col>
       </Row>
     </Layout>
