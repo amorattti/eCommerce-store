@@ -3,7 +3,6 @@ export const addItemToLocalStorage = (item, next) => {
 
   if (typeof window !== 'undefined') {
     if (localStorage.getItem('cart')) {
-      console.log('YES')
       cart = JSON.parse(localStorage.getItem("cart"))
     }
 
@@ -32,6 +31,7 @@ export const itemTotal = () => {
 }
 
 export const getCart = () => {
+  console.log('get cart ')
   if (typeof window !== 'undefined') {
     return JSON.parse(localStorage.getItem('cart'))
   }

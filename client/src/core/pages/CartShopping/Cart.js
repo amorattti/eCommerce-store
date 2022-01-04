@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../../../hoc/Layout'
 import { getCart } from '../../cartHelper'
@@ -23,6 +23,28 @@ const Cart = () => {
     setItems(getCart())
   }
 
+  const promises = (cb) => {
+    return new Promise((resolve, rejest) => {
+  
+          resolve(cb())
+  
+    })
+  }
+
+  const changeQuantityProduct = (count,id, cb) => {
+    updateItem(id, count)
+   cb()
+   setItems(getCart())
+
+
+      
+      
+  
+    console.log('po callbacku')
+ 
+  }
+
+
   const shoppingCart = (products) => (
     <>
       <S.ShoppingCart>
@@ -31,6 +53,7 @@ const Cart = () => {
           <ShoppingCart
             key={product._id}
             product={product}
+            changeQuantityProduct={changeQuantityProduct}
             removeItem={removeProduct}
             updateItem={updateItem}
           />
@@ -44,7 +67,7 @@ const Cart = () => {
       Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
     </h2>
   )
-
+  console.log('State cart', items)
   return (
     <Layout>
       <Row>
@@ -59,9 +82,7 @@ const Cart = () => {
         }}>
           <h2>Summary</h2>
           <hr />
-          {/* <p>show checkout options/shipping address/total/update quantity</p> */}
           <Checkout products={items} />
-        
         </Col>
       </Row>
     </Layout>

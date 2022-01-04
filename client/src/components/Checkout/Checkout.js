@@ -5,17 +5,17 @@ import Button from '../Button'
 
 const Checkout = ({ products }) => {
 
+
   const totalSum = () => {
     return products.reduce((currentValue, nextValue) => {
-      console.log(currentValue)
       return currentValue + nextValue.count * nextValue.price
     }, 0)
   }
-  console.log(isAuthenticated() )
+
 
   return (
     <div>
-      <h5>Total: {totalSum()}$</h5>
+      <h5>Total: {totalSum().toFixed(2)}$</h5>
 
       {isAuthenticated() ? (<Button>checkout</Button>) : (
         <Link to="/signin">

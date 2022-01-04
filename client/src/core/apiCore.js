@@ -46,10 +46,10 @@ export const getFilteredProducts = async (skip, limit, filters = {}) => {
 }
 
 export const list = async (params) => {
-    console.log('params before ', params)
+  console.log('params before ', params)
   try {
     const query = queryString.stringify(params)
-  
+
     const url = `${API}/products/search?${query}`
     const response = await fetch(url)
     return response.json()
@@ -75,5 +75,21 @@ export const fetchRelatedProducts = async (_id) => {
     return response.json()
   } catch (error) {
     console.log(error)
+  }
+}
+
+/*--↓----braintree---↓---*/
+
+export const getBraintreeToken = async(userId, token) => {
+  try {
+    const url = `${API}/braintree/getToken/${userId}`
+    const response = await fetch(url,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return response.json()
+  } catch (error) {
+    
   }
 }

@@ -3,12 +3,19 @@ import * as S from './style'
 import ShowImage from '../ShowImage'
 import plusIcon from '../../img/plus.png'
 import minusIcon from '../../img/minus.png'
+import { getCart } from '../../core/cartHelper'
 
-const ShoppingCart = ({ product, updateItem, removeItem }) => {
+const ShoppingCart = ({
+  product, updateItem, removeItem,
+  changeQuantityProduct }) => {
   const [count, setCount] = useState(parseInt(product.count))
+  const [state, setState] = useState(product)
 
   useEffect(() => {
     updateItem(product._id, count)
+    console.log(getCart(), 'getCart Shopping cart')
+
+   // setState(getCart())
   }, [count])
 
   const handleChangeInput = (e, productId) => {
@@ -19,6 +26,12 @@ const ShoppingCart = ({ product, updateItem, removeItem }) => {
       updateItem(productId, inputValue)
     }
   }
+
+  const increment = () => {
+    setCount(count + 1)
+  }
+
+  console.log('render ShoppingCart')
 
   return (
     <>
@@ -35,7 +48,10 @@ const ShoppingCart = ({ product, updateItem, removeItem }) => {
         </S.Name>
 
         <S.Quantity>
-        <button onClick={() => setCount(count + 1)}>
+          <button onClick={() => {
+            changeQuantityProduct(count, product._id, increment)
+            console.log('setCount in shopping cart')
+          }}>
             <img src={plusIcon} alt="" />
           </button>
           <input
