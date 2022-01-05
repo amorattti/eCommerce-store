@@ -5,17 +5,12 @@ import plusIcon from '../../img/plus.png'
 import minusIcon from '../../img/minus.png'
 import { getCart } from '../../core/cartHelper'
 
-const ShoppingCart = ({
-  product, updateItem, removeItem,
-  changeQuantityProduct }) => {
+const ShoppingCart = ({ product, updateItem, removeItem,setUpdate }) => {
   const [count, setCount] = useState(parseInt(product.count))
-  const [state, setState] = useState(product)
 
   useEffect(() => {
     updateItem(product._id, count)
-    console.log(getCart(), 'getCart Shopping cart')
-
-   // setState(getCart())
+    setUpdate(count)
   }, [count])
 
   const handleChangeInput = (e, productId) => {
@@ -26,12 +21,6 @@ const ShoppingCart = ({
       updateItem(productId, inputValue)
     }
   }
-
-  const increment = () => {
-    setCount(count + 1)
-  }
-
-  console.log('render ShoppingCart')
 
   return (
     <>
@@ -48,18 +37,20 @@ const ShoppingCart = ({
         </S.Name>
 
         <S.Quantity>
-          <button onClick={() => {
-            changeQuantityProduct(count, product._id, increment)
-            console.log('setCount in shopping cart')
-          }}>
+          <button onClick={() => setCount(count + 1)}>
             <img src={plusIcon} alt="" />
           </button>
           <input
             type="number"
+            min="0"
             onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
             onChange={(e) => handleChangeInput(e, product._id)}
             value={count} />
-          <button onClick={() => setCount(count - 1)}>
+          <button onClick={() => setCount((prevCount) => {
+            if (prevCount > 1) {
+              return prevCount - 1
+            } return 1
+          })}>
             <img src={minusIcon} alt="" />
           </button>
         </S.Quantity>

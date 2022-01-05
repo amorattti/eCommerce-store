@@ -10,40 +10,20 @@ import Checkout from '../../../components/Checkout'
 
 const Cart = () => {
   const [items, setItems] = useState([])
-  // SetCountInput   is just basically to update component
+  const [updateComponent, setUpdateComponent] = useState(1)
+  // update component every time when counter in child component
+  // has been changed
 
   useEffect(() => {
     if (getCart() !== null) {
       setItems(getCart())
     }
-  }, [])
+  }, [updateComponent])
 
   const removeProduct = (id) => {
     removeItem(id)
     setItems(getCart())
   }
-
-  const promises = (cb) => {
-    return new Promise((resolve, rejest) => {
-  
-          resolve(cb())
-  
-    })
-  }
-
-  const changeQuantityProduct = (count,id, cb) => {
-    updateItem(id, count)
-   cb()
-   setItems(getCart())
-
-
-      
-      
-  
-    console.log('po callbacku')
- 
-  }
-
 
   const shoppingCart = (products) => (
     <>
@@ -53,9 +33,9 @@ const Cart = () => {
           <ShoppingCart
             key={product._id}
             product={product}
-            changeQuantityProduct={changeQuantityProduct}
             removeItem={removeProduct}
             updateItem={updateItem}
+            setUpdate={setUpdateComponent}
           />
         ))}
       </S.ShoppingCart>
@@ -67,7 +47,7 @@ const Cart = () => {
       Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
     </h2>
   )
-  console.log('State cart', items)
+
   return (
     <Layout>
       <Row>

@@ -31,7 +31,6 @@ export const itemTotal = () => {
 }
 
 export const getCart = () => {
-  console.log('get cart ')
   if (typeof window !== 'undefined') {
     return JSON.parse(localStorage.getItem('cart'))
   }
