@@ -3,9 +3,8 @@ import * as S from './style'
 import ShowImage from '../ShowImage'
 import plusIcon from '../../img/plus.png'
 import minusIcon from '../../img/minus.png'
-import { getCart } from '../../core/cartHelper'
 
-const ShoppingCart = ({ product, updateItem, removeItem,setUpdate }) => {
+const ShoppingCart = ({ product, updateItem, removeItem, setUpdate }) => {
   const [count, setCount] = useState(parseInt(product.count))
 
   useEffect(() => {

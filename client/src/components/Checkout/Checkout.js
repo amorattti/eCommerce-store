@@ -5,7 +5,6 @@ import Button from '../Button'
 
 const Checkout = ({ products }) => {
 
-
   const totalSum = () => {
     return products.reduce((currentValue, nextValue) => {
       return currentValue + nextValue.count * nextValue.price
