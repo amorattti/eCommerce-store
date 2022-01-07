@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../../auth/index'
-import { getBraintreeToken } from '../../core/apiCore'
+import { getBraintreeToken, processPayment } from '../../core/apiCore'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
+import Alert from '../Alert'
 
 const Checkout = ({ products }) => {
   const [data, setData] = useState({
@@ -32,11 +33,11 @@ const Checkout = ({ products }) => {
 
   const getTotal = (products) => {
     return products.reduce((currentValue, nextValue) => {
-      const result =  currentValue + nextValue.count * nextValue.price
+      const result = currentValue + nextValue.count * nextValue.price
       return ParseFloat(result, 2) // parse float with two decimal places
     }, 0)
   }
- 
+
 
   const ParseFloat = (str, val) => {
     str = str.toString();
@@ -44,7 +45,7 @@ const Checkout = ({ products }) => {
     return Number(str);
   }
 
-  console.log(data, 'data')
+  console.log('data State:  checkout component', data)
 
   const showDropIn = () => {
     if (!data.clientToken) {
@@ -67,16 +68,31 @@ const Checkout = ({ products }) => {
   }
 
   const buy = async () => {
-    // Send the nonce to your server
     const { nonce } = await data.instance.requestPaymentMethod();
-    // nonce is 
-    console.log(nonce, 'once', getTotal(products))
-    //await fetch(`server.test/purchase/${nonce}`);
+
+    const paymentData = {
+      paymentMethodNonce: nonce,
+      amount: getTotal(products)
+    }
+
+    const response = await processPayment(userId, userToken, paymentData)
+    setData({ ...data, success: response.success })
+    /*--Task for later: add alert related to success response--*/
+    // empty cart
+    // create order
+    console.log(response, 'paymant Data')
   }
+
+  const showSuccess = () => (
+    <Alert value={data.success} theme="success">
+       Thanks! your payment was successful
+    </Alert>
+  )
 
   return (
     <div>
       <h5>Total: {getTotal(products)}$</h5>
+      {showSuccess()}
       {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
         <Link to="/signin">
           <Button>Sign in to checkout</Button>
