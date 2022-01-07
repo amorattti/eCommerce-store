@@ -4,12 +4,12 @@ import ShowImage from '../ShowImage'
 import plusIcon from '../../img/plus.png'
 import minusIcon from '../../img/minus.png'
 
-const ShoppingCart = ({ product, updateItem, removeItem, setUpdate }) => {
+const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
   const [count, setCount] = useState(parseInt(product.count))
 
   useEffect(() => {
     updateItem(product._id, count)
-    setUpdate(count)
+    setUpdate(!run) // update Parent Component State
   }, [count])
 
   const handleChangeInput = (e, productId) => {

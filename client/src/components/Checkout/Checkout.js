@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../../auth/index'
 import { getBraintreeToken, processPayment } from '../../core/apiCore'
+import { removeItemsCart } from '../../core/cartHelper'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
 
-const Checkout = ({ products }) => {
+const Checkout = ({ products, setItems }) => {
   const [data, setData] = useState({
     success: false,
     clientToken: null,
@@ -33,19 +34,45 @@ const Checkout = ({ products }) => {
 
   const getTotal = (products) => {
     return products.reduce((currentValue, nextValue) => {
-      const result = currentValue + nextValue.count * nextValue.price
-      return ParseFloat(result, 2) // parse float with two decimal places
+      let result = currentValue + nextValue.count * nextValue.price
+      // parse float with two decimal places
+      return ParseFloat(result, 2)
     }, 0)
   }
 
 
   const ParseFloat = (str, val) => {
+    str = Number.isInteger(str) ? str.toFixed(2) : str
     str = str.toString();
     str = str.slice(0, (str.indexOf(".")) + val + 1);
     return Number(str);
   }
 
-  console.log('data State:  checkout component', data)
+
+  const buy = async () => {
+    const { nonce } = await data.instance.requestPaymentMethod();
+
+    const paymentData = {
+      paymentMethodNonce: nonce,
+      amount: getTotal(products)
+    }
+
+    const response = await processPayment(userId, userToken, paymentData)
+    setData({ ...data, success: response.success })
+    /*--Task for later: add alert related to success response--*/
+    // create order
+
+    if (response.success) {
+      removeItemsCart(() => console.log('Transaction Successful'))
+      setItems([])
+    }
+  }
+
+  const showSuccess = () => (
+    <Alert value={data.success} theme="success">
+      Thanks! your payment was successful
+    </Alert>
+  )
 
   const showDropIn = () => {
     if (!data.clientToken) {
@@ -66,28 +93,6 @@ const Checkout = ({ products }) => {
       );
     }
   }
-
-  const buy = async () => {
-    const { nonce } = await data.instance.requestPaymentMethod();
-
-    const paymentData = {
-      paymentMethodNonce: nonce,
-      amount: getTotal(products)
-    }
-
-    const response = await processPayment(userId, userToken, paymentData)
-    setData({ ...data, success: response.success })
-    /*--Task for later: add alert related to success response--*/
-    // empty cart
-    // create order
-    console.log(response, 'paymant Data')
-  }
-
-  const showSuccess = () => (
-    <Alert value={data.success} theme="success">
-       Thanks! your payment was successful
-    </Alert>
-  )
 
   return (
     <div>

@@ -10,15 +10,14 @@ import Checkout from '../../../components/Checkout'
 
 const Cart = () => {
   const [items, setItems] = useState([])
-  const [updateComponent, setUpdateComponent] = useState(1)
+  const [runFromShoppingCart, updateFromShoppingCart] = useState(false)
   // update component every time when counter in child component
   // has been changed
-
   useEffect(() => {
     if (getCart() !== null) {
       setItems(getCart())
     }
-  }, [updateComponent])
+  }, [runFromShoppingCart])
 
   const removeProduct = (id) => {
     removeItem(id)
@@ -35,7 +34,8 @@ const Cart = () => {
             product={product}
             removeItem={removeProduct}
             updateItem={updateItem}
-            setUpdate={setUpdateComponent}
+            setUpdate={updateFromShoppingCart}
+            run={runFromShoppingCart}
           />
         ))}
       </S.ShoppingCart>
@@ -62,7 +62,10 @@ const Cart = () => {
         }}>
           <h2>Summary</h2>
           <hr />
-          <Checkout products={items} />
+          <Checkout
+            products={items}
+            setItems={setItems}
+          />
         </Col>
       </Row>
     </Layout>

@@ -66,3 +66,11 @@ export const removeItem = (productId) => {
     localStorage.setItem('cart', JSON.stringify(newCart))
   }
 }
+
+export const removeItemsCart = (next) => {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('cart')
+    next()
+  }
+}
+
