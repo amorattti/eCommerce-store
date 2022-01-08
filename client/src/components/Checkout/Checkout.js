@@ -6,6 +6,7 @@ import { removeItemsCart } from '../../core/cartHelper'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
+import { ButtonPay } from './style'
 
 const Checkout = ({ products, setItems }) => {
   const [data, setData] = useState({
@@ -85,10 +86,15 @@ const Checkout = ({ products, setItems }) => {
       return (
         <div>
           <DropIn
-            options={{ authorization: data.clientToken }}
+            options={{
+              authorization: data.clientToken,
+              paypal: {
+                flow: 'vault'
+              }
+            }}
             onInstance={(instance) => (data.instance = instance)}
           />
-          <button onClick={buy}>Pay</button>
+          <ButtonPay onClick={buy}>Pay</ButtonPay>
         </div>
       );
     }
