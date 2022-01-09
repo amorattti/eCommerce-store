@@ -19,11 +19,12 @@ const Checkbox = ({ categories, handleFilters }) => {
   return categories.map((category, i) => (
     <li key={i}>
       <input
+        id={category.name}
         type="checkbox"
         value={checked.indexOf(category._id === -1)}
         onChange={() => handleToggle(category._id)}
       />
-      <label>{category.name}</label>
+      <label htmlFor={category.name}>{category.name}</label>
     </li>
   ))
 }

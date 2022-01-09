@@ -11,11 +11,12 @@ const RadioBox = ({ prices, handleFilters }) => {
   return prices.map((price, i) => (
     <li key={i}>
       <input
+        id={price.name}
         onChange={handleChange}
         value={`${price._id}`}
         name={price}
         type="radio" />
-      <label>{price.name}</label>
+      <label htmlFor={price.name}>{price.name}</label>
     </li>
   ))
 }
