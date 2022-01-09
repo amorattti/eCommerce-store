@@ -7,8 +7,10 @@ import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
 import { ButtonPay } from './style'
+import Loading from '../Loading'
 
 const Checkout = ({ products, setItems }) => {
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     success: false,
     clientToken: null,
@@ -52,7 +54,7 @@ const Checkout = ({ products, setItems }) => {
 
   const buy = async () => {
     const { nonce } = await data.instance.requestPaymentMethod();
-
+    setLoading(true)
     const paymentData = {
       paymentMethodNonce: nonce,
       amount: getTotal(products)
@@ -66,6 +68,7 @@ const Checkout = ({ products, setItems }) => {
     if (response.success) {
       removeItemsCart(() => console.log('Transaction Successful'))
       setItems([])
+      setLoading(false)
     }
   }
 
@@ -101,8 +104,8 @@ const Checkout = ({ products, setItems }) => {
   }
 
   return (
-    <div>
-      <h5>Total: {getTotal(products)}$</h5>
+    <div>  
+      <h5>Total: {getTotal(products)}$</h5> 
       {showSuccess()}
       {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
         <Link to="/signin">
@@ -110,6 +113,7 @@ const Checkout = ({ products, setItems }) => {
         </Link>
       )}
       <hr />
+      {loading &&  <Loading />}
     </div>
   )
 }

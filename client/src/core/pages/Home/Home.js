@@ -6,6 +6,7 @@ import { Header } from './style'
 import Grid from '../../../components/Grid'
 import Search from '../../../components/Search/Search'
 
+
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])
   const [productsByArrival, setProductsByArrival] = useState([])
