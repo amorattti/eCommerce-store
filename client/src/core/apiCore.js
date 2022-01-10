@@ -78,12 +78,32 @@ export const fetchRelatedProducts = async (_id) => {
   }
 }
 
+/*--↓----Order ( Dashboard )---↓---*/ 
+
+export const createOrder = async (userId, token, createOrderData) => {
+  try {
+    const url = `${API}/order/create/${userId}`
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `bearer ${token}`
+      },
+      body: JSON.stringify({ order: createOrderData })
+    })
+    return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
 /*--↓----braintree---↓---*/
 
-export const getBraintreeToken = async(userId, token) => {
+export const getBraintreeToken = async (userId, token) => {
   try {
     const url = `${API}/braintree/getToken/${userId}`
-    const response = await fetch(url,{
+    const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -94,10 +114,10 @@ export const getBraintreeToken = async(userId, token) => {
   }
 }
 
-export const processPayment = async(userId, token, paymentData) => {
+export const processPayment = async (userId, token, paymentData) => {
   try {
     const url = `${API}/braintree/payment/${userId}`
-    const response = await fetch(url,{
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         Accept: "application/json",

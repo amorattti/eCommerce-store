@@ -56,11 +56,8 @@ exports.signout = (req, res) => {
 exports.requireSignin = expressJwt({
   secret: process.env.JWT_SECRET,
   algorithms: ['HS256'],
-  userProperty: 'auth'
+  requestProperty: 'auth' 
 })
-
-// check if you are the current logged in user
-// in short, are you the same user based on your access token
 exports.isAuth = (req, res, next) => {
   let user = req.profile && req.auth && req.profile._id == req.auth._id
   if (!user) {
@@ -70,6 +67,7 @@ exports.isAuth = (req, res, next) => {
   }
   next()
 }
+
 exports.isAdmin = (req, res, next) => {
   if (req.profile.role === 0) {
     return res.status(403).json({

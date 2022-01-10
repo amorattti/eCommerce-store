@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../../auth/index'
-import { getBraintreeToken, processPayment } from '../../core/apiCore'
-import { removeItemsCart } from '../../core/cartHelper'
+import { createOrder, getBraintreeToken, processPayment } from '../../core/apiCore'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
@@ -43,7 +42,6 @@ const Checkout = ({ products, setItems }) => {
     }, 0)
   }
 
-
   const ParseFloat = (str, val) => {
     str = Number.isInteger(str) ? str.toFixed(2) : str
     str = str.toString();
@@ -51,25 +49,39 @@ const Checkout = ({ products, setItems }) => {
     return Number(str);
   }
 
-
   const buy = async () => {
     const { nonce } = await data.instance.requestPaymentMethod();
+
     setLoading(true)
+
     const paymentData = {
       paymentMethodNonce: nonce,
       amount: getTotal(products)
     }
 
     const response = await processPayment(userId, userToken, paymentData)
-    setData({ ...data, success: response.success })
-    /*--Task for later: add alert related to success response--*/
-    // create order
-
-    if (response.success) {
-      removeItemsCart(() => console.log('Transaction Successful'))
-      setItems([])
-      setLoading(false)
+    console.log('response', response)
+    const createOrderData = {
+      products: products,
+      transaction_id: response.transaction_id,
+      amount: response.transaction.amount,
+      address: data.address
     }
+
+    await createOrder(userId, userToken, createOrderData)
+
+
+    //   setData({ ...data, success: response.success })
+
+    //   if (response.success) {
+    //     removeItemsCart(() => console.log('Transaction Successful'))
+    //     setItems([])
+    //     setLoading(false)
+    //   }
+  }
+
+  const handleAddress = (event) => {
+    setData({ ...data, address: event.target.value })
   }
 
   const showSuccess = () => (
@@ -88,6 +100,18 @@ const Checkout = ({ products, setItems }) => {
     } else {
       return (
         <div>
+          <div>
+            <h5> Delivery address </h5>
+            <textarea
+              style={{ width: '100%' }}
+              onChange={handleAddress}
+              value={data.address}
+              placeholder='Type your delivery address'
+            >
+
+
+            </textarea>
+          </div>
           <DropIn
             options={{
               authorization: data.clientToken,
@@ -104,8 +128,8 @@ const Checkout = ({ products, setItems }) => {
   }
 
   return (
-    <div>  
-      <h5>Total: {getTotal(products)}$</h5> 
+    <div>
+      <h5>Total: {getTotal(products)}$</h5>
       {showSuccess()}
       {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
         <Link to="/signin">
@@ -113,7 +137,7 @@ const Checkout = ({ products, setItems }) => {
         </Link>
       )}
       <hr />
-      {loading &&  <Loading />}
+      {loading && <Loading />}
     </div>
   )
 }

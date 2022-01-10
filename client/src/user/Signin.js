@@ -3,9 +3,9 @@ import { Link, Navigate } from 'react-router-dom'
 import { signin, authenticate, isAuthenticated } from '../auth'
 
 import { EntryPage } from './style'
-import EntryCard from '../components/EntryCard'
-import InputGroup from '../components/InputGroup'
-import Input from '../components/Input'
+import EntryCard from '../components/EntryCard_Styles'
+import InputGroup from '../components/InputGroup_Styles'
+import Input from '../components/Input_Styles'
 import Button from '../components/Button'
 import Alert from '../components/Alert'
 
