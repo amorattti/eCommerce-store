@@ -34,3 +34,35 @@ exports.update = async (req, res) => {
     res.json(user);
   });
 }
+
+
+exports.addOrderHistoryToUser = async (req, res, next) => {
+  try {
+    const history = []
+
+    req.body.order.products.forEach((product) => {
+      let newProductFormat = {
+        name: product.name,
+        price: product.price,
+        category: product.category,
+        quantity: product.quantity,
+        amount: product.count,
+        transaction_id: req.body.order.transaction_id
+      }
+      history.push(newProductFormat)
+    })
+
+    await User.findOneAndUpdate(
+      { _id: req.profile._id },
+      { $push: { history } },
+      { new: true }
+    ).exec()
+
+    next()
+
+  } catch (error) {
+    return res.json(400).json({
+      error: 'Could not update user purchase history'
+    })
+  }
+}

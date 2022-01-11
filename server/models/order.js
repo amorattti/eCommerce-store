@@ -20,7 +20,7 @@ const OrderSchema = new mongoose.Schema({
     default: "Not processed",
     enum: ["Not processed", "Processing", "Shipped", "Delivered", "Cancelled"]
   },
-  updated: Data,
+  updated: Date,
   user: { type: ObjectId, ref: "User" }
 }, { timestamps: true })
 
