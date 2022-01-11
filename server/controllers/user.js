@@ -39,7 +39,7 @@ exports.update = async (req, res) => {
 exports.addOrderHistoryToUser = async (req, res, next) => {
   try {
     const history = []
-
+    // products from localstorage
     req.body.order.products.forEach((product) => {
       let newProductFormat = {
         name: product.name,
