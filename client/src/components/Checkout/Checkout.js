@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../../auth/index'
 import { createOrder, getBraintreeToken, processPayment } from '../../core/apiCore'
+import { removeItemsCart } from '../../core/cartHelper'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
@@ -60,24 +61,23 @@ const Checkout = ({ products, setItems }) => {
     }
 
     const response = await processPayment(userId, userToken, paymentData)
-    console.log('response', response)
+  console.log('RESP{ONSE', response)
     const createOrderData = {
       products: products,
-      transaction_id: response.transaction_id,
+      transaction_id: response.transaction.id,
       amount: response.transaction.amount,
       address: data.address
     }
-
+    console.log('pauload: ', createOrderData)
     await createOrder(userId, userToken, createOrderData)
 
+    setData({ ...data, success: response.success })
 
-    //   setData({ ...data, success: response.success })
-
-    //   if (response.success) {
-    //     removeItemsCart(() => console.log('Transaction Successful'))
-    //     setItems([])
-    //     setLoading(false)
-    //   }
+    if (response.success) {
+      removeItemsCart(() => console.log('Transaction Successful'))
+      setItems([])
+      setLoading(false)
+    }
   }
 
   const handleAddress = (event) => {
@@ -108,8 +108,6 @@ const Checkout = ({ products, setItems }) => {
               value={data.address}
               placeholder='Type your delivery address'
             >
-
-
             </textarea>
           </div>
           <DropIn

@@ -88,23 +88,23 @@ const Shop = () => {
       description="search and find your favorite books"
     >
       <Row>
-        <Col size={4}>
+        <Col size={2}>
           <ul>
-            <h4>Filters by category</h4>
+            <h5>By category</h5>
             <Checkbox
               categories={categories}
               handleFilters={(filters) => handleFilters(filters, 'category')}
             />
           </ul>
           <ul>
-            <h4>Filters by prices range</h4>
+            <h5>Price</h5>
             <RadioBox
               prices={prices}
               handleFilters={(filters) => handleFilters(filters, 'price')}
             />
           </ul>
         </Col>
-        <Col size={8}>
+        <Col size={10}>
           <Grid template="1fr 1fr 1fr" gap="40px 0%">
             {filteredResults.length !== 0 ? filteredResults.map(product => (
               <Card key={product._id} product={product} />
