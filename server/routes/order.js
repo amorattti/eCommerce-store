@@ -1,7 +1,7 @@
 const { Router } = require('express')
-const { createOrder } = require('../controllers/order')
+const { createOrder, listOrdersAdmin } = require('../controllers/order')
 const { addOrderHistoryToUser } = require('../controllers/user')
-const { requireSignin, isAuth } = require('../controllers/auth')
+const { requireSignin, isAuth, isAdmin } = require('../controllers/auth')
 const { decreaseQuantity } = require('../controllers/product')
 const { userById } = require('../controllers/user')
 const router = Router()
@@ -15,5 +15,7 @@ router.post('/order/create/:userId',
   decreaseQuantity,
   createOrder
 )
+
+router.get('/order/list/:userId', requireSignin, isAuth, isAdmin, listOrdersAdmin)
 
 module.exports = router

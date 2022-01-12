@@ -15,3 +15,17 @@ exports.createOrder = (req, res) => {
    })
 }
 
+// Admin Orders
+exports.listOrdersAdmin = (req, res) => {
+   Order.find({})
+      .populate('user', "_id name address")
+      .sort('-created')
+      .exec((error, orders) => {
+         if (error) {
+            return res.status(400).json({
+               error: errorHandler(error)
+            })
+         }
+         res.json(orders)
+      })
+}
