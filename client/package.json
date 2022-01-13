@@ -20,6 +20,7 @@
     "react-moment": "^1.1.1",
     "react-router-dom": "^6.0.1",
     "react-scripts": "4.0.3",
+    "react-super-responsive-table": "^5.2.0",
     "styled-components": "^5.3.3",
     "styled-normalize": "^8.0.7",
     "web-vitals": "^1.1.2"

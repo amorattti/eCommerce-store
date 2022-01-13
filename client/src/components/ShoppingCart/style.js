@@ -7,7 +7,8 @@ export const ItemBody = styled.div`
   height: 120px;
   padding: 20px 30px;
   justify-content: space-around;
-
+  align-items: baseline;
+  
   @media(max-width: 768px) {
     padding: 20px 0px;
   }
