@@ -42,3 +42,17 @@ export const getCategories = async () => {
     console.log(error)
   }
 }
+
+export const getListOrders = async (userId, token) => {
+  try {
+    const response = await fetch(`${API}/order/list/${userId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}

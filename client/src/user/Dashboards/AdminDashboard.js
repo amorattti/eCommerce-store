@@ -22,6 +22,9 @@ const AdminDashboard = () => {
           <ListGroupItem>
             <NavLink to="/create/product">Create Product</NavLink>
           </ListGroupItem>
+          <ListGroupItem>
+            <NavLink to="/admin/orders">View Orders</NavLink>
+          </ListGroupItem>
         </ListGroup>
       </Card>
     )

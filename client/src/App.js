@@ -23,6 +23,7 @@ import Footer from './components/Footer/Footer'
 import Shop from './core/pages/Shop/Shop'
 import Product from './core/pages/Product/Product'
 import Cart from './core/pages/CartShopping/Cart'
+import Orders from './admin/Orders'
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="admin/dashboard" element={<DashboardAdmin />} />
           <Route path="create/category" element={<AddCategory />} />
           <Route path="create/product" element={<AddProduct />} />
+          <Route path="admin/orders" element={<Orders />} />
         </Route>
         <Route path="product/:productId"  element={<Product/>} />
         <Route path="/cart" element={<Cart />} />
