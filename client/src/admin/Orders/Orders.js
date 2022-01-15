@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { isAuthenticated } from '../../auth'
-import { getListOrders } from '../apiAdmin'
+import { fetchOrdersStatus, getListOrders } from '../apiAdmin'
 import Moment from 'react-moment'
 import Layout from '../../hoc/Layout'
 import * as S from './style'
+import Select from 'react-select'
 
 import Modal from 'react-modal'
 
@@ -26,8 +27,44 @@ const Orders = () => {
   let subtitle;
   const [orders, setOrders] = useState([])
   const [productsOfOrder, setProductsOfOrder] = useState([])
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [ordersStatus, setOrderStatus] = useState([])
 
+  const { user, token } = isAuthenticated()
+
+  const listOrders = async () => {
+    const list = await getListOrders(user._id, token)
+    setOrders(list)
+  }
+
+  const getStatusOrders = async () => {
+    const statusArray = await fetchOrdersStatus(user._id, token)
+    // create template for react-select
+    const newStatusArray = []
+
+    if (statusArray.length > 0) {
+      statusArray.forEach((status) => {
+        let obj = {}
+        obj.value = status
+        obj.label = status
+        newStatusArray.push(obj)
+      })
+    }
+    setOrderStatus(newStatusArray)
+  }
+
+  console.log(ordersStatus, 'newStatusArray')
+
+  useEffect(() => {
+    getStatusOrders()
+    listOrders()
+  }, [])
+
+  const handleSelectChange = (e, id) => {
+    console.log('e, id', e, id)
+  }
+
+  /*--modal ---*/
   const openModal = (productss) => {
     setIsOpen(true);
     setProductsOfOrder(productss)
@@ -41,21 +78,8 @@ const Orders = () => {
     setIsOpen(false);
     setProductsOfOrder([])
   }
+  /*-----*/
 
-
-  const { user, token } = isAuthenticated()
-
-  const listOrders = async () => {
-    const list = await getListOrders(user._id, token)
-    setOrders(list)
-  }
-
-  useEffect(() => {
-    listOrders()
-  }, [])
-
-  console.log(orders, 'Orders')
-  console.log('RFRRRR', productsOfOrder)
   return (
     <Layout>
       <div>
@@ -75,22 +99,26 @@ const Orders = () => {
             <S.TBodyStyled>
               {orders.length > 0 && orders.map((order) => {
                 return (
-                  <>
-                    <S.TRStyled>
-                      <S.TDstyled>
-                      <Moment format="D MMM YYYY" withTitle>
+                  <S.TRStyled key={order._id}>
+                    <S.TDstyled>
+                      <Moment format="YYYY-MM-DD HH:mm" withTitle>
                         {order.createdAt}
-                        </Moment>
-                        </S.TDstyled>
-                      <S.TDstyled>{order.transaction_id}</S.TDstyled>
-                      <S.TDstyled>{order.status}</S.TDstyled>
-                      <S.TDstyled>{order.address}</S.TDstyled>
-                      <S.TDstyled>{order.amount}$</S.TDstyled>
-                      <S.TDstyled>
-                        <button onClick={() => openModal(order.products)}>Open Modal</button>
-                      </S.TDstyled>
-                    </S.TRStyled>
-                  </>
+                      </Moment>
+                    </S.TDstyled>
+                    <S.TDstyled>{order.transaction_id}</S.TDstyled>
+                    <S.TDstyled>
+                      <Select
+                        options={ordersStatus}
+                        onChange={value => handleSelectChange(value, order._id)}
+                        defaultValue={{ label: order.status, value: order.status }}
+                      />
+                    </S.TDstyled>
+                    <S.TDstyled>{order.address}</S.TDstyled>
+                    <S.TDstyled>{order.amount}$</S.TDstyled>
+                    <S.TDstyled>
+                      <S.ButtonDetails onClick={() => openModal(order.products)}>Details</S.ButtonDetails>
+                    </S.TDstyled>
+                  </S.TRStyled>
                 )
               })}
             </S.TBodyStyled>
@@ -107,7 +135,7 @@ const Orders = () => {
       >
         <S.ModalBody>
           <h5 ref={(_subtitle) => (subtitle = _subtitle)}>Products list</h5>
-          <S.CloseButton onClick={closeModal}>close</S.CloseButton>
+          <S.CloseButton onClick={closeModal} />
 
           <S.TableStyled >
             <S.THeadStyled>
@@ -119,7 +147,7 @@ const Orders = () => {
             </S.THeadStyled>
             <S.TBodyStyled>
               {productsOfOrder.length > 0 && productsOfOrder.map(order => (
-                <S.TRStyled>
+                <S.TRStyled key={order._id}>
                   <S.TDstyled>{order.name}</S.TDstyled>
                   <S.TDstyled>{order.count}</S.TDstyled>
                   <S.TDstyled>{order.price * order.count}$ </S.TDstyled>
@@ -127,18 +155,11 @@ const Orders = () => {
 
               ))}
             </S.TBodyStyled>
-
           </S.TableStyled>
-          {/* <S.Summary>
-          <span>Total:</span>
-          <span>300$</span>
-        </S.Summary> */}
-
         </S.ModalBody>
-
-
       </Modal>
-    </Layout>
+      
+    </Layout >
   )
 }
 

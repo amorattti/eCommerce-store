@@ -6,53 +6,35 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 export const TableStyled = styled(Table)`
   line-height: 30px;
 `
+export const THeadStyled = styled(Thead)``
+export const TBodyStyled = styled(Tbody)``
+export const TRStyled = styled(Tr)``
+export const THStyled = styled(Th)``
 
-export const THeadStyled = styled(Thead)`
-
+export const ButtonDetails = styled.button`
+  background: none;
+  border: none;
+  background: #ffd145;
+  padding: 7px 18px;
+  color: #5e5050;
+  font-weight: 500;
+  border-radius: 4px;
+  letter-spacing: 0.7px;
+  margin: 2px;
 `
-
-export const TBodyStyled = styled(Tbody)`
-
-`
-
-export const TRStyled = styled(Tr)`
-
-`
-
-export const THStyled = styled(Th)`
-
-`
-
-// export const Summary = styled.div`
-//   margin-top: 14px;
-//   display: flex;
-//   justify-content: end;
-//   padding-right: 20px;
-//   font-weight: 500;
-
-//   span: {
-
-//   }
-
-// &:before {
-//     content: "";
-//     height: 1px;
-//     width: 90%;
-//     background: #a7a7a7;
-//     position: absolute;
-//     bottom: 50px;
-//   }
-
-// `
 
 export const TDstyled = styled(Td)`
+
   @media (min-width: 650px) {
     &:first-child {
     
       line-height: 20px;
     }
-  }  
 
+    &:nth-child(3) {
+    inline-size: 200px;
+    padding-right: 20px;
+  }}  
 `
 
 export const ModalBody = styled.div`
@@ -62,9 +44,35 @@ export const ModalBody = styled.div`
 `
 
 export const CloseButton = styled.a`
+  cursor: pointer; 
   position: absolute;
+  right: 0px;
   top: 10px;
-  right: 15px;
-  cursor: pointer;
+  width: 33px;
+  height: 33px;
+  opacity: 0.3;
+
+  &:hover {
+    opacity: 1;
+  }
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 20px;
+    width: 1px;
+    background-color: #333;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
 
 `
+
+
+
+
+
