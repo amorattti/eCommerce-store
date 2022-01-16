@@ -70,3 +70,21 @@ export const fetchOrdersStatus = async(userId, token) => {
     console.log(error)
   }
 }
+
+
+export const updateOrderStatus = async(userId, token, body) => {
+  try {
+    const resp = await fetch(`${API}/order/update-status/${userId}`, {
+      method: 'PUT',
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(body)
+    })
+    return resp.json()
+  } catch (error) {
+    console.log(error)
+  }
+}

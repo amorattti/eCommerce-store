@@ -19,7 +19,7 @@ exports.createOrder = (req, res) => {
 exports.listOrdersAdmin = (req, res) => {
    Order.find({})
       .populate('user', "_id name address")
-      .sort('-created')
+      .sort('-createdAt')
       .exec((error, orders) => {
          if (error) {
             return res.status(400).json({
@@ -32,4 +32,19 @@ exports.listOrdersAdmin = (req, res) => {
 
 exports.getStatusOrders = (req, res) => {
    res.json(Order.schema.path('status').enumValues)
+}
+
+exports.updateStatus = async (req, res) => {
+   try {
+      const filter = { _id: req.body._id }
+      const update = { status: req.body.status }
+
+      let doc = await Order.findOneAndUpdate(filter, update)
+      res.json({message: "Document has been updated successfully"})
+  
+   } catch (error) {
+      return res.status(400).json({
+         error: errorHandler(error)
+      })
+   }
 }

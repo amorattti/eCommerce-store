@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { isAuthenticated } from '../../auth'
-import { fetchOrdersStatus, getListOrders } from '../apiAdmin'
+import { fetchOrdersStatus, getListOrders, updateOrderStatus } from '../apiAdmin'
 import Moment from 'react-moment'
 import Layout from '../../hoc/Layout'
 import * as S from './style'
 import Select from 'react-select'
-
 import Modal from 'react-modal'
 
 const customStyles = {
@@ -20,7 +19,6 @@ const customStyles = {
 
   },
 };
-
 Modal.setAppElement('#root');
 
 const Orders = () => {
@@ -53,18 +51,17 @@ const Orders = () => {
     setOrderStatus(newStatusArray)
   }
 
-  console.log(ordersStatus, 'newStatusArray')
-
   useEffect(() => {
     getStatusOrders()
     listOrders()
   }, [])
 
-  const handleSelectChange = (e, id) => {
-    console.log('e, id', e, id)
+  const handleSelectChange = async(e, id) => {
+    const body = {_id: id, status: e.value}
+    await updateOrderStatus(user._id, token, body)
   }
 
-  /*--modal ---*/
+  /*-----modal----------*/
   const openModal = (productss) => {
     setIsOpen(true);
     setProductsOfOrder(productss)
@@ -78,7 +75,7 @@ const Orders = () => {
     setIsOpen(false);
     setProductsOfOrder([])
   }
-  /*-----*/
+  /*---------------*/
 
   return (
     <Layout>
