@@ -21,7 +21,7 @@ const UserDashboard = () => {
             <NavLink to="/cart">My Cart</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/profile/update">Update Profile</NavLink>
+            <NavLink to={`/profile/${_id}`}>Update Profile</NavLink>
           </ListGroupItem>
         </ListGroup>
       </Card>

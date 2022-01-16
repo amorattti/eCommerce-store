@@ -12,8 +12,8 @@ import Signup from './user/Signup'
 
 import Navbar from './components/Navbar'
 import Menu from './components/Menu'
-import DashboardUser from './user/Dashboards/UserDashboard'
-import DashboardAdmin from './user/Dashboards/AdminDashboard'
+import DashboardUser from './core/Dashboards/UserDashboard'
+import DashboardAdmin from './core/Dashboards/AdminDashboard'
 import PrivateUserRoute from './auth/PrivateUserRoute'
 import PrivateAdminRoute from './auth/PrivateAdminRoute'
 import NotFound404 from './components/NotFound404'
@@ -24,6 +24,7 @@ import Shop from './core/pages/Shop/Shop'
 import Product from './core/pages/Product/Product'
 import Cart from './core/pages/CartShopping/Cart'
 import Orders from './admin/Orders'
+import Profile from './user/Profile'
 
 const App = () => {
   return (
@@ -38,6 +39,8 @@ const App = () => {
         <Route path="shop" element={<Shop />} />
         <Route element={<PrivateUserRoute />}>
           <Route path="user/dashboard" element={<DashboardUser />} />
+          <Route path="profile/:userId" element={<Profile />} />
+
         </Route>
         <Route element={<PrivateAdminRoute />}>
           <Route path="admin/dashboard" element={<DashboardAdmin />} />
@@ -45,7 +48,7 @@ const App = () => {
           <Route path="create/product" element={<AddProduct />} />
           <Route path="admin/orders" element={<Orders />} />
         </Route>
-        <Route path="product/:productId"  element={<Product/>} />
+        <Route path="product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
