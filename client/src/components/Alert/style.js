@@ -18,7 +18,9 @@ export const StyledAlert = styled.div(({ theme, value }) => `
   display: ${value ? 'block' : 'none'}; 
   margin-bottom: 40px;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
+  border-left: 0px solid #000;
+  border-right: 0px solid #000;
 
   ${theme ? themes[theme] : ''}
 `)

@@ -33,7 +33,7 @@ export const updateUser = async (userId, token, user) => {
   }
 }
 
-export const updateUserLS = (user, next) => {
+export const updateUserLS = (user, next = () =>{}) => {
   if (typeof window !== 'undefined') {
     if (localStorage.getItem('jwt')) {
       let auth = JSON.parse(localStorage.getItem('jwt'))
