@@ -1,3 +1,4 @@
+const { Order } = require("../models/order")
 const { User } = require("../models/user")
 
 /**** param ****/
@@ -39,7 +40,7 @@ exports.update = async (req, res) => {
 exports.addOrderHistoryToUser = async (req, res, next) => {
   try {
     const history = []
-    // products from localstorage
+    // products from localstorage 
     req.body.order.products.forEach((product) => {
       let newProductFormat = {
         name: product.name,
@@ -66,3 +67,22 @@ exports.addOrderHistoryToUser = async (req, res, next) => {
     })
   }
 }
+
+
+exports.purchaseHistory = async(req, res) => {
+  try {
+    const userHistory = await Order.find({user: req.profile._id})
+    .populate({path: 'user', select: 'name'})
+    .sort('-createdAt')
+    .exec()
+
+    res.json(userHistory)
+
+  } catch (error) {
+      return res.json(400).json({
+      error: 'Could not update user purchase history'
+    })
+  }
+
+}
+
