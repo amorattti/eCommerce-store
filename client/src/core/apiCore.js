@@ -131,3 +131,26 @@ export const processPayment = async (userId, token, paymentData) => {
     console.log('error', error)
   }
 }
+
+
+
+/*----USER DASHBOARD----*/
+
+export const fetchPurchaseHistory = async(userId, token) => {
+  try {
+    const url = `${API}/orders/by/user/${userId}`
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+
+    return response.json()
+
+  } catch (error) {
+    console.log(error)
+  }
+}
