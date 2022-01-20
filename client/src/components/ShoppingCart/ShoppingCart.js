@@ -54,7 +54,7 @@ const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
           </button>
         </S.Quantity>
 
-        <S.TotalPrice>{product.price}$</S.TotalPrice>
+        <S.TotalPrice>${product.price}</S.TotalPrice>
       </S.ItemBody>
 
     </>

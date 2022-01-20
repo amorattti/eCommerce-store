@@ -77,7 +77,7 @@ const Product = () => {
             </div>
             {checkProductAvailability(product)}
             <h5>
-              {`${product.price}$`}
+              {`$${product.price}`}
             </h5>
             <Button onClick={() => addToCart(product)}>Add to card</Button>
             <div>

@@ -127,7 +127,7 @@ const Checkout = ({ products, setItems }) => {
 
   return (
     <div>
-      <h5>Total: {getTotal(products)}$</h5>
+      <h5>Total: ${getTotal(products)}</h5>
       {showSuccess()}
       {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
         <Link to="/signin">

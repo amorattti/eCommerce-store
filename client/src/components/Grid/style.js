@@ -4,7 +4,7 @@ export const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: ${props => props.template ? props.template : '20% 20% 20% 20% 20%'};
   gap: ${props => props.gap ? props.gap : 'auto'};
-  padding: 30px;
+  padding: 30px 0;
   margin-bottom: 100px;
 
 @media(max-width: 768px) {

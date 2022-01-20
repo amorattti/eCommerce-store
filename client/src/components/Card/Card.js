@@ -37,7 +37,7 @@ const Card = ({ product }) => {
             <span>{product.name}</span>
           </LinkProduct>
           <span>
-            <p>{product.price}$</p>
+            <p>${product.price}</p>
           </span>
         </ProductInfo>
         <ButtonCard onClick={() => addToCart(product)}>
