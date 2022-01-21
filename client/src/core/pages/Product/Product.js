@@ -34,7 +34,7 @@ const Product = () => {
   }
 
   const shouldRedirect = (redirect) => {
-    if(redirect) {
+    if (redirect) {
       navigate(`/cart`)
     }
   }
@@ -53,7 +53,7 @@ const Product = () => {
   const checkProductAvailability = ({ quantity }) => {
     if (quantity > 0) {
       return <H5 color="#198754">Avaible</H5>
-    } else if(quantity < 1){
+    } else if (quantity < 1) {
       return <H5 color="#ff0000">Inaccessible</H5>
     }
   }
@@ -76,9 +76,7 @@ const Product = () => {
               <p>{product.description}</p>
             </div>
             {checkProductAvailability(product)}
-            <h5>
-              {`$${product.price}`}
-            </h5>
+            <h5>{`$${product.price}`} </h5>  
             <Button onClick={() => addToCart(product)}>Add to card</Button>
             <div>
               Added on <Moment fromNow ago>{product.createdAt}</Moment>
@@ -95,7 +93,7 @@ const Product = () => {
         {productRelated.length !== 0 && productRelated.map((product) => {
           return (
             <Col key={product._id}>
-              <Card product={product} />
+              <Card heightImg="270px" product={product} />
             </Col>
           )
         })}

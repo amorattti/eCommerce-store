@@ -105,7 +105,7 @@ const Shop = () => {
           </ul>
         </Col>
         <Col size={10}>
-          <Grid template="1fr 1fr 1fr" gap="40px 0%">
+          <Grid template="1fr 1fr 1fr 1fr" gap="40px 0%">
             {filteredResults.length !== 0 ? filteredResults.map(product => (
               <Card key={product._id} product={product} />
             )) : <div style={{ textAlign: 'left', width:'200%' }}>

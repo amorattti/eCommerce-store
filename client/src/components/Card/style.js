@@ -9,45 +9,35 @@ export const ProductCart = styled.div`
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
   /* box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; */
   margin: 3px;
-
-  button { // test
-    display: none;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &:hover {
     box-shadow: 1px 1px 6px 5px #e9e9e9fa;
     border-bottom: none;
-
-    button {
-      color: #fff;
-      background: #000;
-    }
   }
 `
 
 export const ProductImage = styled(Link)`
- 
     display: inline-block;
     padding: 20px;
-
 `
 
 export const ProductInfo = styled.div`
-  height: 115px;
+  height: 45px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 0px 10px;
-  
+
  a {
   text-decoration: none;
   color: #202020;
   font-size: 14px;
+  font-weight: 200;
 }
 
-  &>span {
-    font-weight: 600;
-  }
 `
 
 export const LinkProduct = styled(Link)`
@@ -55,16 +45,25 @@ export const LinkProduct = styled(Link)`
   color: '#000000';
 `
 
+
+export const ActionButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  margin: 10px -10px;
+
+  div {
+    font-size: 1.3em;
+  }
+
+`
 export const ButtonCard = styled.button`
-  text-transform: uppercase;
-  padding: 7px 14px;
-  border: 1px solid #000;
-  color: #000;
-  background: #fff;
-  font-weight: 600;
-  transition: all 0.3s;
+  border: none;
+  /* color: #ffc107; */
+  background: none;
+  transition: all 0.2s;
 
   &:hover {
-    color: #8d8d8d!important;
+    color: #ffc107;
   }
 `

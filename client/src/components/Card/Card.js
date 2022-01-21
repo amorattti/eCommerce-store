@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import ShowImage from '../ShowImage'
 import {
   ProductCart, ProductInfo, LinkProduct,
-  ProductImage, ButtonCard
+  ProductImage, ButtonCard, ActionButtonsContainer
 } from './style'
 import { addItemToLocalStorage } from '../../core/cartHelper'
 import { useNavigate } from "react-router-dom"
+import { RiShoppingCartLine } from 'react-icons/ri';
 
-const Card = ({ product }) => {
+const Card = ({ product, heightImg="100%" }) => {
   let navigate = useNavigate()
   const [redirect, setRedirect] = useState(false)
 
@@ -28,21 +29,19 @@ const Card = ({ product }) => {
       {shouldRedirect(redirect)}
       <ProductCart>
         <ProductImage to={`/product/${product._id}`}>
-        
-            <ShowImage url="product" item={product} />
-        
+          <ShowImage url="product" height={heightImg} item={product} />
         </ProductImage>
         <ProductInfo>
           <LinkProduct to="/">
             <span>{product.name}</span>
           </LinkProduct>
-          <span>
-            <p>${product.price}</p>
-          </span>
         </ProductInfo>
-        <ButtonCard onClick={() => addToCart(product)}>
-          Add to card
-        </ButtonCard>
+        <ActionButtonsContainer>     
+            <ButtonCard onClick={() => addToCart(product)}>
+              <RiShoppingCartLine size="1.8em"/>
+            </ButtonCard>
+            <div>${product.price}</div>
+          </ActionButtonsContainer>
       </ProductCart>
     </>
   )
