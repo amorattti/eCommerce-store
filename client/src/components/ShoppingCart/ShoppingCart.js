@@ -36,22 +36,20 @@ const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
         </S.Name>
 
         <S.Quantity>
-          <button onClick={() => setCount(count + 1)}>
-            <img src={plusIcon} alt="" />
-          </button>
+          <S.QuantityButton plus onClick={() => setCount(count + 1)}>
+          </S.QuantityButton>
           <input
             type="number"
             min="0"
             onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
             onChange={(e) => handleChangeInput(e, product._id)}
             value={count} />
-          <button onClick={() => setCount((prevCount) => {
+          <S.QuantityButton minus onClick={() => setCount((prevCount) => {
             if (prevCount > 1) {
               return prevCount - 1
             } return 1
-          })}>
-            <img src={minusIcon} alt="" />
-          </button>
+          })}>    
+          </S.QuantityButton>
         </S.Quantity>
 
         <S.TotalPrice>${product.price}</S.TotalPrice>
