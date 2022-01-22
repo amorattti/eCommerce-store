@@ -33,7 +33,7 @@ const Card = ({ product, heightImg="100%" }) => {
         </ProductImage>
         <ProductInfo>
           <LinkProduct to="/">
-            <span>{product.name}</span>
+           {product.name}
           </LinkProduct>
         </ProductInfo>
         <ActionButtonsContainer>     

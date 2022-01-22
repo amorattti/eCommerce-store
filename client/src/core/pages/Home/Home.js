@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <Layout title="Home page" description="Node React E-commerce App">
       <Search />
-      <Header>Best sellerss</Header>
+      <Header>Best Sellers</Header>
       <Grid>
         {productsBySell.map((product) => <Card key={product._id} product={product} />)}
       </Grid>

@@ -90,14 +90,14 @@ const Shop = () => {
       <Row>
         <Col size={2}>
           <ul>
-            <h5>By category</h5>
+            <h5>Filter by category</h5>
             <Checkbox
               categories={categories}
               handleFilters={(filters) => handleFilters(filters, 'category')}
             />
           </ul>
           <ul>
-            <h5>Price</h5>
+            <h5>Filter by Price</h5>
             <RadioBox
               prices={prices}
               handleFilters={(filters) => handleFilters(filters, 'price')}

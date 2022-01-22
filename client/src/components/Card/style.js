@@ -12,6 +12,7 @@ export const ProductCart = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 385px;
 
   &:hover {
     box-shadow: 1px 1px 6px 5px #e9e9e9fa;
@@ -22,6 +23,7 @@ export const ProductCart = styled.div`
 export const ProductImage = styled(Link)`
     display: inline-block;
     padding: 20px;
+    height: 273px;
 `
 
 export const ProductInfo = styled.div`
@@ -32,6 +34,7 @@ export const ProductInfo = styled.div`
   padding: 0px 10px;
 
  a {
+  height: 200%;
   text-decoration: none;
   color: #202020;
   font-size: 14px;
@@ -50,7 +53,7 @@ export const ActionButtonsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: end;
-  margin: 10px -10px;
+  margin: 15px -10px;
 
   div {
     font-size: 1.3em;
