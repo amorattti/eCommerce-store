@@ -25,6 +25,9 @@ const AdminDashboard = () => {
           <ListGroupItem>
             <NavLink to="/admin/orders">View Orders</NavLink>
           </ListGroupItem>
+          <ListGroupItem>
+            <NavLink to="/admin/products">Manage Products</NavLink>
+          </ListGroupItem>
         </ListGroup>
       </Card>
     )

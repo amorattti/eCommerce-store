@@ -166,7 +166,7 @@ const AddProduct = () => {
 
   return (
     <Layout title="Add Product">
-      <EntryCard>
+      <EntryCard style={{maxWidth: "none!important"}}>
         {showError()}
         {showLoading()}
         {showSuccess()}
