@@ -32,6 +32,9 @@ const productSchema = new Schema({
     type: Number,
     default: 0
   },
+  author: {
+    type: String
+  },
   photo: {
     data: Buffer,
     contentType: String,

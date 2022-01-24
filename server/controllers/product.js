@@ -21,8 +21,12 @@ exports.productById = async (req, res, next, id) => {
 
 /**** endpoints ****/
 exports.read = (req, res) => {
-  req.product.photo = undefined
-  return res.json(req.product)
+  try {
+    req.product.photo = undefined
+    return res.json(req.product)
+  } catch (error) {
+    return res.status(400).json({ message: 'Product not found' })
+  }
 }
 
 exports.create = (req, res) => {
@@ -90,13 +94,15 @@ exports.update = (req, res) => {
       })
     }
 
-    const { name, description, price, category, quantity, shipping } = fields
 
-    if (!name || !description || !price || !category || !quantity || !shipping) {
-      return res.status(400).json({
-        error: "All fields are required"
-      })
-    }
+    // const { name, description, price, category, quantity, shipping } = fields
+    // if (!name || !description || !price || !category || !quantity || !shipping) {
+    //   return res.status(400).json({
+    //     error: "All fields are required"
+    //   })
+    // }
+
+
     /**  update by lodash _.assignIn method short name _extend **/
     let product = req.product
     product = _.extend(product, fields)

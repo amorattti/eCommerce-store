@@ -32,7 +32,7 @@ const Card = ({ product, heightImg="100%" }) => {
           <ShowImage url="product" height={heightImg} item={product} />
         </ProductImage>
         <ProductInfo>
-          <LinkProduct to="/">
+          <LinkProduct to={`/product/${product._id}`}>
            {product.name}
           </LinkProduct>
         </ProductInfo>

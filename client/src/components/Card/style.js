@@ -27,23 +27,28 @@ export const ProductImage = styled(Link)`
 `
 
 export const ProductInfo = styled.div`
-  height: 45px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 0px 10px;
-  line-height: 20px;
+  line-height: 18px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
 
  a {
   height: 200%;
   text-decoration: none;
-  color: #202020;
+  color: #0F1111;
   font-size: 14px;
-  font-weight: 200;
+  font-weight: 600;
+  transition: color 00.2s;
+
+  &:hover {
+    color: #ffc107;
+  }
 }
 
 `
@@ -56,10 +61,9 @@ export const LinkProduct = styled(Link)`
 
 export const ActionButtonsContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: end;
-  margin: 20px -20px;
-  margin-top: 0;
+  padding: 10px 20px;
 
   div {
     font-size: 1.3em;

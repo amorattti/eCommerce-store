@@ -14,6 +14,7 @@ const AddProduct = () => {
   const [values, setValues] = useState({
     name: '',
     description: '',
+    author: '',
     price: '',
     category: '',
     categories: [],
@@ -30,6 +31,7 @@ const AddProduct = () => {
   const {
     name,
     description,
+    author,
     price,
     category,
     categories,
@@ -111,6 +113,13 @@ const AddProduct = () => {
           value={description} />
       </InputGroup>
       <InputGroup>
+        <label>Author</label>
+        <Input
+          onChange={handleChange('author')}
+          type="text"
+          value={author} />
+      </InputGroup>
+      <InputGroup>
         <label>Price</label>
         <Input
           onChange={handleChange('price')}
@@ -166,7 +175,7 @@ const AddProduct = () => {
 
   return (
     <Layout title="Add Product">
-      <EntryCard style={{maxWidth: "none!important"}}>
+      <EntryCard>
         {showError()}
         {showLoading()}
         {showSuccess()}

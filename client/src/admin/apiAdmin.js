@@ -1,5 +1,7 @@
 import { API } from "../config";
 
+/** CATEGORIES */
+
 export const createCategory = async (userId, token, category) => {
   try {
     const response = await fetch(`${API}/category/create/${userId}`, {
@@ -43,6 +45,8 @@ export const getCategories = async () => {
   }
 }
 
+/** ORDERS */
+
 export const getListOrders = async (userId, token) => {
   try {
     const response = await fetch(`${API}/order/list/${userId}`, {
@@ -57,7 +61,7 @@ export const getListOrders = async (userId, token) => {
   }
 }
 
-export const fetchOrdersStatus = async(userId, token) => {
+export const fetchOrdersStatus = async (userId, token) => {
   try {
     const response = await fetch(`${API}/order/status-values/${userId}`, {
       method: "GET",
@@ -71,8 +75,7 @@ export const fetchOrdersStatus = async(userId, token) => {
   }
 }
 
-
-export const updateOrderStatus = async(userId, token, body) => {
+export const updateOrderStatus = async (userId, token, body) => {
   try {
     const resp = await fetch(`${API}/order/update-status/${userId}`, {
       method: 'PUT',
@@ -86,6 +89,35 @@ export const updateOrderStatus = async(userId, token, body) => {
     return resp.json()
   } catch (error) {
     console.log(error)
+  }
+}
+
+/** CRUD UPDATE PRODUCT */
+
+export const fetchProductById = async (_id) => {
+  try {
+    const reps = await fetch(`${API}/product/${_id}`)
+    return reps.json()
+  } catch (error) {
+    console.log(error, 'ERRRORR')
+  }
+}
+
+export const fetchProducts = async (
+  token,
+  soryBy = 'createdAt',
+  order = "asc",
+  limit = "0"
+) => {
+  try {
+    const reps = await fetch(`${API}/products?soryBy=${soryBy}&order=${order}&limit=${limit}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return reps.json()
+  } catch (error) {
+    console.log(error, 'ERRRORR')
   }
 }
 
