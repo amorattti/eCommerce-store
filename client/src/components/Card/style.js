@@ -21,9 +21,9 @@ export const ProductCart = styled.div`
 `
 
 export const ProductImage = styled(Link)`
-    display: inline-block;
-    padding: 20px;
-    height: 273px;
+  display: inline-block;
+  padding: 20px;
+  height: 273px;
 `
 
 export const ProductInfo = styled.div`
@@ -32,6 +32,11 @@ export const ProductInfo = styled.div`
   flex-direction: column;
   justify-content: space-around;
   padding: 0px 10px;
+  line-height: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 
  a {
   height: 200%;
@@ -53,7 +58,8 @@ export const ActionButtonsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: end;
-  margin: 15px -10px;
+  margin: 20px -20px;
+  margin-top: 0;
 
   div {
     font-size: 1.3em;
