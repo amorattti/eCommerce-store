@@ -20,13 +20,15 @@ export const StyledNavbarExtend = styled(Wrapper)`
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  height: 70px;
   padding: 0 30px;
   color: #000000;
   background-color: #ffffff;
   cursor: pointer;
   font-weight: 500;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0, 0.06);
+
+  margin: 20px auto;
+
 `
 
 export const NavItemLink = styled(Link)`
@@ -34,6 +36,8 @@ export const NavItemLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   margin-left: 16px;
+  margin-left: 35px;
+
   ${props => props.$fill && css`
     padding: 8px 16px;
     border-radius: 4px;

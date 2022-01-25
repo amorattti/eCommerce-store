@@ -6,6 +6,9 @@ import { isAuthenticated } from '../../auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { itemTotal } from '../../core/cartHelper'
+import { FaUserCircle } from 'react-icons/fa';
+
+// FaUserCircle
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ const Navbar = () => {
   return (
     <StyledNavbarExtend>
       <NavItemLink to="/cart">
-        <FontAwesomeIcon icon={faCartArrowDown} size="lg" color='#ffc107' />
+        <FontAwesomeIcon icon={faCartArrowDown} size="lg" />
         <span>{itemTotal()}</span> 
       </NavItemLink>
       {!isAuthenticated() && (
@@ -26,8 +29,12 @@ const Navbar = () => {
       {isAuthenticated() && (
         <>
           {isAuthenticated().user.role === 0 ? (
-            <NavItemLink to="/user/dashboard">Dashboard</NavItemLink>) :
-            (<NavItemLink to="/admin/dashboard">Dashboard</NavItemLink>)}
+            <NavItemLink to="/user/dashboard">
+                <FaUserCircle size="1.5em" color=""/>
+            </NavItemLink>) :
+            (<NavItemLink to="/admin/dashboard">
+                <FaUserCircle size="1.5em"/>
+            </NavItemLink>)}
 
           <NavItemLink
             as="span"

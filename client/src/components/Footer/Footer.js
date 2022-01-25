@@ -1,8 +1,16 @@
+import { FooterStyled } from "./style";
 
 const Footer = () => {
 
   return (
-    <div></div>
+    <FooterStyled>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Privacy Policy</li>
+        <li>Contact</li>
+      </ul>
+    </FooterStyled>
   ) 
 };
 

@@ -16,9 +16,9 @@ export const ProductsContainer = styled.section`
 export const GridProductsList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
- 
   border-top: 1px solid #d7d7d7;;
-  border-right: 1px solid #d7d7d7;;
+  border-right: 1px solid #d7d7d7;
+  margin-bottom: 150px;
 
   span {
     padding: 4px;

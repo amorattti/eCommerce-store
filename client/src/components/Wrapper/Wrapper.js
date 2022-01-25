@@ -7,5 +7,7 @@ export const Wrapper = styled.section`
   max-width: 1240px;
   padding-right: 20px;
   padding-left: 20px;
+
+
 `;
 

@@ -14,10 +14,13 @@ const Jumbotron = styled.article`
   }
 `
 
+const SectionWrapper = styled.section`
+    margin-bottom: 100px;
+`
+
 const Layout = ({
   title = '',
   description = '',
-  className,
   children
 }) => {
   return (
@@ -28,11 +31,11 @@ const Layout = ({
           <p className="lead">{description}</p>
         </Wrapper>
       </Jumbotron>
-      <section className={className}>
+      <SectionWrapper>
         <Wrapper>
           {children}
         </Wrapper>
-      </section>
+      </SectionWrapper>
     </>
   )
 }

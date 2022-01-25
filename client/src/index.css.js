@@ -11,8 +11,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body, html, #root {
+    font-family: 'Quicksand', sans-serif;
+    display:flex; 
+    flex-direction:column;  
     height: 100%;
-    font-family: 'Quicksand', sans-serif
   }
 
   ul {

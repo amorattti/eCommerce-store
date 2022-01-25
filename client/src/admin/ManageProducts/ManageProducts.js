@@ -3,6 +3,7 @@ import { fetchProductById, fetchProducts } from '../apiAdmin'
 import { isAuthenticated } from '../../auth'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Moment from 'react-moment'
 
 import Layout from '../../hoc/Layout'
 
@@ -31,7 +32,6 @@ const ManageProducts = () => {
 
   console.log(products, 'ss')
 
-
   const singleProduct = (product) => {
     return (
       <S.GridProductsList>
@@ -45,7 +45,11 @@ const ManageProducts = () => {
 
         {products && products.map((product) => (
           <>
-            <span>{product.createdAt}</span>
+            <span>
+              <Moment format="YYYY/MM/DD">
+                {product.createdAt}
+              </Moment>
+            </span>
             <span>
               <Link to={`/product/${product._id}`}>
                 {product.name}
