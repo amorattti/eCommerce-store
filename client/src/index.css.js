@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
   }
 
   body, html, #root {
@@ -15,6 +16,8 @@ const GlobalStyles = createGlobalStyle`
     display:flex; 
     flex-direction:column;  
     height: 100%;
+    background: #fafafa;
+    color: #303030;
   }
 
   ul {
