@@ -19,7 +19,6 @@ const Shop = () => {
   const [skip, setSkip] = useState(0)
   const [size, setSize] = useState(0)
   const [filteredResults, setFilteredResults] = useState([])
-  console.log("state: Shop page", { skip, size, limit, filteredResults })
 
   const init = async () => {
     const response = await getCategories()

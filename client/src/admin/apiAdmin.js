@@ -19,14 +19,14 @@ export const createCategory = async (userId, token, category) => {
   }
 }
 
-export const createProduct = async (userId, token, product) => {
+export const createProduct = async (userId, token, formData) => {
   try {
     const response = await fetch(`${API}/product/create/${userId}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`
       },
-      body: product
+      body: formData
     })
     return response.json()
   } catch (error) {
@@ -92,16 +92,7 @@ export const updateOrderStatus = async (userId, token, body) => {
   }
 }
 
-/** CRUD UPDATE PRODUCT */
-
-export const fetchProductById = async (_id) => {
-  try {
-    const reps = await fetch(`${API}/product/${_id}`)
-    return reps.json()
-  } catch (error) {
-    console.log(error, 'ERRRORR')
-  }
-}
+/** PRODUCT */
 
 export const fetchProducts = async (
   token,
@@ -117,7 +108,35 @@ export const fetchProducts = async (
     })
     return reps.json()
   } catch (error) {
-    console.log(error, 'ERRRORR')
+    console.log(error)
   }
 }
 
+export const updateProduct = async (userId, token, productId, formData) => {
+  try {
+    const reps = await fetch(`${API}/product/${productId}/${userId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    })
+    return reps.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const removeProduct = async (userId, token, productId) => {
+  try {
+    const response = await fetch(`${API}/product/${productId}/${userId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}

@@ -14,7 +14,7 @@ router.param('productId', productById) // set req.product = product  by id
 router.get('/product/:productId', read)
 router.post('/product/create/:userId', requireSignin, isAuth, isAdmin, create)
 router.delete('/product/:productId/:userId', requireSignin, isAuth, isAdmin, remove)
-router.patch('/product/:productId/:userId', requireSignin, isAuth, isAdmin, update)
+router.put('/product/:productId/:userId', requireSignin, isAuth, isAdmin, update)
 router.get('/product/photo/:productId', photo)
 
 /**--products--*/

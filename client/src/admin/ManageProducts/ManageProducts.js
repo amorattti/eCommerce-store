@@ -1,38 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { fetchProductById, fetchProducts } from '../apiAdmin'
+import { fetchProducts, removeProduct } from '../apiAdmin'
 import { isAuthenticated } from '../../auth'
-import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
-
 import Layout from '../../hoc/Layout'
 
 import * as S from './style'
 
-
 const ManageProducts = () => {
   const [products, setProducts] = useState([])
-  let { userId } = useParams();
-
-  const { token } = isAuthenticated()
+  const { user, token } = isAuthenticated()
 
   const init = async () => {
-    const getProductById = await fetchProductById(token)
     const getProducts = await fetchProducts(token)
-
     setProducts(getProducts)
+  }
 
-    console.log(getProductById)
-    console.log('getProducts', getProducts)
+  const deleteProduct = async(user, token, productId) => {
+    if (window.confirm("Delete the product?")) {
+      await removeProduct(user, token, productId)
+      const newList = await fetchProducts(token)
+      setProducts(newList)
+    }
   }
 
   useEffect(() => {
     init()
   }, [])
 
-  console.log(products, 'ss')
-
-  const singleProduct = (product) => {
+  const singleProduct = () => {
     return (
       <S.GridProductsList>
         <span>
@@ -42,9 +38,8 @@ const ManageProducts = () => {
           <strong>name</strong>
         </span>
         <span>Action buttons</span>
-
         {products && products.map((product) => (
-          <>
+          <React.Fragment key={product._id}>
             <span>
               <Moment format="YYYY/MM/DD">
                 {product.createdAt}
@@ -57,11 +52,22 @@ const ManageProducts = () => {
             </span>
             <span>
               <div>
-                <button>Delete</button>
-                <button>Edit</button>
+                <button>
+                  <Link
+                    style={{
+                      textDecoration: 'none',
+                      color: 'inherit'
+                    }}
+                    to={`/admin/update/${product._id}`}>
+                    Edit
+                  </Link>
+                </button>
+                <button
+                  onClick={() => deleteProduct(user._id, token, product._id) }
+                >Delete</button>
               </div>
             </span>
-          </>
+          </React.Fragment>
         ))}
       </S.GridProductsList>
     )

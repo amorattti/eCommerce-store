@@ -26,6 +26,7 @@ import Cart from './core/pages/CartShopping/Cart'
 import Orders from './admin/Orders'
 import Profile from './user/Profile'
 import ManageProducts from './admin/ManageProducts'
+import EditProduct from './admin/ManageProducts/EditProduct'
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="create/product" element={<AddProduct />} />
           <Route path="admin/orders" element={<Orders />} />
           <Route path="admin/products" element={<ManageProducts />} />
+          <Route path="admin/update/:productId" element={<EditProduct />} />
 
         </Route>
         <Route path="product/:productId" element={<Product />} />
