@@ -64,7 +64,9 @@ const Product = () => {
       <Row>
         <Col size={3}>
           <ImageSection>
-            <ShowImage width='80%' url="product" item={product} />
+            {product._id &&
+              <ShowImage width='80%' url="product" item={product} />
+            }
           </ImageSection>
         </Col>
         <Col size={1}></Col>
@@ -76,7 +78,7 @@ const Product = () => {
               <p>{product.description}</p>
             </div>
             {checkProductAvailability(product)}
-            <h5>{`$${product.price}`} </h5>  
+            <h5>{`$${product.price}`} </h5>
             <Button onClick={() => addToCart(product)}>Add to card</Button>
             <div>
               Added on <Moment fromNow ago>{product.createdAt}</Moment>
