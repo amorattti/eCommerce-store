@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Row = styled.div`
+export const RowFlex = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
@@ -11,8 +11,11 @@ export const Col = styled.div`
 
 export const ImageSection = styled.div`
   max-width: 275px;
+`
 
- 
+export const RowGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
 export const ContentSection = styled.div`

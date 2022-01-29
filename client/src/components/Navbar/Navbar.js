@@ -13,7 +13,7 @@ import Search from '../Search'
 
 const Navbar = () => {
   const navigate = useNavigate();
-  console.log(isAuthenticated())
+
   return (
     <NavbarContainer>
       <Search />

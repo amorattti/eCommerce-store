@@ -46,7 +46,6 @@ export const getFilteredProducts = async (skip, limit, filters = {}) => {
 }
 
 export const list = async (params) => {
-  console.log('params before ', params)
   try {
     const query = queryString.stringify(params)
 

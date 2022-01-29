@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Layout from '../../../hoc/Layout'
 import { fetchProductById, fetchRelatedProducts } from '../../apiCore'
 import ShowImage from '../../../components/ShowImage'
-import { Row, Col, ImageSection, ContentSection, Heading, H5 } from './style'
+import { RowFlex, Col, ImageSection, ContentSection, Heading, H5, RowGrid } from './style'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import Moment from 'react-moment';
@@ -61,7 +61,7 @@ const Product = () => {
   return (
     <Layout>
       {shouldRedirect(redirect)}
-      <Row>
+      <RowFlex>
         <Col size={3}>
           <ImageSection>
             {product._id &&
@@ -85,21 +85,21 @@ const Product = () => {
             </div>
           </ContentSection>
         </Col>
-      </Row>
-      <Row>
+      </RowFlex>
+      <RowFlex>
         <Col size={12}>
           <Heading>Products related </Heading>
         </Col>
-      </Row>
-      <Row>
+      </RowFlex>
+      <RowGrid>
         {productRelated.length !== 0 && productRelated.map((product) => {
           return (
-            <Col key={product._id}>
-              <Card heightImg="270px" product={product} />
-            </Col>
+            <div key={product._id}>
+              <Card heightImg="233px" product={product} />
+            </div>
           )
         })}
-      </Row>
+      </RowGrid>
     </Layout>
   )
 }

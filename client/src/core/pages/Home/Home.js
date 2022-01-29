@@ -5,7 +5,7 @@ import { getsProducts } from './../../apiCore'
 import { Header } from './style'
 import Grid from '../../../components/Grid'
 
-const Home = ({wsensie}) => {
+const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])
   const [productsByArrival, setProductsByArrival] = useState([])
   const [error, setError] = useState(false)

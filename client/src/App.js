@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // styled components assets
 import styled, { ThemeProvider } from 'styled-components'
@@ -29,23 +29,32 @@ import ManageProducts from './admin/ManageProducts'
 import EditProduct from './admin/ManageProducts/EditProduct'
 import { Wrapper } from './components'
 
-const App = () => {
+export const SearchContext = createContext();
 
+const App = () => {
+  const [searchValue, setSearchValue] = useState(null)
 
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Navigation>
-        <Wrapper>
-          <Navbar />
-          <Menu />
-        </Wrapper>
+        <SearchContext.Provider value={{ setSearchValue: setSearchValue }}>
+          <Wrapper>
+            <Navbar />
+            <Menu />
+          </Wrapper>
+        </SearchContext.Provider>
       </Navigation>
       <Routes>
-        <Route path="/" element={<Home wsensie={'Tobiasz Łoś'} />} />
+        <Route path="/" element={<Home />} />
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="shop" element={<Shop  />} />
+        <Route
+          path="shop"
+          element={<Shop
+            searchValue={searchValue}
+            setSearchValue={setSearchValue} />}
+        />
         <Route element={<PrivateUserRoute />}>
           <Route path="user/dashboard" element={<DashboardUser />} />
           <Route path="profile/:userId" element={<Profile />} />

@@ -9,7 +9,7 @@ import RadioBox from '../../../components/RadioBox'
 import Card from '../../../components/Card/Card'
 import Grid from '../../../components/Grid'
 
-const Shop = () => {
+const Shop = ({searchValue, setSearchValue}) => {
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] }
   })
@@ -39,8 +39,12 @@ const Shop = () => {
 
   useEffect(() => {
     init()
-    loadFilterResults(myFilters.filters)
-  }, [])
+    if(searchValue) {
+      setFilteredResults(searchValue)
+    } else {
+      loadFilterResults(myFilters.filters) 
+    }
+  }, [searchValue])
 
   const handleFilters = (filters, filterBy) => {
     const newFilters = { ...myFilters }

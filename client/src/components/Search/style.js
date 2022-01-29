@@ -54,12 +54,13 @@ export const Input = styled.input`
 
 export const ButtonSearch = styled.button`
   padding: 8px 16px;
-  background: none;
-  border: 1px solid #d7d7d7;
   border-left: none;
   background: #ffc107;
   color: #fff;
   font-weight: 600;
+  border: none;
+  border-radius: 0px 20px 20px 0;
+  padding: 9px 24px;
 `
 
 
