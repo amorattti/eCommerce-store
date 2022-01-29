@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // styled components assets
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import theme from './utils/theme'
 import GlobalStyles from './index.css.js'
 import { LoadingIndicator } from './components'
@@ -27,22 +27,28 @@ import Orders from './admin/Orders'
 import Profile from './user/Profile'
 import ManageProducts from './admin/ManageProducts'
 import EditProduct from './admin/ManageProducts/EditProduct'
+import { Wrapper } from './components'
 
 const App = () => {
+
+
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <Navbar />
-      <Menu />
+      <Navigation>
+        <Wrapper>
+          <Navbar />
+          <Menu />
+        </Wrapper>
+      </Navigation>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home wsensie={'Tobiasz Łoś'} />} />
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="shop" element={<Shop  />} />
         <Route element={<PrivateUserRoute />}>
           <Route path="user/dashboard" element={<DashboardUser />} />
           <Route path="profile/:userId" element={<Profile />} />
-
         </Route>
         <Route element={<PrivateAdminRoute />}>
           <Route path="admin/dashboard" element={<DashboardAdmin />} />
@@ -51,7 +57,6 @@ const App = () => {
           <Route path="admin/orders" element={<Orders />} />
           <Route path="admin/products" element={<ManageProducts />} />
           <Route path="admin/update/:productId" element={<EditProduct />} />
-
         </Route>
         <Route path="product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
@@ -74,3 +79,9 @@ const RootApp = () => {
 
 export default RootApp
 
+
+export const Navigation = styled.nav`
+  background-color: #fff;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+  z-index: 9999;
+`

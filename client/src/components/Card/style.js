@@ -5,14 +5,18 @@ export const ProductCart = styled.div`
   text-align: center;
   transition: all 0.4;
   /* border: 1px solid #ffffff; */
-  border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  /* border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
   /* box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; */
   margin: 3px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 385px;
+
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
 
   &:hover {
     box-shadow: 1px 1px 6px 5px #e9e9e9fa;

@@ -89,7 +89,7 @@ const Search = () => {
 
   const searchResults = (results = []) => {
     return (
-      <Row >
+      <Row>
         <h2>{searchMessage(results)}</h2>
         {results.length > 0 && searched && results.map(product => 
           <Card key={product._id} product={product} />)}
@@ -101,7 +101,7 @@ const Search = () => {
   return (
     <SearchContainer>
       {searchForm()}
-      {searchResults(results)}
+      {/* {searchResults(results)} */}
     </SearchContainer>
   )
 }

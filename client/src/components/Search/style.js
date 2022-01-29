@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
   text-align: center;
-  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
 
 `
 

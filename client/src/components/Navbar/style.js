@@ -26,10 +26,15 @@ export const StyledNavbarExtend = styled(Wrapper)`
   cursor: pointer;
   font-weight: 500;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0, 0.06);
+`
 
-  margin: 20px auto;
+export const NavbarContainer = styled.section`
+  display:flex;
+  justify-content: space-between;
+  margin-top: 20px;
 
 `
+
 
 export const NavItemLink = styled(Link)`
   position:relative;

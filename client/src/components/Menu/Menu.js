@@ -13,25 +13,23 @@ import {
 const Menu = () => {
   return (
     <MenuContainer>
-      <Wrapper>
-        <MenuBar>
-          <MenuNav>
-            <MenuItem>
-              <LinkMenu
-                to={`/`}
-              > Home
-              </LinkMenu>
-            </MenuItem>
+      <MenuBar>
+        <MenuNav>
+          <MenuItem>
+            <LinkMenu
+              to={`/`}
+            > Home
+            </LinkMenu>
+          </MenuItem>
 
-            <MenuItem>
-              <LinkMenu
-                to={`/shop`}
-              > Shop
-              </LinkMenu>
-            </MenuItem>
-          </MenuNav>
-        </MenuBar>
-      </Wrapper>
+          <MenuItem>
+            <LinkMenu
+              to={`/shop`}
+            > Shop
+            </LinkMenu>
+          </MenuItem>
+        </MenuNav>
+      </MenuBar>
     </MenuContainer>
   )
 }
