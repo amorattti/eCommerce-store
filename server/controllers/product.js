@@ -212,7 +212,7 @@ exports.listBySearch = async (req, res) => {
         }
       }
     }
-    console.log(findArgs)
+    
     const data = await Product.find(findArgs)
       .select('-photo')
       .populate('category')

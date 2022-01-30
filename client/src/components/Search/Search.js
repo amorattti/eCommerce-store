@@ -4,29 +4,34 @@ import {
   SearchContainer,
   Select,
   Input,
-  ButtonSearch,
-  Row
+  ButtonSearch
 } from './style'
 
 import { SearchContext } from '../../App'
-
-import Card from '../Card'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 
 const Search = () => {
-  const { setSearchValue } = useContext(SearchContext);
+  const { setSearchValue, searchValue } = useContext(SearchContext);
   const navigate = useNavigate();
 
   const [data, setData] = useState({
     categories: [],
     category: "",
     search: "",
-    results: [],
     searched: false
   })
 
-  const { categories, category, search, results, searched } = data
+  const { categories, category, search, searched } = data
+  let location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname !== '/shop' && searchValue.length !== 0) {
+      // clear data to default in shop page and claer input value
+      setSearchValue([])
+      setData({ ...data, search: "" })
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     loadCategories()
@@ -44,16 +49,18 @@ const Search = () => {
     if (search) {
       try {
         const resp = await list({ search: search || undefined, category: category })
-        setData({ ...data, results: resp, searched: true })
+        setData({ ...data, searched: true })
 
         if (resp.length > 0) {
           setSearchValue(resp)
           navigate('/shop')
+        } else {
+          navigate('/asdasdsda')
         }
       } catch (error) {
         console.log(error)
-      } 
-    } 
+      }
+    }
   }
 
   const handleChange = (name) => (event) => {
@@ -62,7 +69,7 @@ const Search = () => {
 
   const searchSubmit = (e) => {
     e.preventDefault()
-     searchData()
+    searchData()
   }
 
   const searchForm = () => (
@@ -78,6 +85,7 @@ const Search = () => {
       <span>
         <Input
           type="search"
+          value={search}
           onChange={handleChange("search")}
           placeholder='Search by name'
         />
@@ -88,33 +96,12 @@ const Search = () => {
     </form>
   )
 
-  // const searchMessage = (results) => {
-  //   if (searched && results.length > 0) {
-  //     return `${results.length} products have found `
-  //   }
-  //   if (searched && results.length < 1) {
-  //     return `Products not Found`
-  //   }
-  // }
-
-  // const searchResults = (results = []) => {
-  //   return (
-  //     <Row>
-  //       <h2>{searchMessage(results)}</h2>
-  //       {results.length > 0 && searched && results.map(product =>
-  //         <Card key={product._id} product={product} />)}
-  //     </Row>
-  //   )
-  // }
-
-
   return (
     <SearchContainer>
       {searchForm()}
-      {/* {searchResults(results)} */}
     </SearchContainer>
   )
 }
 
-export default Search
+export default React.memo(Search)
 

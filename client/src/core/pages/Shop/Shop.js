@@ -9,7 +9,7 @@ import RadioBox from '../../../components/RadioBox'
 import Card from '../../../components/Card/Card'
 import Grid from '../../../components/Grid'
 
-const Shop = ({searchValue, setSearchValue}) => {
+const Shop = ({ searchValue, setSearchValue }) => {
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] }
   })
@@ -39,10 +39,10 @@ const Shop = ({searchValue, setSearchValue}) => {
 
   useEffect(() => {
     init()
-    if(searchValue) {
-      setFilteredResults(searchValue)
+    if (searchValue.length < 1) {
+      loadFilterResults(myFilters.filters)
     } else {
-      loadFilterResults(myFilters.filters) 
+      setFilteredResults(searchValue)
     }
   }, [searchValue])
 
@@ -56,7 +56,7 @@ const Shop = ({searchValue, setSearchValue}) => {
     }
 
     loadFilterResults(myFilters.filters)
-    setMyFilters(newFilters)
+    // setMyFilters(newFilters)
   }
 
   const handlePrice = (value) => {
@@ -111,7 +111,7 @@ const Shop = ({searchValue, setSearchValue}) => {
           <Grid template="1fr 1fr 1fr 1fr" gap="40px 0%">
             {filteredResults.length !== 0 ? filteredResults.map(product => (
               <Card key={product._id} product={product} />
-            )) : <div style={{ textAlign: 'left', width:'200%' }}>
+            )) : <div style={{ textAlign: 'left', width: '200%' }}>
               <h5>No products found!</h5>
               <p>Please change Your search criteria and try again.
                 If still not finding anything relevant,

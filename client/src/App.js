@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // styled components assets
 import styled, { ThemeProvider } from 'styled-components'
@@ -29,16 +29,16 @@ import ManageProducts from './admin/ManageProducts'
 import EditProduct from './admin/ManageProducts/EditProduct'
 import { Wrapper } from './components'
 
-export const SearchContext = createContext();
+export const SearchContext = createContext()
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState(null)
+  const [searchValue, setSearchValue] = useState([])
 
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Navigation>
-        <SearchContext.Provider value={{ setSearchValue: setSearchValue }}>
+        <SearchContext.Provider value={{ setSearchValue, searchValue }}>
           <Wrapper>
             <Navbar />
             <Menu />

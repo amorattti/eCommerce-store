@@ -133,7 +133,7 @@ const Edit = () => {
           type="number"
           value={quantity} />
       </InputGroup>
-      <Button>Create Product</Button>
+      <Button>Edit Product</Button>
     </form>
   )
 
