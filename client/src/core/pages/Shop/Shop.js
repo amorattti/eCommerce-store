@@ -43,6 +43,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
       loadFilterResults(myFilters.filters)
     } else {
       setFilteredResults(searchValue)
+      setSize(searchValue.length)
     }
   }, [searchValue])
 
@@ -73,7 +74,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
 
   const laodMore = () => {
     const setPage = skip + limit
-
+    
     getFilteredProducts(setPage, limit, myFilters.filters).then(data => {
       if (data.error) {
         setError(data.error)
@@ -84,7 +85,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
       }
     })
   }
-
+  
   return (
     <Layout
       title="Shop page"
