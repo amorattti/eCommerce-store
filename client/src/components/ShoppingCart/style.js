@@ -1,7 +1,5 @@
 import styled from "styled-components"
 
-
-
 export const ItemBody = styled.div`
   display: flex;
   padding: 20px 30px;
@@ -9,6 +7,7 @@ export const ItemBody = styled.div`
   align-items: center;
   border-bottom: 1px solid #efe7e7;
   font-weight: 500;
+
 
   @media(max-width: 768px) {
     padding: 20px 0px;
@@ -23,8 +22,6 @@ export const ButtonRemove = styled.div`
   justify-content: center;
   cursor: pointer;
  
- 
-  
   &::before,
   &::after {
     position: absolute;
@@ -62,16 +59,12 @@ export const QuantityButton = styled.button`
   background-repeat:no-repeat;
 `
 
-
-
-export const Image = styled.figure`
-
-`
+export const Image = styled.figure``
 
 export const Name = styled.div`
   span {
     display: block;
-    inline-size: 150px;
+    inline-size: 120px;
     overflow-wrap: break-word;
     font-size: 14px;
     color: #43484D;

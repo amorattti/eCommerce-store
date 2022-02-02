@@ -38,7 +38,7 @@ const Profile = () => {
 
   useEffect(() => {
     init(userId)
-  }, [userId, init])
+  }, [userId])
 
 
   const handleChange = (name) => (event) => {

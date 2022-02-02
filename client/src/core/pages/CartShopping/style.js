@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
-export const Grid = styled.div`
-
-`
+export const Grid = styled.div``
 
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
 `
 
 export const ShoppingCart = styled.div`
-  box-shadow: 0px -1px 1px -1px rgb(0 0 0 / 20%), -1px 0px 1px 0px rgb(0 0 0 / 14%), 1px 0px 3px 0px rgb(0 0 0 / 12%);
-  border-radius: 6px;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+  background: #fff;
 `
 
 export const TitleCart = styled.div`
@@ -23,13 +23,25 @@ export const TitleCart = styled.div`
   font-weight: 600;
 `
 
-
 export const Col = styled.div`
   flex: ${(props) => props.size};
+
+  &:last-child {
+    margin-left: 30px;
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+  }
+   
 
   @media(max-width: 768px) {
     flex: none;
     width: 100%;
+
+    &:last-child {
+     margin: 20px 0;
+    }
   }
 
 `

@@ -8,6 +8,9 @@ import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
 import { ButtonPay } from './style'
 import Loading from '../Loading'
+import { useForm } from "react-hook-form";
+
+import * as S from './style'
 
 const Checkout = ({ products, setItems }) => {
   const [loading, setLoading] = useState(false)
@@ -18,6 +21,13 @@ const Checkout = ({ products, setItems }) => {
     address: '',
     instance: {}
   })
+
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log((data))
+    //  buy(data)
+  }
 
   const userId = isAuthenticated() && isAuthenticated().user._id
   const userToken = isAuthenticated() && isAuthenticated().token
@@ -50,8 +60,13 @@ const Checkout = ({ products, setItems }) => {
     return Number(str);
   }
 
-  const buy = async () => {
+  const buy = async (address) => {
     const { nonce } = await data.instance.requestPaymentMethod();
+    console.log("ADDRSSS", address)
+
+    const { firstname, surname, street_address, city, state, zip_code } = address
+
+    const template = `${firstname} ${surname} ${street_address} ${city} ${state} ${zip_code}`
 
     setLoading(true)
 
@@ -61,14 +76,14 @@ const Checkout = ({ products, setItems }) => {
     }
 
     const response = await processPayment(userId, userToken, paymentData)
-  console.log('RESP{ONSE', response)
+
     const createOrderData = {
       products: products,
       transaction_id: response.transaction.id,
       amount: response.transaction.amount,
-      address: data.address
+      address: template
     }
-    console.log('pauload: ', createOrderData)
+
     await createOrder(userId, userToken, createOrderData)
 
     setData({ ...data, success: response.success })
@@ -90,6 +105,29 @@ const Checkout = ({ products, setItems }) => {
     </Alert>
   )
 
+  const AddresForm = () => (
+    <S.AddresForm>
+      <h5>Address</h5>
+      <form>
+        <S.itemForm>
+          <input {...register("first_name")} placeholder='first name*' />
+        </S.itemForm>
+        <S.itemForm>
+          <input {...register("last name")} placeholder='last name*' />
+        </S.itemForm>
+        <S.itemForm>
+          <input {...register("city")} placeholder='city*' />
+        </S.itemForm>
+        <S.itemForm>
+          <input {...register("zip ")} placeholder='zip ' />
+        </S.itemForm>
+        <S.itemForm>
+          <input {...register("address")} placeholder='address*' />
+        </S.itemForm>
+      </form>
+    </S.AddresForm>
+  )
+
   const showDropIn = () => {
     if (!data.clientToken) {
       return (
@@ -100,16 +138,7 @@ const Checkout = ({ products, setItems }) => {
     } else {
       return (
         <div>
-          <div>
-            <h5> Delivery address </h5>
-            <textarea
-              style={{ width: '100%' }}
-              onChange={handleAddress}
-              value={data.address}
-              placeholder='Type your delivery address'
-            >
-            </textarea>
-          </div>
+          {AddresForm()}
           <DropIn
             options={{
               authorization: data.clientToken,
@@ -119,24 +148,28 @@ const Checkout = ({ products, setItems }) => {
             }}
             onInstance={(instance) => (data.instance = instance)}
           />
-          <ButtonPay onClick={buy}>Pay</ButtonPay>
+          <ButtonPay onClick={handleSubmit(onSubmit)}>Pay</ButtonPay>
         </div>
       );
     }
   }
 
   return (
-    <div>
-      <h5>Total: ${getTotal(products)}</h5>
+    <S.Summary>
+      <h5>Summary</h5>
+      <S.Total>
+        <div><span>Products</span><span>${`${getTotal(products)}`}</span></div>
+        <div><span>Shipping</span><span>Free</span></div>
+        <div><span>Total:</span> ${getTotal(products)}</div>
+      </S.Total>
       {showSuccess()}
       {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
         <Link to="/signin">
           <Button>Sign in to checkout</Button>
         </Link>
       )}
-      <hr />
       {loading && <Loading />}
-    </div>
+    </S.Summary>
   )
 }
 
