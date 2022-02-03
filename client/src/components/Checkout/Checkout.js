@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { isAuthenticated } from '../../auth/index'
 import { createOrder, getBraintreeToken, processPayment } from '../../core/apiCore'
-import { removeItemsCart } from '../../core/cartHelper'
+import { removeItemsCart, getCart } from '../../core/cartHelper'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
 import Alert from '../Alert'
@@ -22,11 +22,12 @@ const Checkout = ({ products, setItems }) => {
     instance: {}
   })
 
-  const { register, handleSubmit } = useForm();
+  // const { register, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.log((data))
-    //  buy(data)
+    buy(data)
   }
 
   const userId = isAuthenticated() && isAuthenticated().user._id
@@ -43,6 +44,8 @@ const Checkout = ({ products, setItems }) => {
 
   useEffect(() => {
     getTokenClient(userId, userToken)
+    getCart()
+
   }, [])
 
   const getTotal = (products) => {
@@ -60,13 +63,11 @@ const Checkout = ({ products, setItems }) => {
     return Number(str);
   }
 
-  const buy = async (address) => {
-    const { nonce } = await data.instance.requestPaymentMethod();
-    console.log("ADDRSSS", address)
+  const buy = async (addressData) => {
+    const { nonce } = await data.instance.requestPaymentMethod()
 
-    const { firstname, surname, street_address, city, state, zip_code } = address
-
-    const template = `${firstname} ${surname} ${street_address} ${city} ${state} ${zip_code}`
+    const { address, city, first_name, last_name, zip } = addressData
+    const template = `${first_name} ${last_name} ${address} ${city} ${zip}`
 
     setLoading(true)
 
@@ -76,7 +77,6 @@ const Checkout = ({ products, setItems }) => {
     }
 
     const response = await processPayment(userId, userToken, paymentData)
-
     const createOrderData = {
       products: products,
       transaction_id: response.transaction.id,
@@ -95,10 +95,6 @@ const Checkout = ({ products, setItems }) => {
     }
   }
 
-  const handleAddress = (event) => {
-    setData({ ...data, address: event.target.value })
-  }
-
   const showSuccess = () => (
     <Alert value={data.success} theme="success">
       Thanks! your payment was successful
@@ -110,19 +106,23 @@ const Checkout = ({ products, setItems }) => {
       <h5>Address</h5>
       <form>
         <S.itemForm>
-          <input {...register("first_name")} placeholder='first name*' />
+          <input {...register("first_name", { required: true })} placeholder='first name*' />
+          <span style={{ color: 'red' }}> {errors.first_name?.type === 'required' && "First name is required"}</span>
         </S.itemForm>
         <S.itemForm>
-          <input {...register("last name")} placeholder='last name*' />
+          <input {...register("last_name", { required: true })} placeholder='last name*' />
+          <span style={{ color: 'red' }}> {errors.last_name?.type === 'required' && "First name is required"}</span>
         </S.itemForm>
         <S.itemForm>
-          <input {...register("city")} placeholder='city*' />
+          <input {...register("city", { required: true })} placeholder='city*' />
+          <span style={{ color: 'red' }}> {errors.city?.type === 'required' && "First name is required"}</span>
         </S.itemForm>
         <S.itemForm>
-          <input {...register("zip ")} placeholder='zip ' />
+          <input {...register("zip")} placeholder='zip' />
         </S.itemForm>
         <S.itemForm>
-          <input {...register("address")} placeholder='address*' />
+          <input {...register("address", { required: true })} placeholder='address*' />
+          <span style={{ color: 'red' }}> {errors.address?.type === 'required' && "First name is required"}</span>
         </S.itemForm>
       </form>
     </S.AddresForm>
@@ -150,26 +150,31 @@ const Checkout = ({ products, setItems }) => {
           />
           <ButtonPay onClick={handleSubmit(onSubmit)}>Pay</ButtonPay>
         </div>
-      );
+      )
     }
   }
-
+  
   return (
-    <S.Summary>
-      <h5>Summary</h5>
-      <S.Total>
-        <div><span>Products</span><span>${`${getTotal(products)}`}</span></div>
-        <div><span>Shipping</span><span>Free</span></div>
-        <div><span>Total:</span> ${getTotal(products)}</div>
-      </S.Total>
+    <>
       {showSuccess()}
-      {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
-        <Link to="/signin">
-          <Button>Sign in to checkout</Button>
-        </Link>
+      {getCart() && (
+        <S.Summary>
+          <h5>Summary</h5>
+          <S.Total>
+            <div><span>Products</span><span>${`${getTotal(products)}`}</span></div>
+            <div><span>Shipping</span><span>Free</span></div>
+            <div><span>Total:</span> ${getTotal(products)}</div>
+          </S.Total>
+
+          {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
+            <Link to="/signin">
+              <Button>Sign in to checkout</Button>
+            </Link>
+          )}
+          {loading && <Loading />}
+        </S.Summary>
       )}
-      {loading && <Loading />}
-    </S.Summary>
+    </>
   )
 }
 

@@ -88,7 +88,7 @@ const Cart = () => {
       <Row>
         <Col size={8}>
           {items.length > 0 ? shoppingCart(items) : noItemsMessage()}
-        </Col>
+        </Col>   
         <Col size={4} >
           <Checkout
             products={items}

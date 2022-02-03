@@ -86,13 +86,14 @@ export const DetailsProducts = styled.div`
   display: flex;
   flex-direction: column;
 
-  & span:nth-child(3) {
+ span:nth-child(2) {
     inline-size: 300px;
   }
 
-  & span:nth-child(3) p {
+  & span:nth-child(1) p {
     font-size: 14px;
     color: #444444;
     letter-spacing: 0.4px;
+    font-weight: 500;
   }
 `

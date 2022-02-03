@@ -27,14 +27,9 @@ export const Col = styled.div`
   flex: ${(props) => props.size};
 
   &:last-child {
-    margin-left: 30px;
-    background: #fff;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+
   }
    
-
   @media(max-width: 768px) {
     flex: none;
     width: 100%;

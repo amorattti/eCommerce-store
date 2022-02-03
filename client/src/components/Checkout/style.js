@@ -3,6 +3,13 @@ import styled from "styled-components";
 
 export const Summary = styled.div`
 
+    margin-left: 30px;
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+
+
   h5 {
     font-size: 1.1em;
   }

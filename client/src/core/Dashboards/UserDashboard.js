@@ -97,8 +97,7 @@ const UserDashboard = () => {
                   ))}
                 </div>
                 <DetailsProducts>
-                  <span>Transaction ID:  {order.transaction_id} </span>
-                  <br />
+               
                   <span>Address:
                     <p>
                       {order.address}
