@@ -32,7 +32,12 @@ export const NavbarContainer = styled.section`
   display:flex;
   justify-content: space-between;
   margin-top: 20px;
+  align-items: center;
 
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 
 
@@ -75,3 +80,12 @@ export const NavItemLink = styled(Link)`
   }}
 `
 
+export const Logo = styled.div`
+  font-weight: 600;
+  font-size: 1.25rem;
+
+ > span{
+    color: green;
+  }
+
+`

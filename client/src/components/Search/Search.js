@@ -9,7 +9,7 @@ import {
 
 import { SearchContext } from '../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
-
+import { FiSearch } from 'react-icons/fi'
 
 const Search = () => {
   const { setSearchValue, searchValue } = useContext(SearchContext);
@@ -75,14 +75,6 @@ const Search = () => {
   const searchForm = () => (
     <form onSubmit={searchSubmit}>
       <span>
-        <Select onChange={handleChange("category")}>
-          <option value="all">All categories</option>
-          {categories.map((category, index) => (
-            <option value={category._id} key={index}>{category.name}</option>
-          ))}
-        </Select>
-      </span>
-      <span>
         <Input
           type="search"
           value={search}
@@ -91,7 +83,17 @@ const Search = () => {
         />
       </span>
       <span>
-        <ButtonSearch>Search</ButtonSearch>
+        <Select onChange={handleChange("category")}>
+          <option value="all">category</option>
+          {categories.map((category, index) => (
+            <option value={category._id} key={index}>{category.name}</option>
+          ))}
+        </Select>
+      </span>
+      <span>
+        <ButtonSearch>
+          <FiSearch/>
+        </ButtonSearch>
       </span>
     </form>
   )

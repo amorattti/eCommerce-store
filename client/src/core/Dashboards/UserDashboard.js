@@ -72,7 +72,7 @@ const UserDashboard = () => {
         <ListGroup>
 
           {history && history.map((order) => (
-            <ListGroupItem>
+            <ListGroupItem key={order._id}>
               <HeadSection>
                 <span>Status: {order.status}</span>
                 <span>

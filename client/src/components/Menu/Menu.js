@@ -2,15 +2,19 @@ import React from 'react'
 import { withRouter } from '../../hoc/withRouter'
 import { Wrapper } from '..'
 
+import { FaUserCircle, FaBars } from 'react-icons/fa'
+
+
 import {
   MenuContainer,
   MenuBar,
   MenuNav,
   MenuItem,
-  LinkMenu
+  LinkMenu,
+  BarIconWrapper
 } from './style'
 
-const Menu = () => {
+const Menu = ({setDisplay}) => {
   return (
     <MenuContainer>
       <MenuBar>
@@ -28,6 +32,13 @@ const Menu = () => {
             > Shop
             </LinkMenu>
           </MenuItem>
+
+          <MenuItem onClick={() => setDisplay(prevState => !prevState)}>
+            <BarIconWrapper>
+              <FaBars size="1.8rem"/>
+            </BarIconWrapper>         
+          </MenuItem>
+
         </MenuNav>
       </MenuBar>
     </MenuContainer>

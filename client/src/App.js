@@ -28,20 +28,26 @@ import Profile from './user/Profile'
 import ManageProducts from './admin/ManageProducts'
 import EditProduct from './admin/ManageProducts/EditProduct'
 import { Wrapper } from './components'
+import SidebarMobilePortal from './components/SidebarMobile/SidebarMobile'
 
 export const SearchContext = createContext()
 
 const App = () => {
   const [searchValue, setSearchValue] = useState([])
+  const [display, setDisplay] = useState(false) 
 
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Navigation>
         <SearchContext.Provider value={{ setSearchValue, searchValue }}>
-          <Wrapper>
+          <Wrapper as="nav">
+            <Logo>
+              <span>Prime</span>Books
+            </Logo>
             <Navbar />
-            <Menu />
+            <Menu setDisplay={setDisplay} />
+            <SidebarMobilePortal display={display} setDisplay={setDisplay} />
           </Wrapper>
         </SearchContext.Provider>
       </Navigation>
@@ -89,8 +95,24 @@ const RootApp = () => {
 export default RootApp
 
 
-export const Navigation = styled.nav`
+export const Navigation = styled.header`
   background-color: #fff;
   box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
   z-index: 9999;
+`
+
+export const Logo = styled.div`
+  display: none;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-top: 22px;
+
+ > span{
+    color: green;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
 `

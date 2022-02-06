@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavItemLink, StyledNavbarExtend, NavbarContainer } from './style'
+import { NavItemLink, NavbarContainer, Logo } from './style'
 import { signout } from '../../auth'
 import { useNavigate } from "react-router-dom"
 import { isAuthenticated } from '../../auth'
@@ -7,16 +7,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { itemTotal } from '../../core/cartHelper'
 import { FaUserCircle } from 'react-icons/fa'
+
 import Search from '../Search'
 
 // FaUserCircle
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <NavbarContainer>
+      <Logo>
+        <span>Prime</span>Books
+      </Logo>
       <Search />
+   
       <div>
         <NavItemLink to="/cart">
           <FontAwesomeIcon icon={faCartArrowDown} size="lg" />

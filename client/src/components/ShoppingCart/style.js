@@ -13,6 +13,7 @@ export const ItemBody = styled.div`
     padding: 20px 0px;
   }
 `
+
 export const ButtonRemove = styled.div`
   position: relative;
   height: 20px;
