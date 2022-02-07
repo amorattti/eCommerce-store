@@ -11,7 +11,7 @@ const Home = () => {
   const [error, setError] = useState(false)
 
   const loadProductsBySell = () => {
-    getsProducts('sold').then(data => {
+    getsProducts('sold', 4).then(data => {
       if (data.error) {
         setError(data.error)
       } else {
@@ -38,7 +38,7 @@ const Home = () => {
   return (
     <Layout title="Home page" description="Node React E-commerce App">
   
-      <Header>Best Sellers</Header>
+      <Header align="center">Best Sellers</Header>
       <Grid>
         {productsBySell.map((product) => <Card key={product._id} product={product} />)}
       </Grid>

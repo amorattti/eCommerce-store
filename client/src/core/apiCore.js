@@ -1,9 +1,9 @@
 import { API } from "../config"
 import queryString from 'query-string'
 
-export const getsProducts = async (sortBy) => {
+export const getsProducts = async (sortBy, limit=8) => {
   try {
-    const url = `${API}/products?sortBy=${sortBy}&order=desc&limit=5`
+    const url = `${API}/products?sortBy=${sortBy}&order=desc&limit=${limit}`
     const response = await fetch(url)
     return response.json()
   } catch (error) {

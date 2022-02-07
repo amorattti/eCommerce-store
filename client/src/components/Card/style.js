@@ -13,7 +13,7 @@ export const ProductCart = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 385px;
-
+  width: 240px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
@@ -22,11 +22,15 @@ export const ProductCart = styled.div`
     box-shadow: 1px 1px 6px 5px #e9e9e9fa;
     border-bottom: none;
   }
+
+  @media screen and (max-width: 768px) {
+    margin: 20px auto;
+  }
+
 `
 
 export const ProductImage = styled(Link)`
   display: inline-block;
-  padding: 20px;
   height: 273px;
 `
 
@@ -41,6 +45,7 @@ export const ProductInfo = styled.div`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  margin-top: 5px;
 
  a {
   height: 200%;
