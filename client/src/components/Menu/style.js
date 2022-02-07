@@ -18,9 +18,33 @@ export const MenuItem = styled.li`
   padding: 16px;
   padding-left: 0;
 
+  a {
+    position: relative
+  }
+
   &:last-child {
+    display: none;
     margin-left: auto;
     cursor: pointer;
+
+    > span {
+      padding-right: 40px;
+
+      span {
+        border-radius: 50px;
+        position: absolute;
+        top: -12px;
+        right: -14px;
+        background: #ffc107;
+        padding: 1px 6px;
+        font-weight: 600;
+        font-size: 11px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+    }
   }
 `
 export const LinkMenu = styled(Link)`

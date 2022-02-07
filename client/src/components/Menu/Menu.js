@@ -1,9 +1,9 @@
 import React from 'react'
 import { withRouter } from '../../hoc/withRouter'
-import { Wrapper } from '..'
-
-import { FaUserCircle, FaBars } from 'react-icons/fa'
-
+import { itemTotal } from '../../core/cartHelper'
+import { GrCart } from 'react-icons/gr'
+import { Link } from 'react-router-dom'
+import {FaBars} from 'react-icons/fa'
 
 import {
   MenuContainer,
@@ -14,7 +14,7 @@ import {
   BarIconWrapper
 } from './style'
 
-const Menu = ({setDisplay}) => {
+const Menu = ({ setDisplay }) => {
   return (
     <MenuContainer>
       <MenuBar>
@@ -25,20 +25,23 @@ const Menu = ({setDisplay}) => {
             > Home
             </LinkMenu>
           </MenuItem>
-
           <MenuItem>
             <LinkMenu
               to={`/shop`}
             > Shop
             </LinkMenu>
           </MenuItem>
-
-          <MenuItem onClick={() => setDisplay(prevState => !prevState)}>
-            <BarIconWrapper>
-              <FaBars size="1.8rem"/>
-            </BarIconWrapper>         
+          <MenuItem>
+            <span>
+              <Link to="/cart">
+                <GrCart size="1.8em" color="" />
+                <span>{itemTotal()}</span>
+              </Link>
+            </span>
+            <BarIconWrapper onClick={() => setDisplay(prevState => !prevState)}>
+              <FaBars size="1.8rem" />
+            </BarIconWrapper>
           </MenuItem>
-
         </MenuNav>
       </MenuBar>
     </MenuContainer>

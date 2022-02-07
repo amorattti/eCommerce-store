@@ -9,6 +9,7 @@ import { FaUserCircle } from 'react-icons/fa'
 import { withRouter } from '../../hoc/withRouter';
 import { GrCart } from 'react-icons/gr'
 import { BiExit } from 'react-icons/bi'
+import { BiLogIn, BiLogOut } from 'react-icons/bi'
 
 const sidebarId = document.getElementById('portal-sidebar-mobile')
 
@@ -32,12 +33,19 @@ const SidebarMobilePortal = ({ display, setDisplay, location }) => {
           </SideBarItem>
           <hr />
           {!isAuthenticated() && (
-            <SideBarItem>
-              <div>
-                <Link to="/signin">Sign in</Link>
-                <Link to="/signup">Sign in</Link>
-              </div>
-            </SideBarItem>
+            <>
+              <SideBarItem>
+                <Link to="/signin">
+                  <BiLogIn size="1.5em" /><span>Sign in</span>
+                </Link>
+              </SideBarItem>
+              <SideBarItem>
+                <Link to="/signup">
+                <BiLogOut size="1.5em" /><span>Sign up</span>
+                </Link>
+              </SideBarItem>
+              <hr />
+            </>
           )}
           <SideBarItem>
             <Link to="/cart">

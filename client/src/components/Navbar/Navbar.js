@@ -1,12 +1,11 @@
 import React from 'react'
-import { NavItemLink, NavbarContainer, Logo } from './style'
+import { NavItemLink, NavbarContainer, Logo, NavSection } from './style'
 import { signout } from '../../auth'
 import { useNavigate } from "react-router-dom"
 import { isAuthenticated } from '../../auth'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { itemTotal } from '../../core/cartHelper'
-import { FaUserCircle } from 'react-icons/fa'
+import { GrCart } from 'react-icons/gr'
+import { AiOutlineUser } from 'react-icons/ai'
 
 import Search from '../Search'
 
@@ -21,10 +20,10 @@ const Navbar = () => {
         <span>Prime</span>Books
       </Logo>
       <Search />
-   
-      <div>
+
+      <NavSection>
         <NavItemLink to="/cart">
-          <FontAwesomeIcon icon={faCartArrowDown} size="lg" />
+          <GrCart size="1.8em" color="" />
           <span>{itemTotal()}</span>
         </NavItemLink>
         {!isAuthenticated() && (
@@ -32,18 +31,20 @@ const Navbar = () => {
             <NavItemLink to="/signin">Sign in</NavItemLink>
             <NavItemLink to="/signup" $fill>Sign up</NavItemLink>
           </>
-
         )}
         {isAuthenticated() && (
           <>
             {isAuthenticated().user.role === 0 ? (
-              <NavItemLink to="/user/dashboard">
-                <FaUserCircle size="1.5em" color="" />
+              <NavItemLink
+                title="Dashboard"
+                to="/user/dashboard">
+                <AiOutlineUser size="1.8em" color="" />
               </NavItemLink>) :
-              (<NavItemLink to="/admin/dashboard">
-                <FaUserCircle size="1.5em" />
+              (<NavItemLink
+                title="Dashboard"
+                to="/admin/dashboard">
+                <AiOutlineUser size="1.8em" />
               </NavItemLink>)}
-
             <NavItemLink
               as="span"
               onClick={() => signout(() => {
@@ -53,7 +54,7 @@ const Navbar = () => {
             </NavItemLink>
           </>
         )}
-      </div>
+      </NavSection>
     </NavbarContainer>
   )
 }

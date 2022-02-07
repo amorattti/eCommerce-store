@@ -107,7 +107,7 @@ export const Logo = styled.div`
   font-size: 1.25rem;
   margin-top: 22px;
 
- > span{
+ > span {
     color: green;
   }
 

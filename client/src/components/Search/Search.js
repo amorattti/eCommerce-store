@@ -84,7 +84,7 @@ const Search = () => {
       </span>
       <span>
         <Select onChange={handleChange("category")}>
-          <option value="all">category</option>
+          <option value="all">Category</option>
           {categories.map((category, index) => (
             <option value={category._id} key={index}>{category.name}</option>
           ))}

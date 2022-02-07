@@ -2,19 +2,6 @@ import styled, { css } from "styled-components";
 import { Link } from 'react-router-dom'
 import { Wrapper } from "..";
 
-// export const StyledNavbar = styled.nav`
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
-//   width: 100%;
-//   height: 70px;
-//   padding: 0 30px;
-//   color: #000000;
-//   background-color: #ffffff;
-//   font-weight: 500;
-//   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0, 0.06);
-// `
-
 export const StyledNavbarExtend = styled(Wrapper)`
   display: flex;
   align-items: center;
@@ -34,19 +21,16 @@ export const NavbarContainer = styled.section`
   margin-top: 20px;
   align-items: center;
 
-
   @media screen and (max-width: 768px) {
     display: none;
   }
 `
 
-
 export const NavItemLink = styled(Link)`
   position:relative;
   text-decoration: none;
   color: inherit;
-  margin-left: 16px;
-  margin-left: 35px;
+
 
   ${props => props.$fill && css`
     padding: 8px 16px;
@@ -87,5 +71,16 @@ export const Logo = styled.div`
  > span{
     color: green;
   }
+`
 
+export const NavSection = styled.div`
+  display: flex;
+  align-items: center;
+  width: 215px;
+  justify-content: space-between;
+  font-weight: 500;
+
+  &:last-child {
+    cursor: pointer;
+  }
 `
