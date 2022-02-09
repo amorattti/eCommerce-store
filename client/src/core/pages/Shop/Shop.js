@@ -8,7 +8,7 @@ import Card from '../../../components/Card/Card'
 import Grid from '../../../components/Grid'
 import { IoFilterSharp } from 'react-icons/all'
 import { BsArrowLeftShort } from 'react-icons/bs'
-import {MdOutlineReadMore} from 'react-icons/all'
+import { MdOutlineReadMore } from 'react-icons/all'
 
 import {
   ButtonLoadMore,
@@ -16,7 +16,8 @@ import {
   FiltersHeader,
   Carts, MenuBar,
   ContentBar,
-  ToggleFilter
+  ToggleFilter,
+  ButtonBox
 } from './style'
 
 const Shop = ({ searchValue, setSearchValue }) => {
@@ -149,7 +150,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
 
           {filteredResults.length !== 0 ? filteredResults.map(product => (
             <Card key={product._id} product={product} />
-          )) : <div style={{ textAlign: 'left', width: '100%', marginLeft: '80px' }}>
+          )) : <div style={{ textAlign: 'left', width: '100%', marginLeft: '80px', minHeight: '675px' }}>
             <h5>No products found!</h5>
             <p>Please change Your search criteria and try again.
               If still not finding anything relevant,
@@ -158,7 +159,9 @@ const Shop = ({ searchValue, setSearchValue }) => {
           </div>}
 
           {size > 0 && size >= limit && (
-            <ButtonLoadMore onClick={() => laodMore()}>Load more...</ButtonLoadMore>
+            <ButtonBox>
+              <ButtonLoadMore onClick={() => laodMore()}>Load more...</ButtonLoadMore>
+            </ButtonBox>
           )}
         </Carts>
       </Row>

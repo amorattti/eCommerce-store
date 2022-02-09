@@ -10,6 +10,7 @@ import {
 import { SearchContext } from '../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
+import { MdSearch } from 'react-icons/md'
 
 const Search = () => {
   const { setSearchValue, searchValue } = useContext(SearchContext);
@@ -92,7 +93,7 @@ const Search = () => {
       </span>
       <span>
         <ButtonSearch>
-          <FiSearch/>
+          <MdSearch size="1.5rem" />
         </ButtonSearch>
       </span>
     </form>

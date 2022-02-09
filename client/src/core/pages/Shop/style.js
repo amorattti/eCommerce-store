@@ -24,10 +24,6 @@ export const MenuBar = styled.div`
       font-size: 1rem;
     }
 
-    li {
-     
-    }
-
     li > input {
       margin: 4px;
       cursor: pointer;
@@ -88,6 +84,12 @@ export const ToggleFilter = styled.button`
 
   > div {
     position: absolute;
+    padding: 4px;
+  }
+
+  div:hover {
+    background: #f0ebeb82;
+    border-radius: 4px;
   }
 
   @media screen and (max-width: 1200px) {
@@ -102,11 +104,17 @@ export const Carts = styled.div`
   gap: 12px;
   justify-content: center;
   margin-bottom: 50px;
-  max-width: 940px;
+  max-width: 900px;
 
   @media screen and (max-width: 1200px) {
     margin-left: 70px;
   }
+`
+
+export const ButtonBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `
 
 export const ButtonLoadMore = styled.button`
