@@ -33,7 +33,7 @@ export const Select = styled.select`
   background-position-x: 105%;
   background-position-y: 5px;
   color: #484848;
-  font-weight: 600;
+  font-weight: 500;
   
   &:focus-visible {
     border: 1px solid #d7d7d7;

@@ -9,6 +9,7 @@ import Card from '../../../components/Card'
 import Moment from 'react-moment';
 import { addItemToLocalStorage } from '../../cartHelper'
 import { useNavigate } from "react-router-dom";
+import { GrCart } from 'react-icons/gr'
 
 const Product = () => {
   const [product, setProduct] = useState({})
@@ -65,11 +66,10 @@ const Product = () => {
         <Col size={3}>
           <ImageSection>
             {product._id &&
-              <ShowImage width='80%' url="product" item={product} />
+              <ShowImage width='100%' height='auto' url="product" item={product} />
             }
           </ImageSection>
         </Col>
-        <Col size={1}></Col>
         <Col size={7}>
           <ContentSection>
             <h1>{product.name}</h1>
@@ -79,10 +79,15 @@ const Product = () => {
             </div>
             {checkProductAvailability(product)}
             <h5>{`$${product.price}`} </h5>
-            <Button onClick={() => addToCart(product)}>Add to card</Button>
-            <div>
+            <Button onClick={() => addToCart(product)}>
+              <span>Add to card</span>
+              <span>
+                <GrCart size="1.5em"  color="white" />
+              </span>
+            </Button>
+            {/* <div>
               Added on <Moment fromNow ago>{product.createdAt}</Moment>
-            </div>
+            </div> */}
           </ContentSection>
         </Col>
       </RowFlex>

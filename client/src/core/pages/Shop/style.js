@@ -16,6 +16,8 @@ export const MenuBar = styled.div`
   width: ${props => props.showBar ? '230px' : '70px'};
   position: relative;
   background: #fafafa;
+  border-right: 1px solid #d7d4d4;
+  border-radius: 0 20px;
 
   ul {
     margin-bottom: 40px;

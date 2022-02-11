@@ -31,8 +31,8 @@ const Card = ({ product, heightImg="100%" }) => {
         <ProductImage to={`/product/${product._id}`}>
           <ShowImage url="product" height={heightImg} item={product} />
         </ProductImage>
-        <ProductInfo>
-          <LinkProduct to={`/product/${product._id}`}>
+        <ProductInfo >
+          <LinkProduct data-title={product.name} to={`/product/${product._id}`}>
            {product.name}
           </LinkProduct>
         </ProductInfo>

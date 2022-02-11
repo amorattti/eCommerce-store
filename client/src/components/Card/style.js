@@ -39,11 +39,11 @@ export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0px 10px;
+  padding: 14px 10px;
   line-height: 18px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   margin-top: 5px;
 

@@ -80,7 +80,7 @@ const Search = () => {
           type="search"
           value={search}
           onChange={handleChange("search")}
-          placeholder='Search by name'
+          placeholder='Search...'
         />
       </span>
       <span>
