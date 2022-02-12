@@ -69,7 +69,7 @@ export const Logo = styled.div`
   font-size: 1.25rem;
 
  > span{
-    color: green;
+    color: #ff5a00;
   }
 `
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from '../../../components/Card'
 import Layout from '../../../hoc/Layout'
 import { getsProducts } from './../../apiCore'
-import { Header } from './style'
+import { Header, Paragraph } from './style'
 import Grid from '../../../components/Grid'
 
 const Home = () => {
@@ -36,9 +36,12 @@ const Home = () => {
   }, [])
 
   return (
-    <Layout title="Home page" description="Node React E-commerce App">
-  
-      <Header align="center">Best Sellers</Header>
+    <Layout title="Technical books shop" description="Here you can get the book easly when are avaible in our stock">
+
+      <Header align="center">BEST <span> TOP </span> SELLERS</Header>
+      <Paragraph>Those books which are sold with in few days 
+        and still available in our stock which you can get with us easily
+      </Paragraph>
       <Grid>
         {productsBySell.map((product) => <Card key={product._id} product={product} />)}
       </Grid>

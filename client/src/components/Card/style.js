@@ -15,8 +15,11 @@ export const ProductCart = styled.div`
   height: 385px;
   width: 240px;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+  /* border-radius: 10px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 10%); */
+
+  box-shadow: 0 2px 8px rgb(0 0 0 / 16%);
+  border-radius: 0.8rem;
 
   &:hover {
     box-shadow: 1px 1px 6px 5px #e9e9e9fa;
@@ -32,6 +35,8 @@ export const ProductCart = styled.div`
 export const ProductImage = styled(Link)`
   display: inline-block;
   height: 273px;
+  padding: 2rem;
+
 `
 
 export const ProductInfo = styled.div`
@@ -39,11 +44,11 @@ export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 14px 10px;
+  padding: 0 10px;
   line-height: 18px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   margin-top: 5px;
 

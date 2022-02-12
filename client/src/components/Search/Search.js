@@ -4,13 +4,16 @@ import {
   SearchContainer,
   Select,
   Input,
-  ButtonSearch
+  ButtonSearch,
+  Form,
+  ArrowIcon
 } from './style'
 
 import { SearchContext } from '../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
 import { MdSearch } from 'react-icons/md'
+
 
 const Search = () => {
   const { setSearchValue, searchValue } = useContext(SearchContext);
@@ -74,29 +77,30 @@ const Search = () => {
   }
 
   const searchForm = () => (
-    <form onSubmit={searchSubmit}>
-      <span>
+    <Form onSubmit={searchSubmit}>
+      <div>
         <Input
           type="search"
           value={search}
           onChange={handleChange("search")}
           placeholder='Search...'
         />
-      </span>
-      <span>
+      </div>
+      <div>
         <Select onChange={handleChange("category")}>
-          <option value="all">Category</option>
+          <option value="all">Category</option> 
           {categories.map((category, index) => (
             <option value={category._id} key={index}>{category.name}</option>
-          ))}
+          ))} 
         </Select>
-      </span>
-      <span>
+        <ArrowIcon/>
+      </div>
+      <div>
         <ButtonSearch>
           <MdSearch size="1.5rem" />
         </ButtonSearch>
-      </span>
-    </form>
+      </div>
+    </Form>
   )
 
   return (

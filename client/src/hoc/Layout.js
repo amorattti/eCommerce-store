@@ -10,8 +10,13 @@ const Jumbotron = styled.article`
   background: linear-gradient(0deg,#f4f4f4,#f4f4f4);
   /* box-shadow: -2px 4px 9px 0px #efeeee; */
   margin-bottom: 40px;
+
   h2 {
    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1.1rem;
   }
 `
 

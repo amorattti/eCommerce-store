@@ -16,8 +16,8 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <Logo>
-        <span>Prime</span>Books
+      <Logo> 
+        <span>Tech</span>Books 
       </Logo>
       <Search />
 

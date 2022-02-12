@@ -7,19 +7,23 @@ export const StyledGrid = styled.div`
   padding: 30px 0;
   margin-bottom: 100px;
 
+
 @media(max-width: 1050px) {
   grid-template-columns: ${props => props.template ? props.template : ' 20% 20% 20%'};
   gap: ${props => props.gap ? props.gap : '13.66%'};
+  row-gap: 4%;
 }
 
 @media(max-width: 768px) {
   grid-template-columns: 1fr 1fr;
   gap: 0%;
+  row-gap: 4%;
 
 }
 
 @media(max-width: 540px) {
   grid-template-columns: 1fr;
   gap: 0%;
+  row-gap: 4%;
 }
 `
