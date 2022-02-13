@@ -82,7 +82,7 @@ const Product = () => {
             <Button onClick={() => addToCart(product)}>
               <span>Add to card</span>
               <span>
-                <GrCart size="1.5em"  color="white" />
+                <GrCart size="1.5em"  color="#fff" />
               </span>
             </Button>
             {/* <div>

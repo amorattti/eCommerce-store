@@ -6,6 +6,7 @@ import { isAuthenticated } from '../../auth'
 import { itemTotal } from '../../core/cartHelper'
 import { GrCart } from 'react-icons/gr'
 import { AiOutlineUser } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 import Search from '../Search'
 
@@ -16,8 +17,8 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <Logo> 
-        <span>Tech</span>Books 
+      <Logo>
+        <Link to="/"><span>Tech</span>Books</Link>
       </Logo>
       <Search />
 

@@ -3,9 +3,8 @@ import styled from 'styled-components'
 export const SidebarContainer = styled.div`
   transition: ease-in-out 0.4s;
   display: flex;
-  width: 300px;
-  background: #fff; 
-  color: #000;
+  width: 30rem;
+  background: ${props => props.theme.colors.white};
   position: fixed;
   z-index: 9999;
   height: 100%;
@@ -18,37 +17,36 @@ export const SidebarContainer = styled.div`
   }
 
   hr {
-    color: #b6b2b2;
+    color: ${props => props.theme.colors.border.dark};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.spacing.sm}) {
     display: none;
   }
 `
 
 export const Fog = styled.div`
   transition: background 2s linear, left 3s linear;
-  /* background: ${props => props.display ? 'rgba(0,0,0,0.7)' : 'none'};   */
   background: rgba(0,0,0,0.4);
   position: absolute;
   width: 200vw;
   left: ${props => props.display ? '0' : 'unset'};
-  right: 0px;
-  top: 0px;
-  bottom: 0px;
+  right: 0;
+  top: 0;
+  bottom: 0;
   z-index: 9995;
 `
 
 export const SidebarMenu = styled.div`
   z-index: 9996;
-  background: #fff;
+  background: ${props => props.theme.colors.white};
   width: 100%;
   height: 100%;
 }
 `
 
 export const SideBarItem = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 
   a {
     text-decoration: none;
@@ -58,26 +56,26 @@ export const SideBarItem = styled.div`
     align-items: center;
 
     span {
-      padding-left: 10px;
+      padding-left: 1rem;
     }
 
   }
 
   &:first-child {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
 
   &:nth-child(4),
   &:nth-child(5) {
-    margin-left: 40px;  
+    margin-left: 4rem;  
   }
 
   &:last-child {
     display: flex;
     align-items: center;
-    margin-left: 40px; 
+    margin-left: 4rem; 
     span {
-      padding-left: 10px;
+      padding-left: 1rem;
       font-weight: 600;
     }
   }
@@ -85,14 +83,14 @@ export const SideBarItem = styled.div`
 
 export const CloseButton = styled.div`
   position: relative;
-  height: 20px;
-  width: 20px; 
+  height: 2rem;
+  width: 2rem; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 2rem;
 
   &::before,
   &::after {

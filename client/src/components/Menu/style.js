@@ -2,8 +2,6 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export const MenuContainer = styled.section`
-  /* background-color: ${(props) => props.theme.colors.black.normal}; */
-
 
 `
 export const MenuBar = styled.div`
@@ -56,8 +54,7 @@ export const LinkMenu = styled(Link)`
 
 
   &:hover {
-    color: #ffffff;
-    box-shadow: 0 1px 0 #ffffff;
+    box-shadow: 0 2px 10 red;
   }
 `
 

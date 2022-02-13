@@ -46,7 +46,7 @@ const Home = () => {
         {productsBySell.map((product) => <Card key={product._id} product={product} />)}
       </Grid>
       <Header>News</Header>
-      <Grid style={{ paddingBottom: '50px' }}>
+      <Grid>
         {productsByArrival.map((product) => <Card key={product._id} product={product} />)}
       </Grid>
     </Layout>

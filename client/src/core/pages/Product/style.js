@@ -10,12 +10,12 @@ export const Col = styled.div`
   flex: ${(props) => props.size};
 
   h1 {
-    font-size: 1.6em;
+    font-size: 2rem;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${props => props.theme.spacing.sm}) {
     flex: max-content;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 
     h1 {
       font-size: 1.5rem;
@@ -28,7 +28,7 @@ export const Col = styled.div`
 `
 
 export const ImageSection = styled.div`
-  max-width: 275px;
+  max-width: 27.5rem;
 `
 
 export const RowGrid = styled.div`
@@ -47,9 +47,10 @@ export const ContentSection = styled.div`
 export const Heading = styled.h2`
   font-family: 'Merriweather';
   font-style: italic;
-  font-size: 1rem;
-  margin-top: 80px;
-  border-bottom: 1px solid #efe9e9;
+  font-size:2rem;
+  margin-top: 8rem;
+  border-bottom: 0.1rem solid ${props => props.theme.colors.border.normal};
+  padding-bottom: 1rem;
 `
 
  export const H5 = styled.h5`

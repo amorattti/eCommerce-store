@@ -2,22 +2,22 @@ import styled from "styled-components"
 
 export const ItemBody = styled.div`
   display: flex;
-  padding: 20px 30px;
+  padding: 2rem 3rem;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid #efe7e7;
+  border-bottom: 1px solid ${props => props.theme.colors.border.normal};
   font-weight: 500;
 
 
   @media(max-width: 768px) {
-    padding: 20px 0px;
+    padding: 2rem 0px;
   }
 `
 
 export const ButtonRemove = styled.div`
   position: relative;
-  height: 20px;
-  width: 20px; 
+  height: 2rem;
+  width: 2rem; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +29,7 @@ export const ButtonRemove = styled.div`
     content: '';
     width: 100%;
     height: 1.2px; /* cross thickness */
-    background-color: black;
+    background-color: #000000;
     transition: all 0.4;
   }
 
@@ -47,11 +47,10 @@ export const ButtonRemove = styled.div`
 
 `
 
-
 export const QuantityButton = styled.button`
   display:inline-block;
-  width:35px;
-  height:36px;
+  width:  3.5rem;
+  height: 3.6rem;
   background: ${props => props.plus ? 
   (`linear-gradient(#000000 0 0), linear-gradient(#000000 0 0),#fff`) :
    (`linear-gradient(#000000 0 0),#fff`)};
@@ -65,10 +64,9 @@ export const Image = styled.figure``
 export const Name = styled.div`
   span {
     display: block;
-    inline-size: 120px;
+    inline-size: 12rem;
     overflow-wrap: break-word;
-    font-size: 14px;
-    color: #43484D;
+    font-size: 1.4rem;
   }
 
 `
@@ -79,8 +77,8 @@ export const Quantity = styled.div`
     border: none;
 
   img {
-      width: 17px;
-      height: 17px;
+      width: 1.7rem;
+      height: 1.7rem;
     }
 }
 
@@ -88,21 +86,20 @@ input {
   -webkit-appearance: none;
   border: none;
   text-align: right;
-  width: 32px;
-  font-size: 16px;
-  color: #000000;
+  width: 3.2rem;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
-@media(max-width: 768px) {
+@media(max-width: ${props => props.theme.spacing.sm}) {
   input {
-    width: 12px;
+    width: 1.2rem;
   }    
 }
 
 `
 export const TotalPrice = styled.div`
   font-weight: 500;
-  inline-size: 48px;
+  inline-size: 4.8rem;
   text-align: right;
 `

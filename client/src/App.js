@@ -29,12 +29,13 @@ import ManageProducts from './admin/ManageProducts'
 import EditProduct from './admin/ManageProducts/EditProduct'
 import { Wrapper } from './components'
 import SidebarMobilePortal from './components/SidebarMobile/SidebarMobile'
+import { Link } from 'react-router-dom'
 
 export const SearchContext = createContext()
 
 const App = () => {
   const [searchValue, setSearchValue] = useState([])
-  const [display, setDisplay] = useState(false) 
+  const [display, setDisplay] = useState(false)
 
   return (
     <BrowserRouter>
@@ -43,7 +44,7 @@ const App = () => {
         <SearchContext.Provider value={{ setSearchValue, searchValue }}>
           <Wrapper as="nav">
             <Logo>
-              <span>Prime</span>Books
+              <Link to="/"><span>Tech</span>Books</Link>
             </Logo>
             <Navbar />
             <Menu setDisplay={setDisplay} />
@@ -96,23 +97,29 @@ export default RootApp
 
 
 export const Navigation = styled.header`
-  background-color: #fff;
-  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
+  background-color: ${props => props.theme.colors.white};
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
   z-index: 9999;
 `
 
 export const Logo = styled.div`
   display: none;
   font-weight: 600;
-  font-size: 1.25rem;
-  margin-top: 22px;
+  font-size: 2rem;
+  margin-top: 2.2rem;
 
- > span {
-    color: green;
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    span {
+      color: ${props => props.theme.colors.orange.light}
+    }
   }
-
-  @media (max-width: 768px) {
+  @media screen and (max-width: ${props => props.theme.spacing.sm}) {
     display: block;
   }
 
 `
+
+

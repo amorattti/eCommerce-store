@@ -1,30 +1,28 @@
 import styled from "styled-components"
 
 export const Header = styled.h1` 
-  margin-bottom: 20px;
-  font-size: 1.5em;
+  margin-bottom: 1rem;
+  font-size: 2.3rem;
   font-weight: 900;
   text-align: ${props => props.align};
   font-family: 'Open Sans', sans-serif;
-  letter-spacing: 1px;
-  letter-spacing: 0.4px;
-  /* border-bottom: 1px solid #e1e1e1; */
+  letter-spacing: 0.1rem;
 
   span {
-    color: #00a790;
+    color: ${props => props.theme.colors.blue.normal};
   }
 
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: ${props => props.theme.spacing.sm}) {
     text-align: center;
   }
 `
 
 export const Paragraph = styled.p`
-  max-width: 600px;
+  max-width: 60rem;
   margin: auto;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   font-family: 'Open Sans',sans-serif;
-  letter-spacing: 0.1px;
-  font-style: italic;
+  letter-spacing: 0.001rem;
+  font-size: 1.4rem;
 `

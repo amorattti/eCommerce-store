@@ -9,33 +9,28 @@ export const Row = styled.div`
 `
 
 export const ShoppingCart = styled.div`
-  border-radius: 10px;
-  box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
-  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0.1rem 0.8rem rgb(0 0 0 / 10%);
+  background: ${props => props.theme.colors.white};
 `
 
 export const TitleCart = styled.div`
-  height: 60px;
-  padding: 20px 30px;
-  border-bottom: 1px solid #E1E8EE;
-  color: #000000;
-  font-size: 18px;
+  height: 6rem;
+  padding: 2rem 3rem;
+  border-bottom: 0.1rem solid ${props => props.theme.colors.border.normal};
+  font-size: 1.8rem;
   font-weight: 600;
 `
 
 export const Col = styled.div`
   flex: ${(props) => props.size};
-
-  &:last-child {
-
-  }
    
-  @media(max-width: 768px) {
+  @media(max-width: ${props => props.theme.spacing.sm}) {
     flex: none;
     width: 100%;
 
     &:last-child {
-     margin: 20px 0;
+     margin: 2rem 0;
     }
   }
 

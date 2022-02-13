@@ -68,9 +68,15 @@ export const Logo = styled.div`
   font-weight: 600;
   font-size: 1.25rem;
 
- > span{
-    color: #ff5a00;
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    span {
+      color: #ff5a00;
+    }
   }
+
 `
 
 export const NavSection = styled.div`

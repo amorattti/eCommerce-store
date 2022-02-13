@@ -9,7 +9,7 @@ export const readUser = async (userId, token) => {
         "Authorization": `Bearer ${token}`
       }
     })
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    
     return response.json()
 
   } catch (error) {
