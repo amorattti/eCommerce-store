@@ -19,7 +19,7 @@ export const TitleCart = styled.div`
   padding: 2rem 3rem;
   border-bottom: 0.1rem solid ${props => props.theme.colors.border.normal};
   font-size: 1.8rem;
-  font-weight: 600;
+ 
 `
 
 export const Col = styled.div`

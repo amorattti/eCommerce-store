@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 
-export const FooterStyled = styled.div`
+export const FooterStyled = styled.footer`
   margin-top:auto; 
   background-color: #252525;
-  padding: 50px 0;
+  padding: 5rem 0;
   color: white;
   text-align: center;
-  font-size: 14px;
+  font-size: 1.4rem;
 
   ul {
     display: flex;
@@ -15,17 +15,17 @@ export const FooterStyled = styled.div`
 
     li:before {
       content: "";
-      height: 8px;
+      height: 0.8rem;
       vertical-align: middle;
-      padding-left: 8px;
-      margin-left: 10px;
-      border-left: 1px solid #ddd;
+      padding-left: 0.8rem;
+      margin-left: 1rem;
+      border-left: 0.1rem solid #ddd;
       display: inline-block;
     }
   
     li:first-child:before{
       content: "";
-      border-left: 2px solid #252525;
+      border-left: 0.2rem solid #252525;
     }
   
   }

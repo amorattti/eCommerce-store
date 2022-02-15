@@ -8,22 +8,11 @@ import ShoppingCart from '../../../components/ShoppingCart'
 import * as S from './style'
 import Checkout from '../../../components/Checkout'
 
-import { useForm } from "react-hook-form";
-
 const Cart = () => {
   const [items, setItems] = useState([])
   const [runFromShoppingCart, updateFromShoppingCart] = useState(false)
   // update component every time when counter in child component
   // has been changed
-
-  const { register, handleSubmit } = useForm();
-
-  
-  const onSubmit = data => console.log((data))
-
-
-  console.log(register, 'ss')
-
 
   useEffect(() => {
     if (getCart() !== null) {
@@ -54,28 +43,6 @@ const Cart = () => {
     </>
   )
 
-
-  const Address = () => (
-    <div>
-      <h2>Address</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input {...register("name")} placeholder='name' />
-          <input {...register("street_address")} placeholder='street address' />
-          <input {...register("city")} placeholder='city' />
-        </div>
-        <div>
-          <input {...register("state")} placeholder='state' />
-          <input {...register("zip_code")} placeholder='zip code' />
-        </div>
-
-        <input type="submit" />
-      </form>
-
-
-    </div>
-  )
-
   const noItemsMessage = () => (
     <h2>
       Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
@@ -84,7 +51,6 @@ const Cart = () => {
 
   return (
     <Layout description='Transaction summary'>
- 
       <Row>
         <Col size={8}>
           {items.length > 0 ? shoppingCart(items) : noItemsMessage()}

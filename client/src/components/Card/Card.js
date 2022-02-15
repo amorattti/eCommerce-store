@@ -38,7 +38,7 @@ const Card = ({ product, heightImg="100%" }) => {
         </ProductInfo>
         <ActionButtonsContainer>     
             <ButtonCard onClick={() => addToCart(product)}>
-              <RiShoppingCartLine size="1.8em"/>
+              <RiShoppingCartLine size="32px"/>
             </ButtonCard>
             <div>${product.price}</div>
           </ActionButtonsContainer>

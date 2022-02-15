@@ -34,12 +34,12 @@ const Menu = ({ setDisplay }) => {
           <MenuItem>
             <span>
               <Link to="/cart">
-                <GrCart size="1.8em" color="" />
+                <GrCart size="32px" color="" />
                 <span>{itemTotal()}</span>
               </Link>
             </span>
             <BarIconWrapper onClick={() => setDisplay(prevState => !prevState)}>
-              <FaBars size="1.8rem" />
+              <FaBars size="32px" />
             </BarIconWrapper>
           </MenuItem>
         </MenuNav>

@@ -16,7 +16,6 @@ const Jumbotron = styled.article`
 
   p {
     font-size: 1.6rem;
-    font-style: italic;
   }
 `
 

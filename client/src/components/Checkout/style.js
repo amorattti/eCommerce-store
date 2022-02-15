@@ -2,27 +2,27 @@ import styled from "styled-components";
 
 
 export const Summary = styled.div`
-
-    margin-left: 30px;
-    background: #fff;
-    padding: 16px;
-    border-radius: 10px;
+    margin-left: 3rem;
+    background: ${({theme}) => theme.colors.white};
+    padding: 1.6rem;
+    border-radius: 1rem;
     box-shadow: 0 1px 8px rgb(0 0 0 / 10%);
-
+    font-size: 1.4rem;
 
   h5 {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
 
   > h5 {
-    font-size: 1.6em;
+    font-size: 1.8em;
   }
 `
 
 export const Total = styled.div`
   font-weight: 500;
   color: #646464;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+
   div {
     display: grid;
     grid-template-columns:1fr 1fr;
@@ -30,8 +30,8 @@ export const Total = styled.div`
 
   div:nth-child(2){
     border-bottom: 1px dashed #d1cdcd;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
   }
 
   div:last-child {
@@ -46,9 +46,9 @@ export const ButtonPay = styled.button`
   color: #ffffff;
   text-align: center;
   border: none;
-  padding: 10px 0;
+  padding: 1rem 0;
   transition: all 0.2s;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.04rem;
   
   &:hover {
     background: #1cbd72;
@@ -56,18 +56,18 @@ export const ButtonPay = styled.button`
 `
 
 export const AddresForm = styled.div`
-    margin-bottom: 8px;
-    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    border-radius: 0.8rem;
 `
 
 export const itemForm = styled.div`
   input {
     all: unset;
     box-sizing: border-box;
-    padding: 8px;
+    padding: 0.8rem;
     width: 100%;
-    margin: 4px 0;
-    border: 1px solid #c9c4c4;
-    border-radius: 8px;
+    margin: 0.4rem 0;
+    border: 0.1rem solid #c9c4c4;
+    border-radius: 0.8rem;
   } 
 `

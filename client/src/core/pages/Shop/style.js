@@ -104,7 +104,8 @@ export const Carts = styled.div`
   justify-content: center;
   margin-bottom: 5rem;
   max-width: 90rem;
-
+  align-content: baseline;
+  
   @media screen and (max-width: ${props => props.theme.spacing.lg}) {
     margin-left: 7rem;
   }

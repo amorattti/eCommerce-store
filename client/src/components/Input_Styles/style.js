@@ -3,11 +3,11 @@ import styled from "styled-components"
 export const StyledInput = styled.input`
   width: 100%;
   outline: none;
-  padding: 8px 16px;
-  border: 1px solid #e0e6e8;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid ${({ theme }) => theme.colors.border.normal};
   border-radius: 4px;
-  font-size: 1rem;
-  color: #888888;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.gray.normal};
   transition: box-shadow 0.2s;
   &::placeholder {
     color: #dedede;

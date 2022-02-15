@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './style'
 import ShowImage from '../ShowImage'
-import plusIcon from '../../img/plus.png'
-import minusIcon from '../../img/minus.png'
 
 const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
   const [count, setCount] = useState(parseInt(product.count))

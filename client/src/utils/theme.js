@@ -9,7 +9,7 @@ export default {
     border: {
       normal: '#D9D5E3',
       light: '#aaa',
-      dark: '#756C6C'
+      dark: '#756C6C' 
     },
     white: 'rgb(255, 255, 255)',
     black: '#022222',
@@ -26,10 +26,17 @@ export default {
       light: 'rgb(255 90 0)',
     },
     green: {
-      normal: 'rgb(0 167 144)'
+      normal: 'rgb(35, 127, 84)',
+      light: 'rgb(24, 184, 109)',
+      dark: 'rgb(5, 81, 96)'
     },
     blue: {
-      normal: 'rgb(19, 154, 208)'
-    }
+      normal: 'rgb(19, 154, 208)',
+    }, 
+    red: {
+      normal: 'rgb(220, 53, 69)',
+      light: 'rgb(255, 243, 243)',      
+    },
+    
   }
 };

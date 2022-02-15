@@ -15,12 +15,18 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body, html, #root {
-    font-family: 'Quicksand', sans-serif;
+ 
     display:flex; 
     flex-direction:column;  
     height: 100%;
     background: ${props => props.theme.colors.gray.light};
     color: #303030;
+  }
+
+  body {
+    color: #222;
+    font: 1.4rem/1.45 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   ul {

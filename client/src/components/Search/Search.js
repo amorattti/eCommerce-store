@@ -97,7 +97,7 @@ const Search = () => {
       </div>
       <div>
         <ButtonSearch>
-          <MdSearch size="1.5rem" />
+          <MdSearch size="2.8rem" />
         </ButtonSearch>
       </div>
     </Form>

@@ -4,7 +4,7 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 
 export const TableStyled = styled(Table)`
-  line-height: 30px;
+  line-height: 3rem;
 `
 export const THeadStyled = styled(Thead)``
 export const TBodyStyled = styled(Tbody)``
@@ -14,20 +14,18 @@ export const THStyled = styled(Th)``
 export const ButtonDetails = styled.button`
   background: none;
   border: none;
-  background: #ffd145;
-  padding: 7px 18px;
-  color: #5e5050;
+  background: ${({theme}) => theme.colors.yellow.light};
+  padding: 0.7rem 1.8rem;
   font-weight: 500;
-  border-radius: 4px;
-  letter-spacing: 0.7px;
-  margin: 2px;
+  border-radius: 0.4rem;
+  letter-spacing: 0.07rem;
+  margin: 0.2rem;
 `
 
 export const TDstyled = styled(Td)`
 
-  @media (min-width: 650px) {
-    &:first-child {
-    
+  @media (min-width: ${({ theme }) => theme.spacing.sm} ) {
+    &:first-child {    
       line-height: 20px;
     }
 
@@ -38,18 +36,18 @@ export const TDstyled = styled(Td)`
 `
 
 export const ModalBody = styled.div`
-  @media (min-width: 650px) {
-    min-width: 450px;
+  @media (min-width: ${({ theme }) => theme.spacing.sm} ) {
+    min-width: 45rem;
   }
 `
 
 export const CloseButton = styled.a`
   cursor: pointer; 
   position: absolute;
-  right: 0px;
-  top: 10px;
-  width: 33px;
-  height: 33px;
+  right: 0;
+  top: 1rem;
+  width: 3.3rem;
+  height: 3.3rem;
   opacity: 0.3;
 
   &:hover {
@@ -57,11 +55,11 @@ export const CloseButton = styled.a`
   }
   &:before, &:after {
     position: absolute;
-    left: 15px;
+    left: 1.5rem;
     content: ' ';
-    height: 20px;
-    width: 1px;
-    background-color: #333;
+    height: 2rem;
+    width: 0.1rem;
+    background-color: ${({theme}) => theme.colors.black};
   }
   &:before {
     transform: rotate(45deg);

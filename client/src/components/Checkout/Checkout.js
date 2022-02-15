@@ -17,12 +17,11 @@ const Checkout = ({ products, setItems }) => {
   const [data, setData] = useState({
     success: false,
     clientToken: null,
-    error: '',
+    error: false,
     address: '',
     instance: {}
   })
 
-  // const { register, handleSubmit } = useForm();
   const { register, formState: { errors }, handleSubmit } = useForm();
 
   const onSubmit = (data) => {

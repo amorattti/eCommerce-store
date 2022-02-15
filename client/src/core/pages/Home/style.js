@@ -7,14 +7,15 @@ export const Header = styled.h1`
   text-align: ${props => props.align};
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.1rem;
-
+  text-align: center;
+  
   span {
     color: ${props => props.theme.colors.blue.normal};
   }
 
-  @media screen and (max-width: ${props => props.theme.spacing.sm}) {
+  /* @media screen and (max-width: ${props => props.theme.spacing.sm}) {
     text-align: center;
-  }
+  } */
 `
 
 export const Paragraph = styled.p`

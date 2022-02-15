@@ -36,12 +36,12 @@ const SidebarMobilePortal = ({ display, setDisplay, location }) => {
             <>
               <SideBarItem>
                 <Link to="/signin">
-                  <BiLogIn size="1.5em" /><span>Sign in</span>
+                  <BiLogIn size="20px" /><span>Sign in</span>
                 </Link>
               </SideBarItem>
               <SideBarItem>
                 <Link to="/signup">
-                <BiLogOut size="1.5em" /><span>Sign up</span>
+                <BiLogOut size="20px" /><span>Sign up</span>
                 </Link>
               </SideBarItem>
               <hr />
@@ -49,7 +49,7 @@ const SidebarMobilePortal = ({ display, setDisplay, location }) => {
           )}
           <SideBarItem>
             <Link to="/cart">
-              <GrCart size="1.5em" color="" /><span>My Cart</span>
+              <GrCart size="20px" color="" /><span>My Cart</span>
             </Link>
           </SideBarItem>
           {isAuthenticated() && (
@@ -57,15 +57,15 @@ const SidebarMobilePortal = ({ display, setDisplay, location }) => {
               <SideBarItem>
                 {isAuthenticated().user.role === 0 ? (
                   <Link to="/user/dashboard">
-                    <FaUserCircle size="1.5em" color="" /><span>Dashboard</span>
+                    <FaUserCircle size="20px" color="" /><span>Dashboard</span>
                   </Link>) :
                   (<Link to="/admin/dashboard">
-                    <FaUserCircle size="1.5em" /><span>Dashboard</span>
+                    <FaUserCircle size="20px" /><span>Dashboard</span>
                   </Link>)}
               </SideBarItem>
               <hr />
               <SideBarItem>
-                <BiExit size="1.5em" />
+                <BiExit size="20px" />
                 <span
                   onClick={() => signout(() => {
                     navigate('./')

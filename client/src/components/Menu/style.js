@@ -13,7 +13,7 @@ export const MenuNav = styled.ul`
   width: 100%;
 `
 export const MenuItem = styled.li`
-  padding: 16px;
+  padding: 1.6rem;
   padding-left: 0;
 
   a {
@@ -26,10 +26,10 @@ export const MenuItem = styled.li`
     cursor: pointer;
 
     > span {
-      padding-right: 40px;
+      padding-right: 4rem;
 
       span {
-        border-radius: 50px;
+        border-radius: 5rem;
         position: absolute;
         top: -12px;
         right: -14px;
@@ -40,29 +40,22 @@ export const MenuItem = styled.li`
       }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: ${({ theme }) => theme.spacing.sm}) {
       display: flex;
     }
   }
 `
 export const LinkMenu = styled(Link)`
-  color: #484848;
+  color: ${props => props.theme.colors.black};
   text-decoration: none;
-  font-size: 1rem;
   transition: box-shadow .2s;
-  font-weight: 600;
-
-
-  &:hover {
-    box-shadow: 0 2px 10 red;
-  }
+  font-weight: 500;
 `
 
 export const BarIconWrapper = styled.div`
   display: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${({ theme }) => theme.spacing.sm}) {
     display: block;
-   font-size: 14px;
   }
 `

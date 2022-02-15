@@ -24,9 +24,9 @@ const Root = styled.div`
 
 const Content = styled.div`
   display: inline-block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin: 0.8rem;
   border-radius: 50%;
   background: ${({ theme }) => theme.colors.gray.normal};
   animation: ${flip} 2.4s cubic-bezier(0, 0.2, 0.8, 1); 

@@ -4,60 +4,49 @@ import styled from "styled-components"
 export const ProductCart = styled.div`
   text-align: center;
   transition: all 0.4;
-  /* border: 1px solid #ffffff; */
-  /* border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
-  /* box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; */
-  margin: 3px;
+  margin: 0.3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 385px;
-  width: 240px;
+  width: 24rem;
   background: #fff;
-  /* border-radius: 10px;
-  box-shadow: 0 1px 8px rgb(0 0 0 / 10%); */
-
-  box-shadow: 0 2px 8px rgb(0 0 0 / 16%);
-  border-radius: 0.8rem;
+  border: 1px solid #eae8e4;
 
   &:hover {
     box-shadow: 1px 1px 6px 5px #e9e9e9fa;
     border-bottom: none;
   }
 
-  @media screen and (max-width: 768px) {
-    margin: 20px auto;
+  @media screen and (max-width: ${({ theme }) => theme.spacing.sm}) {
+    margin: 2rem auto;
   }
 
 `
 
 export const ProductImage = styled(Link)`
   display: inline-block;
-  height: 273px;
-  padding: 2rem;
-
+  height: 27.3rem;
+  padding: 4rem;
 `
 
 export const ProductInfo = styled.div`
-  height: 60px;
+  height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0 10px;
-  line-height: 18px;
+  padding: 0 1rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  margin-top: 5px;
+  margin-top: -0.8rem;
+  margin-bottom: 0.8rem;
 
  a {
-  height: 200%;
   text-decoration: none;
   color: #0F1111;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 500;
   transition: color 00.2s;
 
   &:hover {
@@ -77,10 +66,11 @@ export const ActionButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: end;
-  padding: 10px 20px;
+  height: 6rem;
+  padding: 2rem 2rem 2.5rem 3rem;
 
   div {
-    font-size: 1.3em;
+    font-size: 2.3rem;
   }
 
 `

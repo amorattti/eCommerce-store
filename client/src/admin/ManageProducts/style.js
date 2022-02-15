@@ -11,19 +11,19 @@ export const ProductsContainer = styled.section`
       }
     }
 `
-
+//${({theme}) => theme.colors.border.normal}
 
 export const GridProductsList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid #d7d7d7;;
-  border-right: 1px solid #d7d7d7;
-  margin-bottom: 150px;
+  border-top: 1px solid ${({theme}) => theme.colors.border.normal};
+  border-right: 1px solid ${({theme}) => theme.colors.border.normal};
+  margin-bottom: 15rem;
 
   span {
-    padding: 4px;
-    border-left: 1px solid #d7d7d7;;
-    border-bottom: 1px solid #d7d7d7;;
+    padding: 0.4rem;
+    border-left: 1px solid ${({theme}) => theme.colors.border.normal};
+    border-bottom: 1px solid ${({theme}) => theme.colors.border.normal};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +32,7 @@ export const GridProductsList = styled.div`
   div {
     display: inline-grid;
     grid-template-columns: 50% 50%;
-    grid-gap: 3px;
+    grid-gap: 0.3rem;
     justify-items: center;
     align-items: center;
     height: 100%;
@@ -40,16 +40,16 @@ export const GridProductsList = styled.div`
 
   button {
     border: none;
-    padding: 7px 24px;
-    color: #fff;
-    border-radius: 4px
+    padding: 0.8rem 2.4rem;
+    color: ${({theme}) => theme.colors.white};
+    border-radius: 0.4rem;
   }
 
   button:nth-child(1) {
-    background: #dc3545;
+    background: ${({theme}) => theme.colors.red.normal};
   }
   button:nth-child(2) {
-    background: #0089ff;
+    background: ${({theme}) => theme.colors.blue.normal};
   }
 
 `

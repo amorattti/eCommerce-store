@@ -2,25 +2,26 @@ import styled, { css } from "styled-components";
 
 const themes = {
   error: css`
-    background-color: #fff3f3;
-    border-color: #e4401c;
-    color: #e4401c;
+    color: #e4401c; // red
+    border-color: #e4401c; // light red
+    background-color: #fff3f3; // lighter red 
   `,
   success: css`
-    color: #055160;
-    background-color: #cff4fc;
-    border-color: #b6effb;
+    color: #055160; // dark green
+    border-color: #b6effb; // light white
+    background-color: #cff4fc; // lighter white
   `
 }
 
 export const StyledAlert = styled.div(({ theme, value }) => `
-  padding: 16px 32px;
+  font-size: 1.4rem;
+  padding: 1.6rem 3.2rem;
   display: ${value ? 'block' : 'none'}; 
-  margin-bottom: 40px;
-  border: 1px solid;
+  margin-bottom: 4rem;
+  border: 0.1rem solid;
   border-radius: 4px;
-  border-left: 0px solid #000;
-  border-right: 0px solid #000;
+  border-left: 0;
+  border-right: 0;
 
   ${theme ? themes[theme] : ''}
 `)

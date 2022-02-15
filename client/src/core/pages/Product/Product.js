@@ -6,7 +6,6 @@ import ShowImage from '../../../components/ShowImage'
 import { RowFlex, Col, ImageSection, ContentSection, Heading, H5, RowGrid } from './style'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
-import Moment from 'react-moment';
 import { addItemToLocalStorage } from '../../cartHelper'
 import { useNavigate } from "react-router-dom";
 import { GrCart } from 'react-icons/gr'
@@ -82,12 +81,9 @@ const Product = () => {
             <Button onClick={() => addToCart(product)}>
               <span>Add to card</span>
               <span>
-                <GrCart size="1.5em"  color="#fff" />
+                <GrCart size="15px"  color="#fff" />
               </span>
             </Button>
-            {/* <div>
-              Added on <Moment fromNow ago>{product.createdAt}</Moment>
-            </div> */}
           </ContentSection>
         </Col>
       </RowFlex>

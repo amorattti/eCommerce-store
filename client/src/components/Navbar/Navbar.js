@@ -7,10 +7,7 @@ import { itemTotal } from '../../core/cartHelper'
 import { GrCart } from 'react-icons/gr'
 import { AiOutlineUser } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-
 import Search from '../Search'
-
-// FaUserCircle
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -24,7 +21,7 @@ const Navbar = () => {
 
       <NavSection>
         <NavItemLink to="/cart">
-          <GrCart size="1.8em" color="" />
+          <GrCart size="32px" color="" />
           <span>{itemTotal()}</span>
         </NavItemLink>
         {!isAuthenticated() && (
@@ -39,12 +36,12 @@ const Navbar = () => {
               <NavItemLink
                 title="Dashboard"
                 to="/user/dashboard">
-                <AiOutlineUser size="1.8em" color="" />
+                <AiOutlineUser size="32px" color="" />
               </NavItemLink>) :
               (<NavItemLink
                 title="Dashboard"
                 to="/admin/dashboard">
-                <AiOutlineUser size="1.8em" />
+                <AiOutlineUser size="32px" />
               </NavItemLink>)}
             <NavItemLink
               as="span"
