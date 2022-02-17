@@ -6,7 +6,7 @@ export const StyledEntryCard = styled.div`
   border-radius: 0.5rem;
   padding: 5rem;
   margin-bottom: 4rem;
-  background-color: ${({theme}) => theme.colors.whte}
+  background-color: ${({theme}) => theme.colors.white};
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
   text-align: center;
   margin: auto;
@@ -17,11 +17,11 @@ export const StyledEntryCard = styled.div`
   span {
     display: block;
     margin-top: 4rem;
-    color: #888888;
+    color: ${({theme}) => theme.colors.gray.normal};
     font-size: 1.4rem;
   }
   a {
     margin-left: 0.4rem;
-    color: #2f8bfd;
+    color: ${({theme}) => theme.colors.gray.normal};
   }
 `

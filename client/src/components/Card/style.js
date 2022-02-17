@@ -9,15 +9,15 @@ export const ProductCart = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 24rem;
-  background: #fff;
-  border: 1px solid #eae8e4;
+  background: ${({theme}) => theme.colors.white};
+  border: 1px solid ${({theme}) => theme.colors.border.gray};
 
   &:hover {
-    box-shadow: 1px 1px 6px 5px #e9e9e9fa;
+    box-shadow: 1px 1px 6px 5px ${({theme}) => theme.colors.border.normal};
     border-bottom: none;
   }
 
-  @media screen and (max-width: ${({ theme }) => theme.spacing.sm}) {
+  @media screen and (max-width: ${({theme}) => theme.spacing.sm}) {
     margin: 2rem auto;
   }
 
@@ -44,13 +44,13 @@ export const ProductInfo = styled.div`
 
  a {
   text-decoration: none;
-  color: #0F1111;
+  color: ${({theme}) => theme.colors.black};
   font-size: 1.4rem;
   font-weight: 500;
   transition: color 00.2s;
 
   &:hover {
-    color: #ffc107;
+    /* color: #ffc107; */
   }
 }
 

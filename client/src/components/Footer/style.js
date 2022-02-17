@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
   margin-top:auto; 
-  background-color: #252525;
+  background-color: ${({theme}) => theme.colors.footerBg};
   padding: 5rem 0;
   color: white;
   text-align: center;
@@ -19,17 +19,13 @@ export const FooterStyled = styled.footer`
       vertical-align: middle;
       padding-left: 0.8rem;
       margin-left: 1rem;
-      border-left: 0.1rem solid #ddd;
+      border-left: 0.1rem solid ${({theme}) => theme.colors.gray.light};
       display: inline-block;
     }
   
     li:first-child:before{
       content: "";
-      border-left: 0.2rem solid #252525;
+      border-left: none;
     }
-  
   }
-
-
-
 `

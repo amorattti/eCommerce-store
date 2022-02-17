@@ -6,10 +6,12 @@ export default {
     lg: '75rem' // 1200px
   },
   colors: {
+    mainFont: '#222',
     border: {
       normal: '#D9D5E3',
       light: '#aaa',
-      dark: '#756C6C' 
+      dark: '#756C6C',
+      gray: '#eae8e4' 
     },
     white: 'rgb(255, 255, 255)',
     black: '#022222',
@@ -37,6 +39,6 @@ export default {
       normal: 'rgb(220, 53, 69)',
       light: 'rgb(255, 243, 243)',      
     },
-    
+    footerBg: 'rgba(37, 37, 37, 1)'
   }
 };

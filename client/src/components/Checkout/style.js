@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Summary = styled.div`
     margin-left: 3rem;
     background: ${({theme}) => theme.colors.white};
@@ -10,17 +9,19 @@ export const Summary = styled.div`
     font-size: 1.4rem;
 
   h5 {
-    font-size: 1.2em;
+    font-size: 1em;
+    color: ${({theme}) => theme.colors.gray.dark};
   }
 
   > h5 {
     font-size: 1.8em;
+    color: ${({theme}) => theme.colors.black};
   }
 `
 
 export const Total = styled.div`
   font-weight: 500;
-  color: #646464;
+  color: ${({theme}) => theme.colors.gray.normal};
   margin-bottom: 2rem;
 
   div {
@@ -29,21 +30,21 @@ export const Total = styled.div`
   }
 
   div:nth-child(2){
-    border-bottom: 1px dashed #d1cdcd;
+    border-bottom: 1px dashed ${({theme}) => theme.colors.border.gray};
     margin-bottom: 0.8rem;
     padding-bottom: 0.8rem;
   }
 
   div:last-child {
     font-weight: 600;
-    color: #444343;
+    color: ${({theme}) => theme.colors.black};
   }
 `
 
 export const ButtonPay = styled.button`
   width: 100%;
-  background: #1ba364;
-  color: #ffffff;
+  background: ${({theme}) => theme.colors.green.normal};
+  color: ${({theme}) => theme.colors.white};
   text-align: center;
   border: none;
   padding: 1rem 0;
@@ -51,7 +52,7 @@ export const ButtonPay = styled.button`
   letter-spacing: 0.04rem;
   
   &:hover {
-    background: #1cbd72;
+    background: ${({theme}) => theme.colors.green.light};
   }
 `
 
@@ -67,7 +68,7 @@ export const itemForm = styled.div`
     padding: 0.8rem;
     width: 100%;
     margin: 0.4rem 0;
-    border: 0.1rem solid #c9c4c4;
+    border: 0.1rem solid ${({theme}) => theme.colors.border.gray};
     border-radius: 0.8rem;
   } 
 `
