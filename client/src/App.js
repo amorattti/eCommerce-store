@@ -24,12 +24,13 @@ import Shop from './core/pages/Shop/Shop'
 import Product from './core/pages/Product/Product'
 import Cart from './core/pages/CartShopping/Cart'
 import Orders from './admin/Orders'
-import Profile from './user/Profile'
 import ManageProducts from './admin/ManageProducts'
 import EditProduct from './admin/ManageProducts/EditProduct'
 import { Wrapper } from './components'
 import SidebarMobilePortal from './components/SidebarMobile/SidebarMobile'
 import { Link } from 'react-router-dom'
+import PurchaseHistory from './core/Dashboards/user/pages/purchaseHistory'
+import Profile from './core/Dashboards/user/pages/profile'
 
 export const SearchContext = createContext()
 
@@ -63,8 +64,11 @@ const App = () => {
             setSearchValue={setSearchValue} />}
         />
         <Route element={<PrivateUserRoute />}>
-          <Route path="user/dashboard" element={<DashboardUser />} />
-          <Route path="profile/:userId" element={<Profile />} />
+          <Route path="user/dashboard" element={<DashboardUser />}>
+            <Route index element={<PurchaseHistory />} />
+            <Route path="profile/:userId" element={<Profile />} />  
+          </Route>
+      
         </Route>
         <Route element={<PrivateAdminRoute />}>
           <Route path="admin/dashboard" element={<DashboardAdmin />} />

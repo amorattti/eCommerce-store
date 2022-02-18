@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../../hoc/Layout'
 import { useParams } from 'react-router-dom'
-import { isAuthenticated } from '../../auth'
-import { readUser, updateUser, updateUserLS } from '../apiUser'
-import InputGroup from '../../components/InputGroup_Styles'
-import Input from '../../components/Input_Styles'
-import Button from '../../components/Button'
-import Alert from '../../components/Alert'
-
+import { isAuthenticated } from '../../../../../auth'
+import { readUser, updateUser, updateUserLS } from '../../../../../user/apiUser'
+import InputGroup from '../../../../../components/InputGroup_Styles'
+import Input from '../../../../../components/Input_Styles'
+import Button from '../../../../../components/Button'
+import Alert from '../../../../../components/Alert'
 
 const Profile = () => {
   const [values, setValues] = useState({
@@ -75,43 +73,40 @@ const Profile = () => {
   )
 
   return (
-    <Layout>
-      <div style={{ display: 'grid', justifyContent: 'center' }}>
-        {showSuccess()}
-        {showError()}
-        <h2>
-          Profile Update
-        </h2>
-        <form onSubmit={clickSubmit}>
-          <InputGroup>
-            <label>Full Name</label>
-            <Input
-              onChange={handleChange('name')}
-              type="text"
-              value={name}
-            />
-          </InputGroup>
-          <InputGroup>
-            <label>Email Address</label>
-            <Input
-              onChange={handleChange('email')}
-              type="text"
-              value={email}
-            />
-          </InputGroup>
-          <InputGroup>
-            <label >Password</label>
-            <Input
-              onChange={handleChange('password')}
-              type="password"
-              value={password}
-            />
-          </InputGroup>
-          <Button type="submit">Update</Button>
-        </form>
-
-      </div>
-    </Layout>
+    <div>
+      {showSuccess()}
+      {showError()}
+      <h2>
+        Profile Update
+      </h2>
+      <form onSubmit={clickSubmit}>
+        <InputGroup>
+          <label>Full Name</label>
+          <Input
+            onChange={handleChange('name')}
+            type="text"
+            value={name}
+          />
+        </InputGroup>
+        <InputGroup>
+          <label>Email Address</label>
+          <Input
+            onChange={handleChange('email')}
+            type="text"
+            value={email}
+          />
+        </InputGroup>
+        <InputGroup>
+          <label >Password</label>
+          <Input
+            onChange={handleChange('password')}
+            type="password"
+            value={password}
+          />
+        </InputGroup>
+        <Button type="submit">Update</Button>
+      </form>
+    </div>
   )
 }
 

@@ -2,10 +2,12 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export const Card = styled.div`
-  border: 0.1rem solid ${props => props.theme.colors.border.normal};
+  /* border: 0.1rem solid ${props => props.theme.colors.border.normal}; */
   margin-bottom: 2rem;
-  box-shadow: -2px 4px 9px 0px #efeeee;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
   width: ${props => props.width ? props.width : 'auto'};
+  background: ${({theme}) => theme.colors.white};
+
 `
 export const CardHeader = styled.h3`
   border-bottom: 0.1rem solid ${props => props.theme.colors.border.normal};
@@ -36,63 +38,48 @@ export const NavLink = styled(Link)`
 
 export const BoxContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  gap: 6%;
+  align-items: baseline;
+  position: relative;
+  
+  >div:nth-child(1) {
+    flex: 1;
+  }
+
+  >div:nth-child(2) {
+    flex: 4;
+  }
+
+
+  @media screen and (max-width: ${props => props.theme.spacing.sm}) {
+      display: block;   
+    } 
+
+
 `
 
 export const BoxItem = styled.div`
-  display: inherit;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`
-
-
-/*
- ----- Purchase history -----
-*/
-export const HeadSection = styled.section`
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  color: #008000c7;
-`
-
-export const BodySection = styled.section`
   display: flex;
 
-  div {
-    flex: 1
-  }
-`
 
-export const ListContainer = styled.div``
-
-export const DetailProduct = styled.div`
-  display: flex;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    flex: 4;
-    line-height: 30px;
-  }
-`
-
-export const Photo = styled.div`
- flex: 2!important;
-`
-
-export const DetailsProducts = styled.div`
-  display: flex;
-  flex-direction: column;
-
- span:nth-child(2) {
-    inline-size: 300px;
+  
+  &:nth-child(1) {
+    @media screen and (max-width: ${props => props.theme.spacing.sm}) {
+   
+      &>div  {
+        width: 100%;
+      }
+    
+    } 
   }
 
-  & span:nth-child(1) p {
-    font-size: 1.rem;
-    color: #444444;
-    letter-spacing: 0.004rem;
-    font-weight: 500;
+  &:nth-child(2){
+    @media screen and (max-width: ${props => props.theme.spacing.sm}) {
+      flex: unset;
+    } 
   }
+
+
 `
+
+

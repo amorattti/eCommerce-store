@@ -99,8 +99,6 @@ const Shop = ({ searchValue, setSearchValue }) => {
     })
   }
 
-  console.log(showBar)
-
   return (
     <Layout
       title="Shop page"
@@ -114,7 +112,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
             onClick={() => setShowBar(prevState => !prevState)}
           >
             <div>
-              <MdOutlineReadMore size='2rem' />
+              <MdOutlineReadMore size='35px' />
             </div>
           </ToggleFilter>
           <FiltersHeader
@@ -122,11 +120,11 @@ const Shop = ({ searchValue, setSearchValue }) => {
             onClick={() => setShowBar(prevState => !prevState)}
           >
             <div>
-              <IoFilterSharp size='1.3rem' />
+              <IoFilterSharp size='20px' />
             </div>
             <div>Filters</div>
             <div>
-              <BsArrowLeftShort size='1.8rem' />
+              <BsArrowLeftShort size='30px' />
             </div>
           </FiltersHeader>
           <ContentBar showBar={showBar}>
