@@ -39,7 +39,7 @@ export const NavLink = styled(Link)`
 export const BoxContainer = styled.div`
   display: flex;
   gap: 6%;
-  align-items: baseline;
+  align-items: flex-start;
   position: relative;
   
   >div:nth-child(1) {
@@ -48,6 +48,7 @@ export const BoxContainer = styled.div`
 
   >div:nth-child(2) {
     flex: 4;
+    justify-content: center;
   }
 
 

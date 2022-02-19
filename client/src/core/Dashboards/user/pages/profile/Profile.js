@@ -6,6 +6,7 @@ import InputGroup from '../../../../../components/InputGroup_Styles'
 import Input from '../../../../../components/Input_Styles'
 import Button from '../../../../../components/Button'
 import Alert from '../../../../../components/Alert'
+import EntryCard from '../../../../../components/EntryCard_Styles'
 
 const Profile = () => {
   const [values, setValues] = useState({
@@ -73,7 +74,7 @@ const Profile = () => {
   )
 
   return (
-    <div>
+    <EntryCard>
       {showSuccess()}
       {showError()}
       <h2>
@@ -106,7 +107,7 @@ const Profile = () => {
         </InputGroup>
         <Button type="submit">Update</Button>
       </form>
-    </div>
+    </EntryCard>
   )
 }
 

@@ -6,6 +6,7 @@ export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: center;
 `
 
 export const ShoppingCart = styled.div`
@@ -19,19 +20,24 @@ export const TitleCart = styled.div`
   padding: 2rem 3rem;
   border-bottom: 0.1rem solid ${props => props.theme.colors.border.normal};
   font-size: 1.8rem;
- 
 `
 
 export const Col = styled.div`
   flex: ${(props) => props.size};
    
-  @media(max-width: ${props => props.theme.spacing.sm}) {
-    flex: none;
-    width: 100%;
-
-    &:last-child {
-     margin: 2rem 0;
-    }
+  &:last-child {
+    min-width: 34rem;
+    max-width: 60rem;  
   }
 
+  &:first-child {
+    margin-bottom: 2rem;
+  }
+
+  @media(max-width: ${props => props.theme.spacing.sm}) {
+
+    >div:last-child {
+      margin: 0; 
+    }  
+  }
 `

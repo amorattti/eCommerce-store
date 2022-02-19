@@ -30,7 +30,7 @@ const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
         </S.Image>
 
         <S.Name>
-          <span>{product.name}</span>
+          {product.name}
         </S.Name>
 
         <S.Quantity>

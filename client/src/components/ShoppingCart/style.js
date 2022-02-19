@@ -2,16 +2,17 @@ import styled from "styled-components"
 
 export const ItemBody = styled.div`
   display: flex;
-  padding: 2rem 3rem;
+  padding: 2rem 2rem;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid ${props => props.theme.colors.border.normal};
   font-weight: 500;
+  position: relative;
 
-
-  @media(max-width: 768px) {
-    padding: 2rem 10px;
-  }
+  @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
+    display: flex;
+    flex-direction: column;
+  };
 `
 
 export const ButtonRemove = styled.div`
@@ -22,7 +23,8 @@ export const ButtonRemove = styled.div`
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
- 
+  margin-right: 2rem;
+
   &::before,
   &::after {
     position: absolute;
@@ -45,6 +47,13 @@ export const ButtonRemove = styled.div`
     background-color: #6c757d;
   }
 
+
+  @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
 `
 
 export const QuantityButton = styled.button`
@@ -62,14 +71,17 @@ export const QuantityButton = styled.button`
 export const Image = styled.figure``
 
 export const Name = styled.div`
-  span {
-    display: block;
-    inline-size: 19rem;
-    overflow-wrap: break-word;
-    font-size: 1.4rem;
+  inline-size: 22rem;
+  overflow-wrap: break-word;
+  font-size: 1.4rem;
+  padding-left: 10px;  
+  font-size: 1.4rem;
+  
+  @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
+    inline-size: 30rem;
   }
-
 `
+
 export const Quantity = styled.div`
   display: flex;
 
@@ -90,16 +102,18 @@ input {
   font-size: 1.6rem;
   font-weight: 400;
 }
-
-@media(max-width: ${props => props.theme.spacing.sm}) {
-  input {
-   
-  }    
-}
-
 `
 export const TotalPrice = styled.div`
   font-weight: 500;
   inline-size: 4.8rem;
   text-align: right;
+
+
+  @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    font-size: 1.6rem;
+  }
+
 `
