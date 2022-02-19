@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom'
 import Layout from '../../../hoc/Layout'
 import { fetchProductById, fetchRelatedProducts } from '../../apiCore'
 import ShowImage from '../../../components/ShowImage'
-import { RowFlex, Col, ImageSection, ContentSection, Heading, H5, RowGrid } from './style'
+import { RowFlex, Col, ImageSection, ContentSection, Heading,
+   H5, RowGrid,AuthorName, Description } from './style'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import { addItemToLocalStorage } from '../../cartHelper'
@@ -17,7 +18,7 @@ const Product = () => {
   const [error, setError] = useState({})
   let { productId } = useParams()
   let navigate = useNavigate()
-
+  console.log(product)
   useEffect(() => {
     loadProduct()
 
@@ -50,9 +51,11 @@ const Product = () => {
     }
   }
 
-  const checkProductAvailability = ({ quantity }) => {
+  const checkProductAvailability = ({ quantity, sold }) => {
+    const left = sold - quantity
+
     if (quantity > 0) {
-      return <H5 color="#198754">Avaible</H5>
+      return <H5 color="#317656">Avaible({Math.abs(left)})</H5>
     } else if (quantity < 1) {
       return <H5 color="#ff0000">Inaccessible</H5>
     }
@@ -71,19 +74,23 @@ const Product = () => {
         </Col>
         <Col size={7}>
           <ContentSection>
+
             <h1>{product.name}</h1>
-            <div>
-              <h5>Description: </h5>
+            <AuthorName>Book by {product.author}</AuthorName>
+
+            <Description>
+              <h5>Book Description: </h5>
               <p>{product.description}</p>
-            </div>
+            </Description>
+
             {checkProductAvailability(product)}
+
             <h5>{`$${product.price}`} </h5>
+
             <Button onClick={() => addToCart(product)}>
               <span>Add to card</span>
-              <span>
-                <GrCart size="15px"  color="#fff" />
-              </span>
             </Button>
+
           </ContentSection>
         </Col>
       </RowFlex>
@@ -93,13 +100,13 @@ const Product = () => {
         </Col>
       </RowFlex>
       <RowGrid>
-        {productRelated.length !== 0 && productRelated.map((product) => {
+        {productRelated.length !== 0 ? productRelated.map((product) => {
           return (
             <div key={product._id}>
-              <Card heightImg="233px" product={product} />
+              <Card heightImg="100%" product={product} />
             </div>
           )
-        })}
+        }) : <div>No related products</div>}
       </RowGrid>
     </Layout>
   )

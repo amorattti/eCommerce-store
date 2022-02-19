@@ -10,7 +10,7 @@ export const ItemBody = styled.div`
 
 
   @media(max-width: 768px) {
-    padding: 2rem 0px;
+    padding: 2rem 10px;
   }
 `
 
@@ -64,7 +64,7 @@ export const Image = styled.figure``
 export const Name = styled.div`
   span {
     display: block;
-    inline-size: 12rem;
+    inline-size: 19rem;
     overflow-wrap: break-word;
     font-size: 1.4rem;
   }
@@ -93,7 +93,7 @@ input {
 
 @media(max-width: ${props => props.theme.spacing.sm}) {
   input {
-    width: 1.2rem;
+   
   }    
 }
 

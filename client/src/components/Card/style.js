@@ -39,8 +39,7 @@ export const ProductInfo = styled.div`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  margin-top: -0.8rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.8rem;
 
  a {
   text-decoration: none;
