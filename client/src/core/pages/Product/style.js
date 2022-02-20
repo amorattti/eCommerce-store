@@ -4,10 +4,19 @@ export const RowFlex = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 3%;
+
+  @media screen and (max-width: ${props => props.theme.spacing.xs}) {
+    padding: 2rem;
+  }
+
 `
 
 export const Col = styled.div`
   flex: ${(props) => props.size};
+  
+  &:first-child {
+    text-align: center;
+  }
 
   h1 {
     font-size: 2rem;
@@ -16,12 +25,10 @@ export const Col = styled.div`
 
   @media screen and (max-width: ${props => props.theme.spacing.sm}) {
     flex: max-content;
-    margin-bottom: 2rem;
-    
-    div {
-      margin: auto;    
-    }
-}
+    margin-bottom: 2rem;   
+    display: flex;
+    justify-content: center;
+  }
 `
 
 export const ImageSection = styled.div`
@@ -29,19 +36,22 @@ export const ImageSection = styled.div`
 `
 
 export const RowGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: ${props => props.theme.spacing.sm}) {
+    justify-content: center;
+
+  }
+ 
 `
 
 export const ContentSection = styled.div`
-
-
   > h5 {
     font-size: 1.6rem;
     font-weight: 300;
     margin: 2rem 0;
   }
-
 `
 
 export const Heading = styled.h2`
@@ -77,4 +87,10 @@ export const Heading = styled.h2`
   p {
     color: ${({theme}) => theme.colors.border.dark};
   }
+ `
+
+ export const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
  `

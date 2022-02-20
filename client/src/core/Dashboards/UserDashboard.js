@@ -13,7 +13,7 @@ import {
 
 
 const UserDashboard = () => {
-  const { user: { _id, name, email, role }, token } = isAuthenticated()
+  const { user: { _id, name } } = isAuthenticated()
 
   const userLinks = () => {
     return (
@@ -22,9 +22,6 @@ const UserDashboard = () => {
           Menu
         </CardHeader>
         <ListGroup>
-          {/* <ListGroupItem>
-            <NavLink to="/cart">My Cart</NavLink>
-          </ListGroupItem> */}
           <ListGroupItem>
             <NavLink to={`/user/dashboard/profile/${_id}`}>Profile</NavLink>
           </ListGroupItem>
@@ -35,24 +32,6 @@ const UserDashboard = () => {
       </Card>
     )
   }
-
-  // const userInfo = () => {
-  //   return (
-  //     <Card width="600px">
-  //       <CardHeader>
-  //         User Information
-  //       </CardHeader>
-  //       <ListGroup>
-  //         <ListGroupItem>{name}</ListGroupItem>
-  //         <ListGroupItem>{email}</ListGroupItem>
-  //         <ListGroupItem>
-  //           {role === 0 ? "registered user" : "admin"}
-  //         </ListGroupItem>
-  //       </ListGroup>
-  //     </Card>
-  //   )
-  // }
-
 
   return (
     <Layout title="Dashboard" description={`Welcome ${name}`}>

@@ -100,3 +100,9 @@ export const Name = styled(Link)`
   };
 
 `
+
+export const LoaderWrapper = styled.div`
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+`

@@ -18,7 +18,7 @@ export const ProductCart = styled.div`
   }
 
   @media screen and (max-width: ${({theme}) => theme.spacing.sm}) {
-    margin: 2rem auto;
+    
   }
 
 `

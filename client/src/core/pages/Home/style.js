@@ -12,10 +12,6 @@ export const Header = styled.h1`
   span {
     color: ${props => props.theme.colors.blue.normal};
   }
-
-  /* @media screen and (max-width: ${props => props.theme.spacing.sm}) {
-    text-align: center;
-  } */
 `
 
 export const Paragraph = styled.p`
@@ -26,4 +22,10 @@ export const Paragraph = styled.p`
   font-family: 'Open Sans',sans-serif;
   letter-spacing: 0.001rem;
   font-size: 1.4rem;
+`
+
+export const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 200px;
 `

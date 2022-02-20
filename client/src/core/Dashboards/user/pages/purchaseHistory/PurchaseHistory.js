@@ -5,21 +5,24 @@ import {
   MainCard, CardHeader,
   ListGroup, ListGroupItem,
   DetailsProducts, Photo, HeadSection, BodySection, DetailProduct,
-  DetailInfo, Count, Name
+  DetailInfo, Count, Name, LoaderWrapper
 } from './style'
 import { fetchPurchaseHistory } from '../../../../apiCore'
 import ShowImage from '../../../../../components/ShowImage'
 import Moment from 'react-moment';
+import { LoadingIndicator } from '../../../../../components'
 
 
 const PurchaseHistory = () => {
   const [history, setHistory] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const { user: { _id, name, email, role }, token } = isAuthenticated()
+  const { user: { _id }, token } = isAuthenticated()
 
   const initHistory = async () => {
     const historyOrders = await fetchPurchaseHistory(_id, token)
     setHistory(historyOrders)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -32,8 +35,7 @@ const PurchaseHistory = () => {
         My shopping
       </CardHeader>
       <ListGroup>
-
-        {history && history.map((order) => (
+        {!loading ? history.map((order) => (
           <ListGroupItem key={order._id}>
             <HeadSection>
               <span>Status: {order.status}</span>
@@ -64,23 +66,15 @@ const PurchaseHistory = () => {
                       </div>
                     </Count>
                   </DetailInfo>
-
                 </DetailProduct>
-
               ))}
               <DetailsProducts>
-                {/* <span>Address:
-                  <p>
-                    {order.address}
-                  </p>
-                </span> */}
                 <span>Total amount</span>
                 <span> {order.amount}$</span>
               </DetailsProducts>
             </BodySection>
           </ListGroupItem>
-        ))}
-
+        )) : <LoaderWrapper><LoadingIndicator /></LoaderWrapper>}
       </ListGroup>
     </MainCard>
   )
