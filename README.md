@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Restaurant Landing Page
+### [Live Site](https://ecommercy-shop.herokuapp.com/) Heroku delay server ~5s (free package)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Restaurant Landing Page](https://i.ibb.co/z4CjPpL/Screenshot-2022-02-20-at-03-19-39-Screenshot-2022-02-20-at-03-16-56-React-App-png-PNG-Image-1440-151.png)
 
-## Available Scripts
+## Deployment
 
-In the project directory, you can run:
+```bash
+  npm run install (client / server)
+  npm run build (client)
+  npm run dev
+```
 
-### `npm start`
+<br>
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Environment Variables
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run this project, you will need to add the following environment variables to your .env file
 
-### `npm test`
+#### Client:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`REACT_APP_API_URL=http://localhost:5000/api`  || heroku `REACT_APP_API_URL=/api`
 
-### `npm run build`
+#### Server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`MONGO_URI`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`CLIENT_URL=http://localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`BRAINTREE_MARCHANT_ID`
 
-### `npm run eject`
+`BRAINTREE_PUBLIC_KEY`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`BRAINTREE_PRIVATE_KEY`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Test Credit Card Numbers
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### [source](https://support.checkfront.com/hc/en-us/articles/115004847353-Payment-Providers-Braintree-Direct)
 
-## Learn More
+Back to top
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can use the following fictitious credit card numbers when testing your checkout:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Visa: 4111 1111 1111 1111
+    Mastercard: 5555 5555 5555 4444
+    Amex: 3714 496353 9843
 
-### Code Splitting
+You can use any CVC code.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+For expiry dates, use a valid month and a day within the next 180 years. 22/2222 does not work!
 
-### Analyzing the Bundle Size
+Amounts between $0.01 - $1999.99 simulate a successful authorization.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Finally, always remember to take your account out of test mode when you are finished!
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
