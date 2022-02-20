@@ -102,7 +102,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
   return (
     <Layout
       title="Shop page"
-      description="search and find your favorite books"
+      description="find a book that will meet your expectations"
     >
       <Row>
         <MenuBar showBar={showBar}>
