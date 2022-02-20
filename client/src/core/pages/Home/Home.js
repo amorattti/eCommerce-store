@@ -5,6 +5,7 @@ import { getsProducts } from './../../apiCore'
 import { Header, Paragraph, LoaderWrapper } from './style'
 import Grid from '../../../components/Grid'
 import { LoadingIndicator } from '../../../components'
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])
@@ -37,10 +38,14 @@ const Home = () => {
   useEffect(() => {
     loadProductsByArrival()
     loadProductsBySell()
+
   }, [])
 
   return (
     <Layout title="Technical books shop" description="Here you can get the book easly when are avaible in our stock">
+      <Helmet>
+        <title>TechBooks</title>
+      </Helmet>
 
       <Header align="center">BEST <span> TOP </span> SELLERS</Header>
       <Paragraph>Those books which are sold with in few days

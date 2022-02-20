@@ -12,6 +12,7 @@ import Card from '../../../components/Card'
 import { addItemToLocalStorage } from '../../cartHelper'
 import { useNavigate } from "react-router-dom";
 import { LoadingIndicator } from '../../../components'
+import { Helmet } from "react-helmet"
 
 const Product = () => {
   const [product, setProduct] = useState({})
@@ -65,8 +66,19 @@ const Product = () => {
     }
   }
 
+
+
   return (
     <Layout>
+      {loader ? (
+        <Helmet>
+          <title>Loading...</title>
+        </Helmet>
+      ) : (
+        <Helmet>
+        <title>{`${product.name} - `}TechBooks</title>
+        </Helmet>
+      )}   
       {shouldRedirect(redirect)}
       {!loader ? (
         <>

@@ -28,13 +28,16 @@ const PurchaseHistory = () => {
   useEffect(() => {
     initHistory()
   }, [])
-
+  console.log('historyu', history.length)
   return (
     <MainCard>
       <CardHeader>
         My shopping
       </CardHeader>
       <ListGroup>
+
+        {history.length === 0 && 'Your purchase history is empty.'}
+
         {!loading ? history.map((order) => (
           <ListGroupItem key={order._id}>
             <HeadSection>

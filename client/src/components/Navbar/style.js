@@ -16,7 +16,7 @@ export const StyledNavbarExtend = styled(Wrapper)`
 export const NavbarContainer = styled.section`
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 3rem;
   align-items: center;
 
   @media screen and (max-width: ${props => props.theme.spacing.sm}) {

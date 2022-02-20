@@ -9,6 +9,7 @@ import Grid from '../../../components/Grid'
 import { IoFilterSharp } from 'react-icons/all'
 import { BsArrowLeftShort } from 'react-icons/bs'
 import { MdOutlineReadMore } from 'react-icons/all'
+import { Helmet } from "react-helmet";
 
 import {
   ButtonLoadMore,
@@ -20,7 +21,8 @@ import {
   ButtonBox
 } from './style'
 
-const Shop = ({ searchValue, setSearchValue }) => {
+const Shop = ({ searchValue }) => {
+  const [title, setTitle] = useState('TechBooks - news ')
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] }
   })
@@ -51,6 +53,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
   }
 
   useEffect(() => {
+    console.log('searchValue', searchValue)
     init()
     if (searchValue.length < 1) {
       loadFilterResults(myFilters.filters)
@@ -70,7 +73,7 @@ const Shop = ({ searchValue, setSearchValue }) => {
     }
 
     loadFilterResults(myFilters.filters)
-    // setMyFilters(newFilters)
+     setMyFilters(newFilters)
   }
 
   const handlePrice = (value) => {
@@ -104,6 +107,11 @@ const Shop = ({ searchValue, setSearchValue }) => {
       title="Shop page"
       description="find a book that will meet your expectations"
     >
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+
+
       <Row>
         <MenuBar showBar={showBar}>
           <ToggleFilter

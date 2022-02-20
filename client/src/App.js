@@ -60,8 +60,7 @@ const App = () => {
         <Route
           path="shop"
           element={<Shop
-            searchValue={searchValue}
-            setSearchValue={setSearchValue} />}
+            searchValue={searchValue} />}
         />
         <Route element={<PrivateUserRoute />}>
           <Route path="user/dashboard" element={<DashboardUser />}>
