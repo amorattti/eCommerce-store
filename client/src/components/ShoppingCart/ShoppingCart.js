@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './style'
 import ShowImage from '../ShowImage'
+import {Link} from 'react-router-dom'
 
 const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
   const [count, setCount] = useState(parseInt(product.count))
@@ -30,7 +31,7 @@ const ShoppingCart = ({ product, updateItem, removeItem, setUpdate, run }) => {
         </S.Image>
 
         <S.Name>
-          {product.name}
+          <Link to={`/product/${product._id}`}>{product.name}</Link>
         </S.Name>
 
         <S.Quantity>

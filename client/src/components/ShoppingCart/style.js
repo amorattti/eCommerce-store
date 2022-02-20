@@ -76,7 +76,16 @@ export const Name = styled.div`
   font-size: 1.4rem;
   padding-left: 10px;  
   font-size: 1.4rem;
-  
+    
+  a {
+    text-decoration: none;
+    color: ${({theme}) => theme.colors.mainFont};
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
     inline-size: 30rem;
   }
@@ -107,7 +116,6 @@ export const TotalPrice = styled.div`
   font-weight: 500;
   inline-size: 4.8rem;
   text-align: right;
-
 
   @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
     position: absolute;
