@@ -26,7 +26,7 @@ To run this project, you will need to add the following environment variables to
 
 `MONGO_URI`
 
-`CLIENT_URL=http://localhost:3000`
+`CLIENT_URL`
 
 `BRAINTREE_MARCHANT_ID`
 
