@@ -10,7 +10,7 @@ import {
 import {
   Outlet
 } from "react-router-dom";
-
+import { Helmet } from "react-helmet"
 
 const UserDashboard = () => {
   const { user: { _id, name } } = isAuthenticated()
@@ -35,13 +35,16 @@ const UserDashboard = () => {
 
   return (
     <Layout title="Dashboard" description={`Welcome ${name}`}>
+      <Helmet>
+        <title>Dashboard user</title>
+      </Helmet>
       <BoxContainer>
         <BoxItem>
           {userLinks()}
-        </BoxItem> 
+        </BoxItem>
         <BoxItem>
           <Outlet />
-        </BoxItem> 
+        </BoxItem>
       </BoxContainer>
     </Layout >
   )

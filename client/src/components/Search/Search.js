@@ -13,9 +13,10 @@ import { ConfigContext } from '../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { MdSearch } from 'react-icons/md'
 
-
 const Search = () => {
-  const { setSearchResults, searchResults } = useContext(ConfigContext)
+  const { setSearchResults, searchResults,   
+    setSearchName
+  } = useContext(ConfigContext)
   const navigate = useNavigate()
 
   const [data, setData] = useState({
@@ -57,6 +58,7 @@ const Search = () => {
         if (resp.length > 0) {
           setSearchResults(resp)
           navigate('/shop')
+          setSearchName( `search result for: '${data.search}' - TechBooks`)
         } else {
           navigate('/asdasdsda')
         }

@@ -106,22 +106,22 @@ const Checkout = ({ products, setItems }) => {
       <form>
         <S.itemForm>
           <input {...register("first_name", { required: true })} placeholder='first name*' />
-          <span style={{ color: 'red' }}> {errors.first_name?.type === 'required' && "First name is required"}</span>
+          <span style={{ color: 'red' }}> {errors.first_name?.type === 'required' && "first name is required"}</span>
         </S.itemForm>
         <S.itemForm>
           <input {...register("last_name", { required: true })} placeholder='last name*' />
-          <span style={{ color: 'red' }}> {errors.last_name?.type === 'required' && "First name is required"}</span>
+          <span style={{ color: 'red' }}> {errors.last_name?.type === 'required' && "last name is required"}</span>
         </S.itemForm>
         <S.itemForm>
           <input {...register("city", { required: true })} placeholder='city*' />
-          <span style={{ color: 'red' }}> {errors.city?.type === 'required' && "First name is required"}</span>
+          <span style={{ color: 'red' }}> {errors.city?.type === 'required' && "city is required"}</span>
         </S.itemForm>
         <S.itemForm>
           <input {...register("zip")} placeholder='zip' />
         </S.itemForm>
         <S.itemForm>
           <input {...register("address", { required: true })} placeholder='address*' />
-          <span style={{ color: 'red' }}> {errors.address?.type === 'required' && "First name is required"}</span>
+          <span style={{ color: 'red' }}> {errors.address?.type === 'required' && "address is required"}</span>
         </S.itemForm>
       </form>
     </S.AddresForm>

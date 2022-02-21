@@ -38,6 +38,7 @@ export const ConfigContext = createContext()
 const App = () => {
   const [searchResults, setSearchResults] = useState([]) // searchResults === Array of objects
   const [display, setDisplay] = useState(false)
+  const [searchName, setSearchName] = useState('TechBooks - news') // set default Helmet title
 
   return (
     <BrowserRouter>
@@ -46,7 +47,9 @@ const App = () => {
           setSearchResults, 
           searchResults, 
           setDisplay, 
-          display 
+          display,
+          searchName,
+          setSearchName
         }}>
         <Navigation>
           <Wrapper as="nav">

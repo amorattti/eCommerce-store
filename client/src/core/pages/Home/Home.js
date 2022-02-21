@@ -5,7 +5,7 @@ import { getsProducts } from './../../apiCore'
 import { Header, Paragraph, LoaderWrapper } from './style'
 import Grid from '../../../components/Grid'
 import { LoadingIndicator } from '../../../components'
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet"
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([])

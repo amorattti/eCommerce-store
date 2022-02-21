@@ -23,9 +23,8 @@ import {
 import { ConfigContext } from '../../../App'
 
 const Shop = () => {
-  const { searchResults } = useContext(ConfigContext)
+  const { searchResults, searchName, setSearchName } = useContext(ConfigContext)
 
-  const [title, setTitle] = useState('TechBooks - news ')
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] }
   })
@@ -56,7 +55,6 @@ const Shop = () => {
   }
 
   useEffect(() => {
-    console.log('searchResults', searchResults)
     init()
     if (searchResults.length < 1) {
       loadFilterResults(myFilters.filters)
@@ -64,6 +62,7 @@ const Shop = () => {
       setFilteredResults(searchResults)
       setSize(searchResults.length)
     }
+    return () => setSearchName('TechBooks - news ')
   }, [searchResults])
 
   const handleFilters = (filters, filterBy) => {
@@ -111,9 +110,8 @@ const Shop = () => {
       description="find a book that will meet your expectations"
     >
       <Helmet>
-        <title>{title}</title>
+        <title>{searchName}</title>
       </Helmet>
-
 
       <Row>
         <MenuBar showBar={showBar}>

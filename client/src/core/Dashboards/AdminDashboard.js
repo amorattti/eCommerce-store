@@ -2,12 +2,12 @@ import React from 'react'
 import Layout from '../../hoc/Layout'
 import { isAuthenticated } from '../../auth'
 import {
-  Card, CardHeader, ListGroup, ListGroupItem, BoxContainer, BoxItem,NavLink
+  Card, CardHeader, ListGroup, ListGroupItem, BoxContainer, BoxItem, NavLink
 } from './styles'
+import { Helmet } from "react-helmet"
 
 const AdminDashboard = () => {
-
-  const { user: { _id, name, email, role } } = isAuthenticated()
+  const { user: { name, email, role } } = isAuthenticated()
 
   const adminLinks = () => {
     return (
@@ -52,8 +52,11 @@ const AdminDashboard = () => {
 
   return (
     <Layout title="Dashboard" description={`Welcome ${name}`}>
+      <Helmet>
+        <title>Dashboard admin</title>
+      </Helmet>
       <BoxContainer>
-        <BoxItem> 
+        <BoxItem>
           {adminLinks()}
           {adminInfo()}
         </BoxItem>

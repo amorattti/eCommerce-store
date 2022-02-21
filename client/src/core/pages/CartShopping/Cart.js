@@ -7,6 +7,7 @@ import { updateItem, removeItem } from '../../cartHelper'
 import ShoppingCart from '../../../components/ShoppingCart'
 import * as S from './style'
 import Checkout from '../../../components/Checkout'
+import { Helmet } from "react-helmet"
 
 const Cart = () => {
   const [items, setItems] = useState([])
@@ -51,10 +52,13 @@ const Cart = () => {
 
   return (
     <Layout description='Transaction summary'>
+      <Helmet>
+        <title>Shopping cart</title>
+      </Helmet>
       <Row>
         <Col size={8}>
           {items.length > 0 ? shoppingCart(items) : noItemsMessage()}
-        </Col>   
+        </Col>
         <Col size={4} >
           <Checkout
             products={items}
