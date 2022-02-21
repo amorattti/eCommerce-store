@@ -61,7 +61,6 @@ const AdminDashboard = () => {
           {adminInfo()}
         </BoxItem>
       </BoxContainer>
-
     </Layout >
   )
 }

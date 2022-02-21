@@ -22,7 +22,9 @@ export const StyledAlert = styled.div(({ theme, value }) => `
   border-radius: 4px;
   border-left: 0;
   border-right: 0;
-
+  text-align: center;
+  line-height: 24px;
+  
   ${theme ? themes[theme] : ''}
 `)
 

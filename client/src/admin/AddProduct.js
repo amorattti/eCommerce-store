@@ -9,6 +9,8 @@ import Input from '../components/Input_Styles'
 import Button from '../components/Button'
 import Alert from '../components/Alert'
 
+import { useNavigate } from 'react-router'
+
 const AddProduct = () => {
   const { user, token } = isAuthenticated()
   const [values, setValues] = useState({
@@ -27,6 +29,8 @@ const AddProduct = () => {
     redirectToProfile: false,
     formData: ''
   })
+
+  const navigate = useNavigate()
 
   const {
     name,
@@ -173,6 +177,12 @@ const AddProduct = () => {
     </Alert>
   )
 
+  const goBackButton = () => (
+    <Button onClick={() => navigate(-1)}>
+      ← Go Back
+    </Button>
+  )
+
   return (
     <Layout title="Add Product">
       <EntryCard>
@@ -181,6 +191,7 @@ const AddProduct = () => {
         {showSuccess()}
         {newPostForm()}
       </EntryCard>
+      {goBackButton()}
     </Layout >
   )
 }

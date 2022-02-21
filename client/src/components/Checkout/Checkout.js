@@ -5,14 +5,13 @@ import { createOrder, getBraintreeToken, processPayment } from '../../core/apiCo
 import { removeItemsCart, getCart } from '../../core/cartHelper'
 import Button from '../Button'
 import DropIn from "braintree-web-drop-in-react";
-import Alert from '../Alert'
 import { ButtonPay } from './style'
 import Loading from '../Loading'
 import { useForm } from "react-hook-form";
 
 import * as S from './style'
 
-const Checkout = ({ products, setItems }) => {
+const Checkout = ({ products, setItems, setSuccess }) => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     success: false,
@@ -90,14 +89,9 @@ const Checkout = ({ products, setItems }) => {
       removeItemsCart(() => console.log('Transaction Successful'))
       setItems([])
       setLoading(false)
+      setSuccess(true)
     }
   }
-
-  const showSuccess = () => (
-    <Alert value={data.success} theme="success">
-      Thanks! your payment was successful
-    </Alert>
-  )
 
   const AddresForm = () => (
     <S.AddresForm>
@@ -151,25 +145,24 @@ const Checkout = ({ products, setItems }) => {
       )
     }
   }
-  
+
   return (
     <>
-      {showSuccess()}   
-        <S.Summary>
-          <h5>Summary</h5>
-          <S.Total>
-            <div><span>Products</span><span>${`${getTotal(products)}`}</span></div>
-            <div><span>Shipping</span><span>Free</span></div>
-            <div><span>Total:</span> ${getTotal(products)}</div>
-          </S.Total>
+      <S.Summary>
+        <h5>Summary</h5>
+        <S.Total>
+          <div><span>Products</span><span>${`${getTotal(products)}`}</span></div>
+          <div><span>Shipping</span><span>Free</span></div>
+          <div><span>Total:</span> ${getTotal(products)}</div>
+        </S.Total>
 
-          {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
-            <Link to="/signin">
-              <Button>Sign in to checkout</Button>
-            </Link>
-          )}
-          {loading && <Loading />}
-        </S.Summary>
+        {isAuthenticated() ? (<div> {showDropIn()} </div>) : (
+          <Link to="/signin">
+            <Button>Sign in to checkout</Button>
+          </Link>
+        )}
+        {loading && <Loading />}
+      </S.Summary>
     </>
   )
 }

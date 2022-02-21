@@ -9,6 +9,7 @@ import InputGroup from '../../../components/InputGroup_Styles'
 import Input from '../../../components/Input_Styles'
 import Button from '../../../components/Button'
 import Alert from '../../../components/Alert'
+import { useNavigate } from 'react-router'
 
 const Edit = () => {
   const { user, token } = isAuthenticated()
@@ -29,6 +30,8 @@ const Edit = () => {
     formData: ''
   })
   let { productId } = useParams()
+
+  const navigate = useNavigate()
 
   const { name, description, author, price, category,
     categories, quantity, photo, shipping, loading,
@@ -66,6 +69,8 @@ const Edit = () => {
       error: false,
       productUpdated: productUpdate.name
     })
+
+    navigate(-1)
   }
 
   const newPostForm = () => (

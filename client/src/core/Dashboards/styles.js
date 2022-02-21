@@ -44,6 +44,7 @@ export const BoxContainer = styled.div`
   
   >div:nth-child(1) {
     flex: 1;
+    justify-content: space-between;
   }
 
   >div:nth-child(2) {
