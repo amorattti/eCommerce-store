@@ -44,7 +44,6 @@ const Checkout = ({ products, setItems }) => {
   useEffect(() => {
     getTokenClient(userId, userToken)
     getCart()
-
   }, [])
 
   const getTotal = (products) => {
@@ -155,8 +154,7 @@ const Checkout = ({ products, setItems }) => {
   
   return (
     <>
-      {showSuccess()}
-      {getCart() && (
+      {showSuccess()}   
         <S.Summary>
           <h5>Summary</h5>
           <S.Total>
@@ -172,7 +170,6 @@ const Checkout = ({ products, setItems }) => {
           )}
           {loading && <Loading />}
         </S.Summary>
-      )}
     </>
   )
 }

@@ -60,10 +60,11 @@ const Cart = () => {
           {items.length > 0 ? shoppingCart(items) : noItemsMessage()}
         </Col>
         <Col size={4} >
-          <Checkout
-            products={items}
-            setItems={setItems}
-          />
+          {items.length > 0 ? (
+            <Checkout
+              products={items}
+              setItems={setItems}
+            />) : null}
         </Col>
       </Row>
     </Layout >
