@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withRouter } from '../../hoc/withRouter'
 import { itemTotal } from '../../core/cartHelper'
 import { GrCart } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
-import {FaBars} from 'react-icons/fa'
+import { FaBars } from 'react-icons/fa'
 
 import {
   MenuContainer,
@@ -13,8 +13,11 @@ import {
   LinkMenu,
   BarIconWrapper
 } from './style'
+import { ConfigContext } from '../../App'
 
-const Menu = ({ setDisplay }) => {
+const Menu = () => {
+  const { setDisplay } = useContext(ConfigContext)
+
   return (
     <MenuContainer>
       <MenuBar>

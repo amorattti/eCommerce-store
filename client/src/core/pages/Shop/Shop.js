@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { getCategories, getFilteredProducts } from '../../apiCore'
 import { prices } from '../../fixedPrices'
 import Layout from '../../../hoc/Layout'
@@ -20,8 +20,11 @@ import {
   ToggleFilter,
   ButtonBox
 } from './style'
+import { ConfigContext } from '../../../App'
 
-const Shop = ({ searchValue }) => {
+const Shop = () => {
+  const { searchResults } = useContext(ConfigContext)
+
   const [title, setTitle] = useState('TechBooks - news ')
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] }
@@ -53,15 +56,15 @@ const Shop = ({ searchValue }) => {
   }
 
   useEffect(() => {
-    console.log('searchValue', searchValue)
+    console.log('searchResults', searchResults)
     init()
-    if (searchValue.length < 1) {
+    if (searchResults.length < 1) {
       loadFilterResults(myFilters.filters)
     } else {
-      setFilteredResults(searchValue)
-      setSize(searchValue.length)
+      setFilteredResults(searchResults)
+      setSize(searchResults.length)
     }
-  }, [searchValue])
+  }, [searchResults])
 
   const handleFilters = (filters, filterBy) => {
     const newFilters = { ...myFilters }
@@ -73,7 +76,7 @@ const Shop = ({ searchValue }) => {
     }
 
     loadFilterResults(myFilters.filters)
-     setMyFilters(newFilters)
+    setMyFilters(newFilters)
   }
 
   const handlePrice = (value) => {

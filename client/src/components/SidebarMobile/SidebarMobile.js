@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Portal from '../../hoc/Portal';
 import { SidebarContainer, Fog, SidebarMenu, CloseButton, SideBarItem } from './style'
 import Search from '../Search'
@@ -10,10 +10,12 @@ import { withRouter } from '../../hoc/withRouter';
 import { GrCart } from 'react-icons/gr'
 import { BiExit } from 'react-icons/bi'
 import { BiLogIn, BiLogOut } from 'react-icons/bi'
+import { ConfigContext } from '../../App'
 
 const sidebarId = document.getElementById('portal-sidebar-mobile')
 
-const SidebarMobilePortal = ({ display, setDisplay, location }) => {
+const SidebarMobilePortal = ({ location }) => {
+  const { display, setDisplay } = useContext(ConfigContext)
   const navigate = useNavigate()
 
   useEffect(() => {

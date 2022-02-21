@@ -9,15 +9,14 @@ import {
   ArrowIcon
 } from './style'
 
-import { SearchContext } from '../../App'
+import { ConfigContext } from '../../App'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { FiSearch } from 'react-icons/fi'
 import { MdSearch } from 'react-icons/md'
 
 
 const Search = () => {
-  const { setSearchValue, searchValue } = useContext(SearchContext);
-  const navigate = useNavigate();
+  const { setSearchResults, searchResults } = useContext(ConfigContext)
+  const navigate = useNavigate()
 
   const [data, setData] = useState({
     categories: [],
@@ -26,13 +25,13 @@ const Search = () => {
     searched: false
   })
 
-  const { categories, category, search, searched } = data
+  const { categories, category, search } = data
   let location = useLocation()
 
   useEffect(() => {
-    if (location.pathname !== '/shop' && searchValue.length !== 0) {
+    if (location.pathname !== '/shop' && searchResults.length !== 0) {
       // clear data to default in shop page and claer input value
-      setSearchValue([])
+      setSearchResults([])
       setData({ ...data, search: "" })
     }
   }, [location.pathname])
@@ -56,7 +55,7 @@ const Search = () => {
         setData({ ...data, searched: true })
 
         if (resp.length > 0) {
-          setSearchValue(resp)
+          setSearchResults(resp)
           navigate('/shop')
         } else {
           navigate('/asdasdsda')
