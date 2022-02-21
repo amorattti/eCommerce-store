@@ -3,6 +3,39 @@
 
 ![Restaurant Landing Page](https://i.ibb.co/z4CjPpL/Screenshot-2022-02-20-at-03-19-39-Screenshot-2022-02-20-at-03-16-56-React-App-png-PNG-Image-1440-151.png)
 
+
+## Features
+
+- #### register/login
+- #### admin dashboard 
+
+    add new product
+
+    edit product
+
+    add new category
+
+    view orders
+
+- #### user dashboard
+
+    edit profile
+
+    my shopping (history) 
+
+- #### pages
+
+    home
+
+    shop (search/filter)
+
+    shopping cart
+
+- #### payment
+
+    braintree (cart/PayPal) sandbox
+
+
 ## Deployment
 
 ```bash
@@ -10,9 +43,6 @@
   npm run build (client)
   npm run dev
 ```
-
-<br>
-<br>
 
 ## Environment Variables
 
@@ -33,9 +63,6 @@ To run this project, you will need to add the following environment variables to
 `BRAINTREE_PUBLIC_KEY`
 
 `BRAINTREE_PRIVATE_KEY`
-
-<br>
-<br>
 
 ## Test Credit Card Numbers
 
