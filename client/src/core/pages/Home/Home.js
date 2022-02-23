@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from '../../../components/Card'
 import Layout from '../../../hoc/Layout'
 import { getsProducts } from './../../apiCore'
-import { Header, Paragraph, LoaderWrapper } from './style'
+import { Header, Paragraph, LoaderWrapper, BottomLine } from './style'
 import Grid from '../../../components/Grid'
 import { LoadingIndicator } from '../../../components'
 import { Helmet } from "react-helmet"
@@ -58,7 +58,9 @@ const Home = () => {
         </Grid>
       ) : <LoaderWrapper><LoadingIndicator /></LoaderWrapper>}
 
-      <Header>News</Header>
+      <Header>News
+        <BottomLine />
+      </Header>
 
       {!loader ? (
         <Grid>

@@ -27,5 +27,13 @@ export const Paragraph = styled.p`
 export const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 200px;
+  margin: 20rem;
+`
+
+export const BottomLine = styled.div`
+  width: 6rem;
+  height: 0.4rem;
+  background: ${props => props.theme.colors.blue.normal};
+  margin: auto;
+  margin-top: 1.2rem;
 `

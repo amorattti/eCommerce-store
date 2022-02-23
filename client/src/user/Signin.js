@@ -8,6 +8,7 @@ import InputGroup from '../components/InputGroup_Styles'
 import Input from '../components/Input_Styles'
 import Button from '../components/Button'
 import Alert from '../components/Alert'
+import Loader from '../components/LoadingIndicator'
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -81,7 +82,7 @@ const Signin = () => {
   )
 
   const showLoading = () => (
-    loading && (<div><h2>...loading</h2></div>)
+    loading && (<div><Loader /></div>)
   )
 
   const redirectUser = () => {

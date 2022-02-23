@@ -88,6 +88,8 @@ export const Name = styled.div`
 
   @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
     inline-size: 30rem;
+    text-align: center;
+    padding: 20px;
   }
 `
 
