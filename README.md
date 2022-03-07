@@ -1,7 +1,7 @@
 # eCommerce store page
 ### [Live Site](https://ecommercy-shop.herokuapp.com/) Heroku delay server ~5s (free package)
 
-![Restaurant Landing Page](https://i.ibb.co/z4CjPpL/Screenshot-2022-02-20-at-03-19-39-Screenshot-2022-02-20-at-03-16-56-React-App-png-PNG-Image-1440-151.png)
+![Restaurant Landing Page](https://i.ibb.co/2sV9d0n/shop.png)
 
 
 ## Features
