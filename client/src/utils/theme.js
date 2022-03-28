@@ -39,6 +39,7 @@ export default {
       normal: 'rgb(220, 53, 69)',
       light: 'rgb(255, 243, 243)',      
     },
-    footerBg: 'rgba(37, 37, 37, 1)'
+    footerBg: 'rgba(37, 37, 37, 1)',
+    productCard: '#d9d5e3'
   }
 };
