@@ -13,8 +13,8 @@ export const ProductCart = styled.div`
   border: 1px solid ${({theme}) => theme.colors.border.gray};
 
   &:hover {
-    box-shadow: 1px 1px 6px 5px ${({theme}) => theme.colors.productCard};
-    border-bottom: none;
+    // box-shadow: 1px 1px 6px 5px ${({theme}) => theme.colors.productCard};
+    // border-bottom: none;
   }
 
   @media screen and (max-width: ${({theme}) => theme.spacing.sm}) {
@@ -50,6 +50,7 @@ export const ProductInfo = styled.div`
 
   &:hover {
     /* color: #ffc107; */
+    text-decoration: underline;
   }
 }
 
