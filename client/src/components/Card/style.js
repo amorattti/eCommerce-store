@@ -13,7 +13,7 @@ export const ProductCart = styled.div`
   border: 1px solid ${({theme}) => theme.colors.border.gray};
 
   &:hover {
-    box-shadow: 1px 1px 6px 5px ${({theme}) => theme.colors.border.normal};
+    box-shadow: 1px 1px 6px 5px ${({theme}) => theme.colors.productCard};
     border-bottom: none;
   }
 
