@@ -25,18 +25,13 @@ export const TitleCart = styled.div`
 export const Col = styled.div`
   flex: ${(props) => props.size};
    
-  &:last-child {
-    min-width: 34rem;
-    max-width: 60rem;  
-  }
-
   &:first-child {
     margin-bottom: 2rem;
   }
 
   @media(max-width: ${props => props.theme.spacing.sm}) {
 
-    >div:last-child {
+    div:last-child {
       margin: 0; 
     }  
   }
