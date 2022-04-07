@@ -37,8 +37,9 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   font-weight: 400;
   color: ${({theme}) => theme.colors.black};
+  transition: color 0.2s;
   &:hover {
-    text-decoration: underline;
+    color: #e5ab00!important;
   }
 `
 
@@ -91,3 +92,10 @@ export const BoxItem = styled.div`
 `
 
 
+// default component
+
+export const DefaultBoxContainer = styled.div`
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 100;
+`

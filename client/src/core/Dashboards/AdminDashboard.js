@@ -2,14 +2,26 @@ import React from 'react'
 import Layout from '../../hoc/Layout'
 import { isAuthenticated } from '../../auth'
 import {
-  Card, CardHeader, ListGroup, ListGroupItem, BoxContainer, BoxItem, NavLink
+  Card, CardHeader, ListGroup, ListGroupItem, BoxContainer, BoxItem, NavLink,
+  DefaultBoxContainer
 } from './styles'
 import { Helmet } from "react-helmet"
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const AdminDashboard = () => {
   const { user: { name, email, role } } = isAuthenticated()
+
+  let match = useLocation()
+
+  const activeLink = (name) => {
+    const location = match.pathname.split('/').pop()
+    if (location === name) {
+      return { color: '#e5ab00' }
+    } else {
+      return { color: 'inherit' }
+    }
+  }
 
   const adminLinks = () => {
     return (
@@ -19,16 +31,24 @@ const AdminDashboard = () => {
         </CardHeader>
         <ListGroup>
           <ListGroupItem>
-            <NavLink to="/admin/dashboard/create/category">Create Category</NavLink>
+            <NavLink
+              style={activeLink('category')}
+              to="/admin/dashboard/create/category">Create Category</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/admin/dashboard/create/product">Create Product</NavLink>
+            <NavLink
+              style={activeLink('product')}
+              to="/admin/dashboard/create/product">Create Product</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/admin/dashboard/orders">View Orders</NavLink>
+            <NavLink
+              style={activeLink('orders')}
+              to="/admin/dashboard/orders">View Orders</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/admin/dashboard/products">Manage Products</NavLink>
+            <NavLink
+              style={activeLink('products')}
+              to="/admin/dashboard/products">Manage Products</NavLink>
           </ListGroupItem>
         </ListGroup>
       </Card>
@@ -52,6 +72,13 @@ const AdminDashboard = () => {
     )
   }
 
+
+  const DashboardDefault = () => (
+    <DefaultBoxContainer>
+        Welcome in admin panel dashboard.
+    </DefaultBoxContainer>
+  )
+
   return (
     <Layout title="Dashboard" description={`Welcome ${name}`}>
       <Helmet>
@@ -64,7 +91,7 @@ const AdminDashboard = () => {
         </BoxItem>
       </BoxContainer>
       <BoxContainer>
-        <Outlet/>
+        {Outlet() !== null ? <Outlet /> : DashboardDefault()}
       </BoxContainer>
     </Layout >
   )
