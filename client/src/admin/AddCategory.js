@@ -37,7 +37,7 @@ const AddCategory = () => {
   }
 
   const newCategoryForm = () => (
-    <form onSubmit={clickSubmit}>
+    <form onSubmit={clickSubmit} style={{ margin: 'auto'}}>
       <InputGroup>
         <label>name</label>
         <Input
@@ -65,19 +65,14 @@ const AddCategory = () => {
     </Alert>
   )
 
-  const goBackButton = () => (
-    <Button onClick={() => navigate(-1)}>
-      ← Go Back
-    </Button>
-  )
 
   return (
-    <Layout title="Add a new category" >
+    <>
       {showError()}
       {showSuccess()}
       {newCategoryForm()}
-      {goBackButton()}
-    </Layout >
+ 
+    </ >
   )
 }
 

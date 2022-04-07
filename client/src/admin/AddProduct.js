@@ -168,7 +168,7 @@ const AddProduct = () => {
 
   const showSuccess = () => (
     <Alert value={createdProduct} theme="success">
-     <h5 style={{margin: 0}}>{createdProduct} is created!</h5> 
+      <h5 style={{ margin: 0 }}>{createdProduct} is created!</h5>
     </Alert>
   )
   const showLoading = () => (
@@ -177,22 +177,15 @@ const AddProduct = () => {
     </Alert>
   )
 
-  const goBackButton = () => (
-    <Button onClick={() => navigate(-1)}>
-      ← Go Back
-    </Button>
-  )
-
   return (
-    <Layout title="Add Product">
+    <>
       <EntryCard>
         {showError()}
         {showLoading()}
         {showSuccess()}
         {newPostForm()}
       </EntryCard>
-      {goBackButton()}
-    </Layout >
+    </ >
   )
 }
 

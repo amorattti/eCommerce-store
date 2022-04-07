@@ -58,7 +58,7 @@ const Edit = () => {
     e.preventDefault()
     setValues({ ...values, error: '', loading: true })
     const productUpdate = await updateProduct(user._id, token, productId, formData)
-  
+
     if (productUpdate.error) {
       setValues({ ...values, error: productUpdate.error })
     }
@@ -160,12 +160,12 @@ const Edit = () => {
   )
 
   return (
-    <Layout title="Update Product">
+    <>
       {showError()}
       {showLoading()}
       {showSuccess()}
       {newPostForm()}
-    </Layout >
+    </ >
   )
 };
 

@@ -16,7 +16,7 @@ const ManageProducts = () => {
     setProducts(getProducts)
   }
 
-  const deleteProduct = async(user, token, productId) => {
+  const deleteProduct = async (user, token, productId) => {
     if (window.confirm("Delete the product?")) {
       await removeProduct(user, token, productId)
       const newList = await fetchProducts(token)
@@ -58,12 +58,12 @@ const ManageProducts = () => {
                       textDecoration: 'none',
                       color: 'inherit'
                     }}
-                    to={`/admin/update/${product._id}`}>
+                    to={`/admin/dashboard/update/${product._id}`}>
                     Edit
                   </Link>
                 </button>
                 <button
-                  onClick={() => deleteProduct(user._id, token, product._id) }
+                  onClick={() => deleteProduct(user._id, token, product._id)}
                 >Delete</button>
               </div>
             </span>
@@ -74,11 +74,10 @@ const ManageProducts = () => {
   }
 
   return (
-    <Layout title="Products List" description='Manage products'>
-      <S.ProductsContainer>
-        {singleProduct()}
-      </S.ProductsContainer>
-    </Layout>
+    <S.ProductsContainer>
+      {singleProduct()}
+    </S.ProductsContainer>
+
   )
 
 };

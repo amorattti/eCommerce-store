@@ -43,14 +43,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <ConfigContext.Provider value={{ 
-          setSearchResults, 
-          searchResults, 
-          setDisplay, 
-          display,
-          searchName,
-          setSearchName
-        }}>
+      <ConfigContext.Provider value={{
+        setSearchResults,
+        searchResults,
+        setDisplay,
+        display,
+        searchName,
+        setSearchName
+      }}>
         <Navigation>
           <Wrapper as="nav">
             <Logo>
@@ -73,12 +73,14 @@ const App = () => {
             </Route>
           </Route>
           <Route element={<PrivateAdminRoute />}>
-            <Route path="admin/dashboard" element={<DashboardAdmin />} />
-            <Route path="create/category" element={<AddCategory />} />
-            <Route path="create/product" element={<AddProduct />} />
-            <Route path="admin/orders" element={<Orders />} />
-            <Route path="admin/products" element={<ManageProducts />} />
-            <Route path="admin/update/:productId" element={<EditProduct />} />
+            <Route path="admin/dashboard" element={<DashboardAdmin />} >
+              <Route path="create/category" element={<AddCategory />} />
+              <Route path="create/product" element={<AddProduct />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="products" element={<ManageProducts />} />
+              <Route path="update/:productId" element={<EditProduct />} />
+            </Route>
+
           </Route>
           <Route path="product/:productId" element={<Product />} />
           <Route path="/cart" element={<Cart />} />

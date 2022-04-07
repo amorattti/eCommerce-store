@@ -56,8 +56,8 @@ const Orders = () => {
     listOrders()
   }, [])
 
-  const handleSelectChange = async(e, id) => {
-    const body = {_id: id, status: e.value}
+  const handleSelectChange = async (e, id) => {
+    const body = { _id: id, status: e.value }
     await updateOrderStatus(user._id, token, body)
   }
 
@@ -78,7 +78,7 @@ const Orders = () => {
   /*---------------*/
 
   return (
-    <Layout>
+    <>
       <div>
         <h2>Orders list</h2>
         <div>
@@ -155,8 +155,8 @@ const Orders = () => {
           </S.TableStyled>
         </S.ModalBody>
       </Modal>
-      
-    </Layout >
+
+    </ >
   )
 }
 

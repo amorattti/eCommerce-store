@@ -6,27 +6,29 @@ import {
 } from './styles'
 import { Helmet } from "react-helmet"
 
+import { Outlet } from "react-router-dom";
+
 const AdminDashboard = () => {
   const { user: { name, email, role } } = isAuthenticated()
 
   const adminLinks = () => {
     return (
-      <Card width="300px">
+      <Card >
         <CardHeader as="h4">
-          Admin Links
+          Admin menu
         </CardHeader>
         <ListGroup>
           <ListGroupItem>
-            <NavLink to="/create/category">Create Category</NavLink>
+            <NavLink to="/admin/dashboard/create/category">Create Category</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/create/product">Create Product</NavLink>
+            <NavLink to="/admin/dashboard/create/product">Create Product</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/admin/orders">View Orders</NavLink>
+            <NavLink to="/admin/dashboard/orders">View Orders</NavLink>
           </ListGroupItem>
           <ListGroupItem>
-            <NavLink to="/admin/products">Manage Products</NavLink>
+            <NavLink to="/admin/dashboard/products">Manage Products</NavLink>
           </ListGroupItem>
         </ListGroup>
       </Card>
@@ -58,8 +60,11 @@ const AdminDashboard = () => {
       <BoxContainer>
         <BoxItem>
           {adminLinks()}
-          {adminInfo()}
+          {/* {adminInfo()} */}
         </BoxItem>
+      </BoxContainer>
+      <BoxContainer>
+        <Outlet/>
       </BoxContainer>
     </Layout >
   )
