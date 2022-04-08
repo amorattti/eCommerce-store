@@ -25,7 +25,7 @@ const AdminDashboard = () => {
 
   const adminLinks = () => {
     return (
-      <Card >
+      <Card>
         <CardHeader as="h4">
           Admin menu
         </CardHeader>

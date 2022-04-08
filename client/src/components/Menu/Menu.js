@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { withRouter } from '../../hoc/withRouter'
 import { itemTotal } from '../../core/cartHelper'
 import { GrCart } from 'react-icons/gr'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 
 import {
@@ -18,6 +18,17 @@ import { ConfigContext } from '../../App'
 const Menu = () => {
   const { setDisplay } = useContext(ConfigContext)
 
+  let match = useLocation()
+
+  const activeLink = (name) => {
+    const location = match.pathname.split('/').pop()
+    if (location === name) {
+      return { color: '#e5ab00' }
+    } else {
+      return { color: 'inherit' }
+    }
+  }
+
   return (
     <MenuContainer>
       <MenuBar>
@@ -25,12 +36,14 @@ const Menu = () => {
           <MenuItem>
             <LinkMenu
               to={`/`}
+              style={activeLink('')}
             > Home
             </LinkMenu>
           </MenuItem>
           <MenuItem>
             <LinkMenu
               to={`/shop`}
+              style={activeLink('shop')}
             > Shop
             </LinkMenu>
           </MenuItem>

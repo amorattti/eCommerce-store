@@ -10,6 +10,7 @@ export const Card = styled.div`
   margin: auto;
   margin-bottom: 6rem;
 
+
 `
 export const CardHeader = styled.h3`
   border-bottom: 0.1rem solid ${props => props.theme.colors.border.normal};
@@ -22,6 +23,11 @@ export const CardHeader = styled.h3`
 export const ListGroup = styled.ul`
   display: flex;
  
+  
+  @media screen and (max-width: ${({theme}) => theme.spacing.xs}) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const ListGroupItem = styled.li`
@@ -48,7 +54,8 @@ export const BoxContainer = styled.div`
   gap: 6%;
   align-items: flex-start;
   position: relative;
-  
+
+
   >div:nth-child(1) {
     flex: 1;
     justify-content: space-between;
@@ -63,7 +70,6 @@ export const BoxContainer = styled.div`
   @media screen and (max-width: ${props => props.theme.spacing.sm}) {
       display: block;   
     } 
-
 
 `
 
