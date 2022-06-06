@@ -197,7 +197,7 @@ exports.listBySearch = async (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 100
     let skip = parseInt(req.body.skip)
     let findArgs = {}
-    console.log('req.body', req.body)
+  
     for (let key in req.body.filters) {
       if (req.body.filters[key].length > 0) {
         if (key === 'price') {
@@ -212,7 +212,7 @@ exports.listBySearch = async (req, res) => {
         }
       }
     }
-    console.log('findArgs', findArgs)
+   
     const data = await Product.find(findArgs)
       .select('-photo')
       .populate('category')
@@ -220,7 +220,7 @@ exports.listBySearch = async (req, res) => {
       .skip(skip)
       .limit(limit)
       .exec()
-      console.log('data', data.length)
+ 
     return res.json({
       size: data.length,
       data
